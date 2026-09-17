@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowRight, Boxes } from "lucide-react";
+import { ArrowRight } from "reicon-react/icons/ArrowRight";
+import { Infinite } from "reicon-react/icons/Infinite";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { Marquee } from "@/components/marquee";
@@ -19,7 +20,14 @@ const descriptionClassName =
   "max-w-[260px] text-xs font-medium leading-[1.65] text-black dark:text-white [word-break:keep-all] md:text-[13px]";
 const actionClassName =
   "inline-flex min-h-10 items-center justify-center gap-6 border border-foreground px-5 py-2.5 text-xs font-medium transition-colors duration-[180ms] motion-reduce:transition-none";
-const marqueePlaceholders = ["STUDIO ONE", "COMPANY TWO", "BRAND THREE", "PARTNER FOUR", "STUDIO FIVE", "COMPANY SIX"];
+const marqueePlaceholders = [
+  "STUDIO ONE",
+  "COMPANY TWO",
+  "BRAND THREE",
+  "PARTNER FOUR",
+  "STUDIO FIVE",
+  "COMPANY SIX",
+];
 
 const HeroContent = () => {
   const t = useTranslations("Hero");
@@ -67,7 +75,7 @@ const HeroContent = () => {
               "hover:bg-foreground hover:text-background",
             )}
           >
-            {navT("work")} <Boxes size={16} aria-hidden="true" />
+            {navT("work")} <Infinite size={16} aria-hidden="true" />
           </Link>
           <Link
             data-hero-reveal="text"
@@ -166,10 +174,19 @@ const HeroContent = () => {
         </aside>
       </div>
 
-      <div data-hero-reveal="text" className={cn(textRevealClassName, "flex min-h-24 items-center overflow-hidden py-5")}>
+      <div
+        data-hero-reveal="text"
+        className={cn(
+          textRevealClassName,
+          "flex min-h-24 items-center overflow-hidden py-5",
+        )}
+      >
         <Marquee speed={42} fadeAmount={8}>
           {marqueePlaceholders.map((name) => (
-            <span key={name} className="flex min-w-48 items-center justify-center px-8 text-sm font-semibold tracking-[0.12em] text-foreground/60 md:min-w-56 md:text-base">
+            <span
+              key={name}
+              className="flex min-w-48 items-center justify-center px-8 text-sm font-semibold tracking-[0.12em] text-foreground/60 md:min-w-56 md:text-base"
+            >
               {name}
             </span>
           ))}
