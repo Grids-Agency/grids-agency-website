@@ -1,206 +1,132 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { cn } from "@/lib/utils";
-
-gsap.registerPlugin(ScrollTrigger);
-
+import { lockIntroScroll } from "@/lib/lock-intro-scroll";
 
 interface IntroProps {
+  contentRef: RefObject<HTMLDivElement | null>;
   onReveal?: () => void;
 }
 
-export default function Intro({ onReveal }: IntroProps) {
+export default function Intro({ contentRef, onReveal }: IntroProps) {
+  const [finished, setFinished] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const textWrapperRef = useRef<HTMLHeadingElement>(null);
   const gridsRef = useRef<HTMLSpanElement>(null);
   const agencyRef = useRef<HTMLSpanElement>(null);
-  const backgroundRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  // The content is a later sibling: wait until all sibling refs are attached.
+  useEffect(() => {
+    const content = contentRef.current;
+    if (!content) return;
+    const heroGrid = content.querySelectorAll<HTMLElement>('[data-hero-reveal="grid"]');
+    const heroText = content.querySelectorAll<HTMLElement>('[data-hero-reveal="text"]');
+    const unlockScroll = lockIntroScroll();
     const ctx = gsap.context(() => {
-      // Ensure elements exist
-      if (!textWrapperRef.current || !containerRef.current || !gridsRef.current || !agencyRef.current) return;
+      const text = textWrapperRef.current;
+      const grids = gridsRef.current;
+      const agency = agencyRef.current;
+      if (!text || !grids || !agency) return;
 
-      const mm = gsap.matchMedia();
-      
-      // Common Setup
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
         onComplete: () => {
-             // Ensure pointer events are off at the end
-             if (containerRef.current) containerRef.current.style.pointerEvents = "none";
-        }
+          // Remove the intro once the hero reveal has finished.
+          gsap.set(containerRef.current, { visibility: "hidden" });
+          // Remove the initial Tailwind state before clearing animation styles.
+          content.dataset.heroPending = "false";
+          gsap.set([...heroGrid, ...heroText], { clearProps: "opacity,filter,transform,willChange" });
+          onReveal?.();
+          unlockScroll();
+          setFinished(true);
+        },
       });
 
-      // Step 1: Fade in at 50% scale (Common)
+      // Keep the intro brief and still when motion is reduced.
+      if (reducedMotion) {
+        tl.to(containerRef.current, { visibility: "hidden", duration: 0.01 });
+        return;
+      }
+
+      // Keep the hero stationary beneath the intro; reveal the cube first as
+      // the overlay fades, followed by the existing grid and text animations.
+      gsap.set(heroGrid, { opacity: 0 });
+      gsap.set(heroText, { opacity: 0, filter: "blur(6px)", y: 6 });
+
       tl.fromTo(
-        textWrapperRef.current,
-        { opacity: 0, scale: 0.5, y: 20 }, 
+        text,
+        { opacity: 0, scale: 0.5, y: 20 },
         { opacity: 1, scale: 0.5, y: 0, duration: 1 }
       )
-      .to({}, { duration: 0.2 }); // Reduced Delay
+        .to([grids, agency], {
+          y: 100,
+          opacity: 0,
+          duration: 0.4,
+          ease: "back.in(2)",
+          stagger: 0.1,
+        }, "+=0.2")
+        .call(() => {
+          grids.textContent = "THE AI";
+          agency.textContent = "CREATIVE LAB";
+          gsap.set([grids, agency], { y: -100 });
+        })
+        .to([grids, agency], {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: "back.out(1.5)",
+          stagger: 0.1,
+        })
+        // Let the complete second title settle before revealing the page.
+        .addLabel("exit", "+=1.6")
+        // Prepare compositing just before the handoff, not for the whole intro.
+        .set(containerRef.current, { willChange: "opacity" }, "exit-=0.2")
+        .to(text, {
+          opacity: 0,
+          duration: 0.3,
+          ease: "sine.inOut",
+        }, "exit")
+        .to(containerRef.current, {
+          autoAlpha: 0,
+          duration: 0.78,
+          ease: "sine.inOut",
+        }, "exit+=0.08")
+        // The cube is visible through the fading overlay; reveal its frame next.
+        .to(heroGrid, {
+          opacity: 1,
+          duration: 0.65,
+          ease: "power2.out",
+        }, "exit+=0.65")
+        .to(heroText, {
+          opacity: 1,
+          filter: "blur(0px)",
+          y: 0,
+          duration: 1.1,
+          stagger: { amount: 0.4 },
+          ease: "power2.out",
+        }, "exit+=1.05");
+    }, containerRef);
 
-      // Step 2: Animate OLD text OUT (Push Down) - IMMEDIATE SWAP
-      tl.to([gridsRef.current, agencyRef.current], {
-        y: 100,
-        opacity: 0,
-        duration: 0.4,
-        ease: "back.in(2)",
-        stagger: 0.1
-      })
+    return () => {
+      ctx.revert();
+      unlockScroll();
+    };
+  }, [contentRef, onReveal]);
 
-      // Step 3: Swap Text & Reset Position (Instant)
-      .call(() => {
-        if (gridsRef.current) {
-            gridsRef.current.innerText = "THE AI";
-            // Reset position to TOP for incoming animation (Maintain X offset)
-            gsap.set(gridsRef.current, { y: -100 });
-        }
-        if (agencyRef.current) {
-            agencyRef.current.innerText = "CREATIVE LAB";
-            // Reset position to TOP for incoming animation (Maintain X offset)
-            gsap.set(agencyRef.current, { y: -100 });
-        }
-        // Reveal Navbar immediately as text prepares to enter
-        if (onReveal) onReveal();
-      })
-
-      // Step 4: Animate NEW text IN (Slide Down from Top)
-      .to([gridsRef.current, agencyRef.current], {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "back.out(1.5)",
-        stagger: 0.1
-      })
-      .addLabel("move"); // Define label for responsive animations to start AFTER swap
-
-      // Responsive Animations
-      mm.add({
-        isDesktop: "(min-width: 768px)",
-        isMobile: "(max-width: 767px)",
-      }, (context) => {
-        // @ts-ignore - conditions exists on context
-        const { isDesktop, isMobile } = context.conditions;
-
-        if (isDesktop) {
-            // DESKTOP: Scale Down only, NO split
-            tl.to(textWrapperRef.current, {
-                scale: 0.4, // Larger scale (was 0.25)
-                duration: 1.5,
-                ease: "power4.inOut"
-            }, "move");
-        } 
-        
-        if (isMobile) {
-            // MOBILE: Move to Bottom Center (Unified)
-            if (textWrapperRef.current) {
-                const windowHeight = window.innerHeight;
-                const textHeight = textWrapperRef.current.offsetHeight;
-                const yOffset = (windowHeight / 2) - (textHeight / 2) - 40; // Bottom offset padding
-
-                tl.to(textWrapperRef.current, {
-                    y: yOffset,
-                    scale: 1, // Full width on mobile? Or keep small? User said "like before". Before was scale 1.
-                    duration: 1.5,
-                    ease: "power4.inOut"
-                }, "move");
-            }
-        }
-      });
-
-      // Common: Fade out background
-      // Runs at "move" label (after swap)
-      tl.to(backgroundRef.current, {
-        opacity: 0,
-        duration: 1.0,
-        ease: "power2.inOut",
-        onComplete: () => {
-          if (backgroundRef.current) backgroundRef.current.style.display = "none";
-        }
-      }, "move+=0.5");
-      
-
-
-
-
-      // Step 5: Responsive Scale Adjustment for New Text
-      mm.add({
-        isDesktop: "(min-width: 768px)",
-        isMobile: "(max-width: 767px)",
-      }, (context) => {
-        // @ts-ignore
-        const { isDesktop, isMobile } = context.conditions;
-
-        // Helper to calculate bottom position
-        const getBottomY = (element: HTMLElement) => {
-            const windowHeight = window.innerHeight;
-            const elementHeight = element.offsetHeight;
-            return (windowHeight / 2) - (elementHeight / 2) - 60; 
-        };
-
-        if (isDesktop && textWrapperRef.current) {
-            // DESKTOP: Scale Down and MOve to Bottom
-            tl.to(textWrapperRef.current, {
-                y: getBottomY(textWrapperRef.current),
-                scale: 0.4, 
-                duration: 1.5,
-                ease: "power4.inOut"
-            }, "move"); 
-        }
-        
-        if (isMobile && textWrapperRef.current) {
-            // MOBILE: Move to Bottom
-            tl.to(textWrapperRef.current, {
-                y: getBottomY(textWrapperRef.current), 
-                scale: 0.8,
-                duration: 1.5,
-                ease: "power4.inOut"
-            }, "move"); 
-        }
-      });
-
-      // Step 6: Scroll-Linked Exit Animation
-      // Delayed initialization to ensure correct start values (opacity: 1) are captured
-      tl.call(() => {
-          const scrollTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: document.body,
-                start: "top top",
-                end: "+=500", // Animate out over first 500px of scroll
-                scrub: true,
-            }
-          });
-          
-          scrollTl.to(textWrapperRef.current, {
-            opacity: 0,
-            y: -100,
-            scale: "-=0.1", // Slight shrink
-            ease: "power1.out"
-          });
-      });
-
-    }, containerRef); 
-
-    return () => ctx.revert();
-  }, [onReveal]);
+  if (finished) return null;
 
   return (
-    <div ref={containerRef} className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
-      {/* Background Layer (Solid color) */}
-      <div 
-        ref={backgroundRef} 
-        className="absolute inset-0 bg-background pointer-events-auto"
-      />
-      
-      {/* Text Layer - Fluid Typography */}
-      <h1 
-        ref={textWrapperRef} 
-        className="relative z-10 font-black tracking-tighter text-tertiary text-center leading-none whitespace-nowrap drop-shadow-2xl"
-        style={{ fontSize: "12vw" }}
+    <div
+      ref={containerRef}
+      aria-hidden="true"
+      className="fixed inset-0 z-50 flex items-center justify-center touch-none overscroll-none"
+    >
+      <div className="absolute inset-0 bg-background" />
+      <h1
+        ref={textWrapperRef}
+        className="relative z-10 text-[12vw] font-black tracking-tighter text-tertiary text-center leading-none whitespace-nowrap opacity-0 drop-shadow-2xl"
       >
         <span ref={gridsRef} className="inline-block px-2">GRIDS</span>
         <span ref={agencyRef} className="inline-block px-2">AGENCY</span>

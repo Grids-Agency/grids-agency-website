@@ -14,7 +14,8 @@ export function ArchiveWrapper() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div 
+    <div
+      data-navbar-scroll
       className={cn(
         "w-full bg-background relative",
         !showGrid ? "h-screen overflow-y-auto" : "h-screen overflow-hidden"

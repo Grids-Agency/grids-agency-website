@@ -25,6 +25,13 @@
     "location": "Based in Seoul"
   },
   "Hero": {
+    "headline_lead": "Ideas into reality.",
+    "start_project": "Start a project",
+    "studio_description": "At the intersection of design and technology, we turn your ideas into distinctive digital experiences.",
+    "approach_description": "From websites and AI visuals to intelligent automation. We build what comes next for your business.",
+    "explore_vision": "Explore our vision",
+    "discover": "Discover more",
+    "capabilities": {"web": "Web & systems", "visual": "AI visuals", "automation": "Automation"},
     "headline_prefix": "Witness Tomorrow.",
     "subtext": "A design-driven production studio focused on telling your story through motion, interaction, and clean typography."
   },

@@ -4,6 +4,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@source inline("animate-brand-roll");
+
 :root {
 
   --card: oklch(1 0 0);
@@ -114,6 +116,7 @@
 }
 
 @theme inline {
+  --animate-brand-roll: brand-roll 8s cubic-bezier(0.76, 0, 0.24, 1) infinite;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -169,6 +172,11 @@
   @keyframes accordion-down {
     from { height: 0; }
     to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes brand-roll {
+    0%, 40% { transform: translateY(0); }
+    50%, 90% { transform: translateY(-33.333333%); }
+    100% { transform: translateY(-66.666667%); }
   }
   @keyframes accordion-up {
     from { height: var(--radix-accordion-content-height); }

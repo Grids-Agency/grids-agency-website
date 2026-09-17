@@ -58,25 +58,50 @@ Button.displayName = "Button"
 
 export { Button, buttonVariants, liquidbuttonVariants, LiquidButton }
 
+// Static Tailwind classes keep the glass layers scannable by the compiler.
+const glassClasses = cn(
+  "relative isolate [--glass-x:30%] [--glass-y:0%] border border-white/65 bg-white/28 backdrop-blur-[12px] backdrop-saturate-[1.6]",
+  "bg-[linear-gradient(155deg,rgba(255,255,255,0.58),rgba(255,255,255,0.08)_48%,rgba(255,255,255,0.26))]",
+  "shadow-[0_8px_24px_-8px_rgba(20,30,45,0.2),0_2px_5px_rgba(20,30,45,0.06),inset_0_1px_1px_rgba(255,255,255,0.95),inset_0_-1px_2px_rgba(30,45,60,0.16),inset_2px_0_3px_rgba(255,255,255,0.45),inset_-2px_0_3px_rgba(255,255,255,0.35)]",
+  "[text-shadow:0_1px_0_rgba(255,255,255,0.4)] transition-[transform,box-shadow,background-color] duration-[240ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]",
+  // The glass rim is a masked gradient; both layers stay behind the label.
+  "before:pointer-events-none before:absolute before:inset-px before:-z-1 before:rounded-[inherit] before:p-px before:content-['']",
+  "before:bg-[linear-gradient(135deg,white,rgba(255,255,255,0.12)_35%,transparent_55%,rgba(255,255,255,0.8))]",
+  "before:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[mask-composite:exclude] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor]",
+  "after:pointer-events-none after:absolute after:inset-0.5 after:-z-1 after:rounded-[inherit] after:content-[''] after:opacity-55 after:transition-opacity after:duration-[240ms]",
+  "after:bg-[radial-gradient(ellipse_90px_55px_at_var(--glass-x)_var(--glass-y),rgba(255,255,255,0.65),transparent_75%)]",
+  "dark:border-white/22 dark:bg-white/7 dark:bg-[linear-gradient(155deg,rgba(255,255,255,0.18),rgba(255,255,255,0.02)_48%,rgba(255,255,255,0.08))]",
+  "dark:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.5),0_2px_5px_rgba(0,0,0,0.2),inset_0_1px_1px_rgba(255,255,255,0.55),inset_0_-1px_2px_rgba(0,0,0,0.25),inset_2px_0_3px_rgba(255,255,255,0.1)]",
+  "dark:[text-shadow:0_1px_3px_rgba(0,0,0,0.25)] dark:before:opacity-55 dark:after:opacity-15",
+  "[@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-white/38 [@media(hover:hover)_and_(pointer:fine)]:hover:after:opacity-85",
+  "dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-white/12 dark:[@media(hover:hover)_and_(pointer:fine)]:hover:after:opacity-30",
+  "active:translate-y-0 active:scale-[0.97] disabled:translate-y-0 disabled:scale-100 aria-disabled:translate-y-0 aria-disabled:scale-100",
+  "focus-visible:outline-2 focus-visible:outline-foreground focus-visible:outline-offset-4",
+  "motion-reduce:transition-none motion-reduce:after:transition-none motion-reduce:translate-y-0! motion-reduce:scale-100!",
+  "motion-reduce:after:bg-[linear-gradient(155deg,rgba(255,255,255,0.2),transparent)]"
+)
+
+const ghostGlassClasses = "bg-white/10 bg-[linear-gradient(155deg,rgba(255,255,255,0.28),transparent_65%)] dark:bg-black/10"
+
 const liquidbuttonVariants = cva(
-  "inline-flex items-center transition-colors justify-center cursor-pointer gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center cursor-pointer gap-2 whitespace-nowrap rounded-full text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
-        default: "bg-transparent hover:scale-105 duration-300 transition text-primary",
+        default: "text-primary",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        ghost: "text-primary",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         sm: "h-8 text-xs gap-1.5 px-4 has-[>svg]:px-4",
-        lg: "h-10 rounded-full px-6 has-[>svg]:px-4",
+        lg: "h-12 rounded-full px-7 has-[>svg]:px-6",
         xl: "h-12 rounded-full px-8 has-[>svg]:px-6",
         xxl: "h-14 rounded-full px-10 has-[>svg]:px-8",
         icon: "size-9",
@@ -95,6 +120,8 @@ function LiquidButton({
   size,
   asChild = false,
   children,
+  onPointerMove,
+  onPointerLeave,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof liquidbuttonVariants> & {
@@ -103,77 +130,33 @@ function LiquidButton({
   const Comp = asChild ? Slot : "button"
 
   return (
-    <>
-      <Comp
-        data-slot="button"
-        className={cn(
-          "relative",
-          liquidbuttonVariants({ variant, size, className })
-        )}
-        {...props}
-      >
-        <div className="absolute top-0 left-0 z-0 h-full w-full rounded-full 
-            shadow-[0_0_6px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3px_rgba(0,0,0,0.9),inset_-3px_-3px_0.5px_-3px_rgba(0,0,0,0.85),inset_1px_1px_1px_-0.5px_rgba(0,0,0,0.6),inset_-1px_-1px_1px_-0.5px_rgba(0,0,0,0.6),inset_0_0_6px_6px_rgba(0,0,0,0.12),inset_0_0_2px_2px_rgba(0,0,0,0.06),0_0_12px_rgba(255,255,255,0.15)] 
-        transition-all 
-        dark:shadow-[0_0_8px_rgba(0,0,0,0.03),0_2px_6px_rgba(0,0,0,0.08),inset_3px_3px_0.5px_-3.5px_rgba(255,255,255,0.09),inset_-3px_-3px_0.5px_-3.5px_rgba(255,255,255,0.85),inset_1px_1px_1px_-0.5px_rgba(255,255,255,0.6),inset_-1px_-1px_1px_-0.5px_rgba(255,255,255,0.6),inset_0_0_6px_6px_rgba(255,255,255,0.12),inset_0_0_2px_2px_rgba(255,255,255,0.06),0_0_12px_rgba(0,0,0,0.15)]" />
-        <div
-          className="absolute top-0 left-0 isolate -z-10 h-full w-full overflow-hidden rounded-full"
-          style={{ backdropFilter: 'url("#container-glass")' }}
-        />
-
-        <div className="pointer-events-none z-10 ">
-          {children}
-        </div>
-        <GlassFilter />
-      </Comp>
-    </>
+    <Comp
+      data-slot="button"
+      data-variant={variant ?? "default"}
+      className={cn(
+        liquidbuttonVariants({ variant, size }),
+        (!variant || variant === "default" || variant === "ghost") && glassClasses,
+        variant === "ghost" && ghostGlassClasses,
+        className
+      )}
+      {...props}
+      onPointerMove={(event) => {
+        onPointerMove?.(event)
+        if (event.defaultPrevented || event.pointerType === "touch") return
+        const bounds = event.currentTarget.getBoundingClientRect()
+        event.currentTarget.style.setProperty("--glass-x", `${event.clientX - bounds.left}px`)
+        event.currentTarget.style.setProperty("--glass-y", `${event.clientY - bounds.top}px`)
+      }}
+      onPointerLeave={(event) => {
+        onPointerLeave?.(event)
+        if (event.defaultPrevented) return
+        event.currentTarget.style.removeProperty("--glass-x")
+        event.currentTarget.style.removeProperty("--glass-y")
+      }}
+    >
+      {children}
+    </Comp>
   )
-}
-
-
-function GlassFilter() {
-  return (
-    <svg className="hidden">
-      <defs>
-        <filter
-          id="container-glass"
-          x="0%"
-          y="0%"
-          width="100%"
-          height="100%"
-          colorInterpolationFilters="sRGB"
-        >
-          {/* Generate turbulent noise for distortion */}
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.05 0.05"
-            numOctaves="1"
-            seed="1"
-            result="turbulence"
-          />
-
-          {/* Blur the turbulence pattern slightly */}
-          <feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise" />
-
-          {/* Displace the source graphic with the noise */}
-          <feDisplacementMap
-            in="SourceGraphic"
-            in2="blurredNoise"
-            scale="70"
-            xChannelSelector="R"
-            yChannelSelector="B"
-            result="displaced"
-          />
-
-          {/* Apply overall blur on the final result */}
-          <feGaussianBlur in="displaced" stdDeviation="4" result="finalBlur" />
-
-          {/* Output the result */}
-          <feComposite in="finalBlur" in2="finalBlur" operator="over" />
-        </filter>
-      </defs>
-    </svg>
-  );
 }
 
 type ColorVariant =

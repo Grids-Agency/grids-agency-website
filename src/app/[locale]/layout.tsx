@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import ScrollToTop from "@/components/scroll-to-top";
@@ -20,7 +19,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!['en', 'ko'].includes(locale as any)) {
+  if (!['en', 'ko'].includes(locale)) {
     notFound();
   }
 

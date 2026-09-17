@@ -6,10 +6,8 @@ import WarpShader from "@/components/ui/wrap-shader";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
-import Image from "next/image";
+import BrandLogo from "@/components/brand-logo";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 interface FooterSectionProps {
   className?: string;
@@ -18,14 +16,9 @@ interface FooterSectionProps {
 export default function FooterSection({ className }: FooterSectionProps) {
   const t = useTranslations('Footer');
   const locale = useLocale();
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
   const pathname = usePathname();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   if (pathname?.includes('/connect') || pathname?.includes('/archive')) return null;
 
@@ -44,15 +37,7 @@ export default function FooterSection({ className }: FooterSectionProps) {
       {/* Top Section: Logo (Left Only) */}
       <div className="relative z-10 w-full flex justify-start items-center gap-4">
         <div className="relative w-8 h-8 md:w-10 md:h-10">
-           {mounted && (
-             <Image
-               src={theme === 'dark' ? "/logo/grids-white.png" : "/logo/grids-black.png"}
-               alt="GRIDS AGENCY"
-               fill
-               className="object-contain object-left"
-               priority
-             />
-           )}
+             <BrandLogo className="size-full" />
         </div>
         <span className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
           GRIDS AGENCY

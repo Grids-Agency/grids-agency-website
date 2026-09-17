@@ -1,47 +1,37 @@
 "use client";
 
+import { useCallback, useRef, useState } from "react";
 import Intro from "@/components/intro";
-
 import ProcessSection from "@/components/process-section";
 import ServicesSection from "@/components/services-section";
-
 import AboutSection from "@/components/about-section";
-import HeroBackground from "@/components/hero-background";
 import HeroContent from "@/components/hero-content";
+import HeroGridBackground from "@/components/hero-grid-background";
+import Navbar from "@/components/navbar";
 import ManifestoSection from "@/components/manifesto-section";
 
 export default function Home() {
+  const [revealed, setRevealed] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const revealContent = useCallback(() => setRevealed(true), []);
+
   return (
     <main className="min-h-screen bg-background text-foreground relative selection:bg-primary selection:text-primary-foreground">
-      <div className="text-foreground">
-        {/* Background Shader - Fixed Layer */}
-        <HeroBackground />
+      <Intro contentRef={heroRef} onReveal={revealContent} />
 
-        <Intro />
-        
-        {/* Content wrapper */}
-        <div className="relative z-0 flex flex-col min-h-screen">
-          
-         
-          {/* Spacer to reveal fixed hero */}
-          <div className="w-full min-h-screen relative">
-             <HeroContent />
-          </div>
+      <div ref={heroRef} data-hero-pending={!revealed} inert={!revealed} className="group/hero relative flow-root">
+        {/* Keep the fixed navbar outside the hero's sticky stacking context. */}
+        <Navbar inHero />
+        {/* About scrolls over this stationary surface without scroll hijacking. */}
+        <div className="sticky top-0 min-h-screen bg-background motion-reduce:relative">
+          <HeroGridBackground />
+          <HeroContent />
+        </div>
 
-          {/* New About Section sliding up */}
+        <div id="about" className="relative z-10 flex flex-col scroll-mt-6 bg-background">
           <AboutSection />
-     
-          
-      
-          {/* Services Section */}
           <ServicesSection />
-
-          {/* Manifesto Section */}
           <ManifestoSection />
-          
-          {/* Core Values Section */}
-
-          {/* Process Section */}
           <ProcessSection />
         </div>
       </div>

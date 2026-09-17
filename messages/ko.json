@@ -27,6 +27,13 @@
     "location": "Seoul 기반"
   },
   "Hero": {
+    "headline_lead": "아이디어를 현실로.",
+    "start_project": "프로젝트 시작하기",
+    "studio_description": "디자인과 기술의 경계를 넘어, 당신의 아이디어를 새로운 디지털 경험으로 만듭니다.",
+    "approach_description": "웹사이트부터 AI 비주얼, 업무 자동화까지. 비즈니스의 다음 가능성을 함께 설계합니다.",
+    "explore_vision": "우리의 비전",
+    "discover": "더 알아보기",
+    "capabilities": {"web": "웹 & 시스템", "visual": "AI 비주얼", "automation": "자동화"},
     "headline_prefix": "미래로 가다.",
     "subtext": "모션, 인터랙션, 정제된 타이포그래피를 통해 당신의 스토리를 감각적으로 풀어내는 디자인 중심 프로덕션 스튜디오입니다."
   },
