@@ -1,4 +1,14 @@
 {
+  "StudioIntroduction": {
+    "lanyardHint": "DRAG TO EXPLORE",
+    "eyebrow": "WHO WE ARE",
+    "lineOne": "We turn ideas into",
+    "lineTwo": "experiences that work.",
+    "lineThree": "And make people feel.",
+    "signature": "GRIDS AGENCY — THE AI CREATIVE LAB",
+    "description": "We are a creative team working across <highlight>design, development, and AI</highlight>. From understanding your brand to building websites and exploring new visuals, we make work that looks good, feels right, and serves a real purpose.",
+    "discover": "Get to know GRIDS"
+  },
   "Brand": {
     "name": "GRIDS AGENCY"
   },
@@ -20,6 +30,22 @@
     "cta": "Get in touch!"
   },
   "About": {
+    "layout": {
+      "eyebrow": "About us",
+      "heading": "A new way to bring ideas to life",
+      "description": "We connect design and technology to create better digital experiences.",
+      "feature": "Design and technology that open new possibilities for your brand. Built with GRIDS.",
+      "design": {
+        "title": "Digital experience & design",
+        "description": "Websites and digital experiences shaped around your brand’s story."
+      },
+      "ai": {
+        "title": "AI & creative exploration",
+        "description": "From AI visuals to automation, explore what your ideas can become."
+      },
+      "visualPlaceholder": "Visual placeholder",
+      "learnMore": "Learn more"
+    },
     "title" : "The premier <highlight>AI agency</highlight> <newline></newline> for elite-tier production.",
     "description": "Scale beyond your competitors, leveraging cutting-edge AI to deliver unmatched production quality and a decisive market advantage.",
     "location": "Based in Seoul"

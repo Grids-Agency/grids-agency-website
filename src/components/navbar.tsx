@@ -95,10 +95,9 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
         layout
         layoutDependency={scrolled}
         transition={{ layout: pillTransition }}
-        style={{ borderRadius: scrolled ? 32 : 0 }}
         aria-label={locale === "ko" ? "주 메뉴" : "Main navigation"}
         className={cn(
-          "pointer-events-auto absolute inset-x-0 mx-auto text-foreground",
+          "pointer-events-auto absolute inset-x-0 mx-auto rounded-none text-foreground",
           scrolled
             ? "top-3 h-[104px] w-[calc(100%-24px)] px-5 md:top-4 md:h-16 md:w-[min(760px,calc(100%-48px))] md:px-7"
             : "top-0 h-[112px] w-[calc(100%-clamp(20px,4.2vw,72px)*2)] px-5 md:h-[72px] md:px-9",

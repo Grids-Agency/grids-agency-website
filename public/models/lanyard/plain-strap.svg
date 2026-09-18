@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="32" viewBox="0 0 128 32">
+  <defs>
+    <linearGradient id="fabric" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#898984"/>
+      <stop offset="0.12" stop-color="#bbbcb5"/>
+      <stop offset="0.5" stop-color="#cacbc4"/>
+      <stop offset="0.88" stop-color="#bbbcb5"/>
+      <stop offset="1" stop-color="#898984"/>
+    </linearGradient>
+    <pattern id="weave" width="4" height="4" patternUnits="userSpaceOnUse">
+      <path d="M0 1H4M1 0V4" stroke="#fff" stroke-opacity="0.12" stroke-width="0.5"/>
+      <path d="M0 3H4M3 0V4" stroke="#000" stroke-opacity="0.08" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <path fill="url(#fabric)" d="M0 0H128V32H0Z"/>
+  <path fill="url(#weave)" d="M0 0H128V32H0Z"/>
+</svg>
