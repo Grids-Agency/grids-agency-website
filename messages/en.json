@@ -1,4 +1,8 @@
 {
+  "ConsultationButton": {
+    "label": "Let’s talk",
+    "accessibleLabel": "Chat with us on KakaoTalk (opens in a new tab)"
+  },
   "StudioIntroduction": {
     "lanyardHint": "DRAG TO EXPLORE",
     "eyebrow": "WHO WE ARE",
@@ -310,5 +314,125 @@
     "subtitle": "COORDINATE NOT FOUND",
     "description": "The page you are looking for has been lost in the digital void. Let's get you back to the system.",
     "cta": "Back to Home"
+  },
+  "Possibilities": {
+    "heading": "New possibilities.\nFor your business.",
+    "description": "DX brings your business into the digital world. AX adds the possibilities of AI. Here are a few ways that could look for you.",
+    "note": "Illustrative concepts, imagined for real business needs.",
+    "closing": "Your next idea might not be on this board. Let’s build it anyway.",
+    "cta": "Explore what’s possible together",
+    "commerce": {
+      "title": "Websites and stores built for your brand",
+      "description": "From company websites to online stores, we build around your business. Help customers discover your brand, make a purchase, and come back.",
+      "action": "Explore the collection"
+    },
+    "assistant": {
+      "title": "AI that knows how your company works",
+      "description": "Build a custom AI assistant connected to your documents, manuals, and team knowledge. Find what you need with a question, check the sources, and put it to work.",
+      "question": "How do we onboard a new client?",
+      "answer": "Confirm the contract, assign an owner, then schedule a kickoff. I can pull together the checklist for each step.",
+      "source": "Onboarding guide · page 3",
+      "placeholder": "Ask about your company",
+      "thinking": "Checking company documents",
+      "answerLabel": "Based on your company guide"
+    },
+    "automation": {
+      "title": "Workflow automation, around the clock",
+      "description": "Automate repetitive tasks such as data entry, reconciliation, and notifications. Reduce manual errors and labor costs so your team can focus on higher-value work.",
+      "status": "COMPLETE",
+      "trigger": "New inquiry",
+      "process": "Update CRM",
+      "done": "Notify team",
+      "flow": {
+        "hub": "Automation",
+        "crm": "CRM update",
+        "data": "Data sync",
+        "notify": "Team alert",
+        "report": "Send report",
+        "previewLabel": "Automation connections preview. Hover or focus to show the workflow."
+      }
+    },
+    "applications": {
+      "title": "Your idea, built for web and mobile",
+      "description": "Turn bookings, payments, memberships, and more into a working web or mobile app. Easy for customers to use and efficient for your team to manage.",
+      "visualTitle": "One service. Web and mobile.",
+      "booking": "Bookings",
+      "payment": "Payments",
+      "notification": "Notifications",
+      "confirmed": "Booking confirmed",
+      "demo": {
+        "webNav": "Bookings / New session",
+        "heading": "Book a consultation",
+        "subtitle": "30 minutes · Video call",
+        "month": "September 2026",
+        "available": "Available times",
+        "reserve": "Book consultation",
+        "reserved": "Reservation received",
+        "myBookings": "My bookings",
+        "phoneSubtitle": "A little time for your next idea.",
+        "empty": "No upcoming bookings",
+        "emptyHint": "Find a time that works for you.",
+        "confirmed": "Booking confirmed",
+        "service": "Project consultation",
+        "date": "Thursday, September 24",
+        "synced": "Synced to your app",
+        "weekday0": "M",
+        "weekday1": "T",
+        "weekday2": "W",
+        "weekday3": "T",
+        "weekday4": "F",
+        "weekday5": "S",
+        "weekday6": "S",
+        "upcoming": "Upcoming",
+        "shortMonth": "September 2026",
+        "dayLabel": "Thursday",
+        "meetingType": "Online video call",
+        "viewDetails": "View booking details"
+      }
+    },
+    "crm": {
+      "title": "Your whole business, connected",
+      "description": "Bring customers, sales, orders, and team workflows into one custom CRM and admin platform. See the full picture and keep departments working together.",
+      "visualTitle": "One shared view.",
+      "visualCaption": "Customers · Sales · Orders · Tasks",
+      "demo": {
+        "synced": "Up to date",
+        "heading": "Customers",
+        "period": "This month",
+        "customers": "Total customers",
+        "won": "Deals won",
+        "company": "Company",
+        "owner": "Owner",
+        "status": "Status",
+        "new": "New",
+        "proposal": "Proposal",
+        "complete": "Won",
+        "record": "CUSTOMER DETAILS",
+        "markWon": "Mark as won",
+        "saved": "Customer and dashboard updated",
+        "overview": "Analytics",
+        "calendar": "Calendar",
+        "orders": "Orders",
+        "pipeline": "Client pipeline",
+        "savedShort": "Deal status updated",
+        "salesOverview": "Revenue overview",
+        "revenue": "Total revenue",
+        "periodLabel": "Reporting period",
+        "last30": "Last 30 days",
+        "last90": "Last 90 days",
+        "teamLabel": "Sales team",
+        "allTeams": "All teams",
+        "summary": "Sales performance",
+        "summary30": "24 new customers · 12 closed deals",
+        "summary90": "68 new customers · 35 closed deals",
+        "filterApplied": "Filters applied",
+        "windowTitle": "Sales management",
+        "periodStart": "Period start",
+        "periodEnd": "Period end",
+        "overviewTitle": "Business overview",
+        "averageOrder": "Average order value",
+        "comparison": "vs previous period"
+      }
+    }
   }
 }

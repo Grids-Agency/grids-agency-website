@@ -1,4 +1,8 @@
 {
+  "ConsultationButton": {
+    "label": "카톡 상담",
+    "accessibleLabel": "카카오톡으로 상담하기 (새 탭에서 열림)"
+  },
   "StudioIntroduction": {
     "lanyardHint": "카드를 드래그해 보세요",
     "eyebrow": "우리는 누구인가",
@@ -24,7 +28,7 @@
       "korean": "한국어"
     }
   },
-  
+
   "Manifesto": {
     "tagline": "디지털 아티스트.\n월드 클래스.\n그 이상.",
     "description": "타협 없는 기준. 모든 프로젝트를 우리의 비즈니스라 생각하며 몰입합니다. <newline></newline> <highlight> 고객의 성공이 곧 우리의 성공입니다. </highlight>",
@@ -59,7 +63,11 @@
     "approach_description": "웹사이트부터 AI 비주얼, 업무 자동화까지. 비즈니스의 다음 가능성을 함께 설계합니다.",
     "explore_vision": "우리의 비전",
     "discover": "더 알아보기",
-    "capabilities": {"web": "웹 & 시스템", "visual": "AI 비주얼", "automation": "자동화"},
+    "capabilities": {
+      "web": "웹 & 시스템",
+      "visual": "AI 비주얼",
+      "automation": "자동화"
+    },
     "headline_prefix": "미래로 가다.",
     "subtext": "모션, 인터랙션, 정제된 타이포그래피를 통해 당신의 스토리를 감각적으로 풀어내는 디자인 중심 프로덕션 스튜디오입니다."
   },
@@ -312,5 +320,125 @@
     "subtitle": "좌표를 찾을 수 없습니다",
     "description": "찾으시는 페이지가 디지털 공간 어딘가로 사라졌습니다. 처음으로 돌아가 볼까요?",
     "cta": "홈으로 돌아가기"
+  },
+  "Possibilities": {
+    "heading": "지금의 비즈니스에,\n없던 가능성을.",
+    "description": "DX는 일하는 방식을 디지털로 바꾸고, AX는 그 위에 AI의 가능성을 더합니다. 당신의 비즈니스에서는 이렇게 시작할 수 있습니다.",
+    "note": "아래 화면은 가능한 활용을 보여주는 컨셉 예시입니다.",
+    "closing": "여기에 없는 아이디어도, 함께 만들 수 있습니다.",
+    "cta": "우리 비즈니스의 가능성 이야기하기",
+    "commerce": {
+      "title": "브랜드에 맞는 웹사이트·쇼핑몰",
+      "description": "기업 소개부터 상품 판매까지, 비즈니스에 맞는 웹사이트와 쇼핑몰을 만듭니다. 고객이 쉽게 찾고, 구매하고, 다시 방문하는 경험을 설계합니다.",
+      "action": "컬렉션 살펴보기"
+    },
+    "assistant": {
+      "title": "우리 회사의 노하우를 아는 AI",
+      "description": "사내 문서, 매뉴얼, 업무 지식을 연결한 맞춤형 AI를 만듭니다. 필요한 정보를 질문 한 번으로 찾고, 출처를 확인하며 업무에 활용하세요.",
+      "question": "신규 고객 온보딩은 어떻게 진행하나요?",
+      "answer": "계약 확인 → 담당자 배정 → 킥오프 순서로 진행해요. 단계별 체크리스트도 정리해 드릴게요.",
+      "source": "온보딩 가이드 · 3페이지",
+      "placeholder": "회사 업무에 대해 물어보세요",
+      "thinking": "관련 문서를 확인하고 있어요",
+      "answerLabel": "사내 가이드를 바탕으로 답변했어요"
+    },
+    "automation": {
+      "title": "24시간 이어지는 업무 자동화",
+      "description": "데이터 입력, 정산, 알림 같은 반복 업무를 자동화합니다. 수작업 실수와 인건비 부담을 줄이고, 팀이 더 중요한 일에 집중할 수 있도록 돕습니다.",
+      "status": "실행 완료",
+      "trigger": "문의 접수",
+      "process": "CRM 등록",
+      "done": "담당자 알림",
+      "flow": {
+        "hub": "업무 자동화",
+        "crm": "고객 관리",
+        "data": "데이터 정리",
+        "notify": "팀 알림",
+        "report": "보고서 발송",
+        "previewLabel": "업무 자동화 연결 미리보기. 마우스를 올리거나 키보드로 초점을 맞추면 연결 과정이 표시됩니다."
+      }
+    },
+    "applications": {
+      "title": "아이디어를 실현하는 웹·앱 개발",
+      "description": "예약, 결제, 멤버십 등 서비스에 필요한 기능을 웹과 앱으로 구현합니다. 고객은 편리하게 이용하고, 운영자는 효율적으로 관리할 수 있도록 만듭니다.",
+      "visualTitle": "하나의 서비스, 웹에서도 앱에서도.",
+      "booking": "예약",
+      "payment": "결제",
+      "notification": "알림",
+      "confirmed": "예약이 완료됐어요",
+      "demo": {
+        "webNav": "예약 / 새 예약",
+        "heading": "프로젝트 상담 예약",
+        "subtitle": "30분 · 온라인 미팅",
+        "month": "2026년 9월",
+        "available": "가능한 시간",
+        "reserve": "상담 예약하기",
+        "reserved": "예약이 접수됐어요",
+        "myBookings": "내 예약",
+        "phoneSubtitle": "다가오는 만남을 확인하세요",
+        "empty": "아직 예정된 상담이 없어요",
+        "emptyHint": "원하는 시간을 예약해 보세요",
+        "confirmed": "예약이 확정됐어요",
+        "service": "프로젝트 상담",
+        "date": "9월 24일 목요일",
+        "synced": "앱에도 반영됐어요",
+        "weekday0": "월",
+        "weekday1": "화",
+        "weekday2": "수",
+        "weekday3": "목",
+        "weekday4": "금",
+        "weekday5": "토",
+        "weekday6": "일",
+        "upcoming": "다가오는 상담",
+        "shortMonth": "2026년 9월",
+        "dayLabel": "목요일",
+        "meetingType": "온라인 화상 상담",
+        "viewDetails": "예약 상세 보기"
+      }
+    },
+    "crm": {
+      "title": "회사 전체를 연결하는 CRM·어드민",
+      "description": "고객, 영업, 주문, 팀별 업무를 하나의 관리 도구로 연결합니다. 흩어진 정보를 한눈에 파악하고, 부서 간 협업까지 자연스럽게 이어 보세요.",
+      "visualTitle": "한곳에서, 함께.",
+      "visualCaption": "고객 · 영업 · 주문 · 업무",
+      "demo": {
+        "synced": "최신 데이터",
+        "heading": "고객 관리",
+        "period": "이번 달",
+        "customers": "전체 고객",
+        "won": "계약 완료",
+        "company": "고객사",
+        "owner": "담당자",
+        "status": "진행 상태",
+        "new": "신규",
+        "proposal": "제안 중",
+        "complete": "계약 완료",
+        "record": "고객 상세",
+        "markWon": "계약 완료로 변경",
+        "saved": "고객 정보와 대시보드를 업데이트했어요",
+        "overview": "매출 분석",
+        "calendar": "캘린더",
+        "orders": "주문 관리",
+        "pipeline": "진행 중인 고객",
+        "savedShort": "계약 상태를 업데이트했어요",
+        "salesOverview": "매출 현황",
+        "revenue": "누적 매출",
+        "periodLabel": "분석 기간",
+        "last30": "최근 30일",
+        "last90": "최근 90일",
+        "teamLabel": "영업 조직",
+        "allTeams": "전체 조직",
+        "summary": "영업 성과 요약",
+        "summary30": "신규 고객 24명 · 계약 체결 12건",
+        "summary90": "신규 고객 68명 · 계약 체결 35건",
+        "filterApplied": "조회 조건이 적용되었습니다",
+        "windowTitle": "영업 관리",
+        "periodStart": "기간 시작",
+        "periodEnd": "기간 종료",
+        "overviewTitle": "비즈니스 현황",
+        "averageOrder": "평균 주문 금액",
+        "comparison": "이전 기간 대비"
+      }
+    }
   }
 }

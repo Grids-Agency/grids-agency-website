@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import ScrollToTop from "@/components/scroll-to-top";
 import Navbar from "@/components/navbar";
 import FooterSection from "@/components/footer-section";
+import ConsultationButton from "@/components/consultation-button";
 
 // ... imports
 import { NextIntlClientProvider } from 'next-intl';
@@ -39,6 +40,7 @@ export default async function LocaleLayout({
         <Navbar />
         {children}
         <FooterSection />
+        <ConsultationButton />
       </ThemeProvider>
     </NextIntlClientProvider>
   );
