@@ -56,9 +56,18 @@ export default function StudioIntroduction() {
           <div className="mt-10 flex flex-col gap-6 md:mt-12">
             <div className="flex items-center gap-5">
               <div className="flex h-20 w-48 items-center">
-                <Signature text="KYLE" color="currentColor" fontSize={64} duration={1.2} inView className="h-20 w-auto max-w-full text-foreground" />
+                <Signature
+                  text="KYLE"
+                  color="currentColor"
+                  fontSize={64}
+                  duration={1.2}
+                  inView
+                  className="h-20 w-auto max-w-full text-foreground"
+                />
               </div>
-              <span className="border-l border-foreground/15 pl-5 font-mono text-[10px] tracking-[0.16em] text-muted-foreground">CEO / GRIDS AGENCY</span>
+              <span className="border-l border-foreground/15 pl-5 font-mono text-[10px] tracking-[0.16em] text-muted-foreground">
+                CEO / GRIDS AGENCY
+              </span>
             </div>
             <p className="max-w-xl text-base leading-[1.9] text-muted-foreground [word-break:keep-all] md:text-lg">
               {t.rich("description", {
@@ -80,7 +89,7 @@ export default function StudioIntroduction() {
           <div className="relative z-20 h-[520px] sm:h-[640px] lg:absolute lg:inset-0 lg:h-auto">
             <StudioLanyard />
           </div>
-          <p className="pointer-events-none absolute right-0 bottom-6 left-0 z-30 text-center font-mono text-[10px] tracking-[0.12em] text-muted-foreground lg:left-[47.619%]">
+          <p className="pointer-events-none absolute right-0 bottom-12 left-0 z-30 text-center font-mono text-[10px] tracking-[0.12em] text-muted-foreground lg:left-[47.619%]">
             {t("lanyardHint")}
           </p>
         </div>

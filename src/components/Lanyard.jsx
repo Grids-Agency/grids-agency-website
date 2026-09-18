@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
@@ -9,6 +9,7 @@ const cardGLB = '/models/lanyard/card.glb';
 const lanyard = '/models/lanyard/lanyard.png';
 
 import * as THREE from 'three';
+import { createPortraitArt } from '@/lib/portrait-art';
 
 
 extend({ MeshLineGeometry, MeshLineMaterial });
@@ -30,13 +31,17 @@ export default function Lanyard({
   gravity = [0, -40, 0],
   fov = 20,
   horizontalOffset = 0,
+  active = true,
+  onReady = () => {},
+  onUnavailable = () => {},
   transparent = true,
   frontImage = /** @type {string | null} */ (null),
   backImage = /** @type {string | null} */ (null),
   imageFit = 'cover',
   lanyardImage = /** @type {string | null} */ (null),
   lanyardWidth = 1,
-  cardScale = 1
+  cardScale = 1,
+  portraitImage = /** @type {string | null} */ (null)
 }) {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
 
@@ -50,14 +55,18 @@ export default function Lanyard({
     <div className="relative flex size-full items-center justify-center">
       <Canvas
         camera={{ position: position, fov: fov }}
-        dpr={[1, 1.5]}
-        gl={{ alpha: transparent }}
+        dpr={1}
+        frameloop={active ? 'always' : 'never'}
+        gl={{ alpha: transparent, antialias: false, powerPreference: 'low-power' }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
         <SceneFraming horizontalOffset={horizontalOffset} />
+        <ContextMonitor onUnavailable={onUnavailable} />
         <ambientLight intensity={Math.PI} />
-        <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
+        <Suspense fallback={null}>
+        <Physics gravity={gravity} paused={!active} timeStep={1 / 60}>
           <Band
+            onReady={onReady}
             isMobile={isMobile}
             frontImage={frontImage}
             backImage={backImage}
@@ -65,9 +74,10 @@ export default function Lanyard({
             lanyardImage={lanyardImage}
             lanyardWidth={lanyardWidth}
             cardScale={cardScale}
+            portraitImage={portraitImage}
           />
         </Physics>
-        <Environment blur={0.75}>
+        <Environment blur={0.75} resolution={128}>
           <Lightformer
             intensity={2}
             color="white"
@@ -97,6 +107,7 @@ export default function Lanyard({
             scale={[100, 10, 1]}
           />
         </Environment>
+        </Suspense>
       </Canvas>
     </div>
   );
@@ -113,7 +124,22 @@ function SceneFraming({ horizontalOffset }) {
   }, [camera, size.width, size.height, horizontalOffset]);
   return null;
 }
+function ContextMonitor({ onUnavailable }) {
+  const gl = useThree(state => state.gl);
+  useEffect(() => {
+    const canvas = gl.domElement;
+    const handleLost = (event) => {
+      event.preventDefault();
+      onUnavailable();
+    };
+    canvas.addEventListener('webglcontextlost', handleLost);
+    return () => canvas.removeEventListener('webglcontextlost', handleLost);
+  }, [gl, onUnavailable]);
+  return null;
+}
+
 function Band({
+  onReady,
   maxSpeed = 50,
   minSpeed = 0,
   isMobile = false,
@@ -122,7 +148,8 @@ function Band({
   imageFit = 'cover',
   lanyardImage = /** @type {string | null} */ (null),
   lanyardWidth = 1,
-  cardScale = 1
+  cardScale = 1,
+  portraitImage = /** @type {string | null} */ (null)
 }) {
   const band = useRef(),
     fixed = useRef(),
@@ -148,6 +175,9 @@ function Band({
   // isn't supplied for a given face, then skip compositing it below.
   const frontTex = useTexture(frontImage || BLANK_PIXEL);
   const backTex = useTexture(backImage || BLANK_PIXEL);
+  const portraitTex = useTexture(portraitImage || BLANK_PIXEL);
+  const portraitFrame = useRef(null);
+  const notifiedReady = useRef(false);
 
   // Composite the front/back images into the card's texture atlas (front = left
   // half, back = right half). Each image is drawn aspect-preserving (no stretch).
@@ -156,8 +186,9 @@ function Band({
     if (!frontImage && !backImage) return baseMap;
 
     const baseImg = baseMap.image;
-    const W = baseImg.width;
-    const H = baseImg.height;
+    // Bound animated texture uploads while keeping card lettering crisp.
+    const W = Math.min(baseImg.width, 768);
+    const H = Math.round(baseImg.height * W / baseImg.width);
     const canvas = document.createElement('canvas');
     canvas.width = W;
     canvas.height = H;
@@ -191,10 +222,40 @@ function Band({
     const composite = new THREE.CanvasTexture(canvas);
     composite.colorSpace = THREE.SRGBColorSpace;
     composite.flipY = baseMap.flipY;
-    composite.anisotropy = 16;
+    composite.anisotropy = 4;
+    composite.generateMipmaps = false;
+    composite.minFilter = THREE.LinearFilter;
     composite.needsUpdate = true;
     return composite;
   }, [frontImage, backImage, imageFit, frontTex, backTex, materials.base.map]);
+  useEffect(() => {
+    if (!portraitImage || cardMap === materials.base.map) return;
+    const atlas = cardMap.image;
+    const ctx = atlas.getContext('2d');
+    if (!ctx) return;
+    const portrait = createPortraitArt(portraitTex.image, portraitTex.image.width, portraitTex.image.height);
+    const x = FRONT_UV_RECT.w * atlas.width * 52 / 600;
+    const y = FRONT_UV_RECT.h * atlas.height * 170 / 900;
+    const width = FRONT_UV_RECT.w * atlas.width * 496 / 600;
+    const height = FRONT_UV_RECT.h * atlas.height * 440 / 900;
+    let previous = -Infinity;
+    const update = (time) => {
+      // Share R3F's clock rather than introducing another animation loop.
+      if (time - previous < 1 / 30) return;
+      previous = time;
+      portrait.draw(time);
+      ctx.fillStyle = '#eeeee9';
+      ctx.fillRect(x, y, width, height);
+      ctx.drawImage(portrait.canvas, x, y, width, height);
+      // Three.js requires this mutable GPU upload flag; this is not React state.
+      // eslint-disable-next-line react-hooks/immutability
+      cardMap.needsUpdate = true;
+    };
+    update(0);
+    portraitFrame.current = update;
+    return () => { portraitFrame.current = null; };
+  }, [portraitImage, portraitTex, cardMap, materials.base.map]);
+
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()], false, 'chordal')
@@ -218,6 +279,11 @@ function Band({
   }, [hovered, dragged]);
 
   useFrame((state, delta) => {
+    portraitFrame.current?.(state.clock.elapsedTime);
+    if (!notifiedReady.current && card.current && band.current) {
+      notifiedReady.current = true;
+      onReady();
+    }
     if (dragged) {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
       dir.copy(vec).sub(state.camera.position).normalize();
@@ -279,7 +345,7 @@ function Band({
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
                 map={cardMap}
-                map-anisotropy={16}
+                map-anisotropy={4}
                 clearcoat={isMobile ? 0 : 1}
                 clearcoatRoughness={0.15}
                 roughness={0.9}
