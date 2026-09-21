@@ -83,7 +83,7 @@ export default function AiChatPreview() {
   }, [question, answer]);
 
   return (
-    <div ref={root} aria-hidden="true" className="mx-auto flex h-full w-full max-w-md flex-col gap-3 px-6 py-5 text-foreground">
+    <div ref={root} aria-hidden="true" className="mx-auto flex h-full w-full max-w-md flex-col gap-3 text-foreground">
       <p data-chat-question className="invisible max-w-[90%] self-end rounded-lg bg-foreground/5 px-3 py-2 text-[11px] leading-relaxed opacity-0 [word-break:keep-all]">{question}</p>
       <div className="relative">
         <div data-chat-loader className="invisible absolute top-0 left-1 flex items-center gap-2 text-[10px] text-muted-foreground opacity-0">

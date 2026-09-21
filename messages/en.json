@@ -50,7 +50,7 @@
       "visualPlaceholder": "Visual placeholder",
       "learnMore": "Learn more"
     },
-    "title" : "The premier <highlight>AI agency</highlight> <newline></newline> for elite-tier production.",
+    "title": "The premier <highlight>AI agency</highlight> <newline></newline> for elite-tier production.",
     "description": "Scale beyond your competitors, leveraging cutting-edge AI to deliver unmatched production quality and a decisive market advantage.",
     "location": "Based in Seoul"
   },
@@ -61,7 +61,11 @@
     "approach_description": "From websites and AI visuals to intelligent automation. We build what comes next for your business.",
     "explore_vision": "Explore our vision",
     "discover": "Discover more",
-    "capabilities": {"web": "Web & systems", "visual": "AI visuals", "automation": "Automation"},
+    "capabilities": {
+      "web": "Web & systems",
+      "visual": "AI visuals",
+      "automation": "Automation"
+    },
     "headline_prefix": "Witness Tomorrow.",
     "subtext": "A design-driven production studio focused on telling your story through motion, interaction, and clean typography."
   },
@@ -77,11 +81,10 @@
       "item2": {
         "title": "AI Video Creation",
         "desc": "High-quality video production using the latest AI technology. Music video, intro video, advertisement video, anything you can think of."
-        
       },
       "item3": {
-      "title": "Automation",
-      "desc": "Automating your business logic to save time and money."
+        "title": "Automation",
+        "desc": "Automating your business logic to save time and money."
       }
     }
   },
@@ -220,22 +223,22 @@
       "textPart4": "."
     },
     "Phases": {
-    "phase1": {
-      "label": "[ PHASE 01 ]",
-      "title": "The Origin Grid",
-      "description": "Every great design begins on an empty grid. By unfolding a boundless lattice across the XZ plane, we secure an infinite territory where your vision can expand in any direction."
-    },
-    "phase2": {
-      "label": "[ PHASE 02 ]",
-      "title": "Vertical Ascension",
-      "description": "We bestow height (Y) upon ideas once bound to a flat surface. Moving beyond simple expansion, we engineer breakthrough growth that transcends local limits and defines the altitude of your business."
-    },
-    "phase3": {
-      "label": "[ PHASE 03 ]",
-      "title": "Dimensional Integrity",
-      "description": "As the Z-axis aligns, imagination finally becomes a three-dimensional reality. Within the space built by GRIDS, your business transforms into a living ecosystem, revealing its complete presence and volume."
+      "phase1": {
+        "label": "[ PHASE 01 ]",
+        "title": "The Origin Grid",
+        "description": "Every great design begins on an empty grid. By unfolding a boundless lattice across the XZ plane, we secure an infinite territory where your vision can expand in any direction."
+      },
+      "phase2": {
+        "label": "[ PHASE 02 ]",
+        "title": "Vertical Ascension",
+        "description": "We bestow height (Y) upon ideas once bound to a flat surface. Moving beyond simple expansion, we engineer breakthrough growth that transcends local limits and defines the altitude of your business."
+      },
+      "phase3": {
+        "label": "[ PHASE 03 ]",
+        "title": "Dimensional Integrity",
+        "description": "As the Z-axis aligns, imagination finally becomes a three-dimensional reality. Within the space built by GRIDS, your business transforms into a living ecosystem, revealing its complete presence and volume."
+      }
     }
-  }
   },
   "Archive": {
     "swipeHint": "SWIPE TO EXPLORE",
@@ -324,7 +327,13 @@
     "commerce": {
       "title": "Websites and stores built for your brand",
       "description": "From company websites to online stores, we build around your business. Help customers discover your brand, make a purchase, and come back.",
-      "action": "Explore the collection"
+      "action": "Explore the collection",
+      "comparison": {
+        "before": "BEFORE",
+        "after": "AFTER",
+        "label": "Compare website designs",
+        "instruction": "Drag to compare"
+      }
     },
     "assistant": {
       "title": "AI that knows how your company works",
@@ -432,6 +441,73 @@
         "overviewTitle": "Business overview",
         "averageOrder": "Average order value",
         "comparison": "vs previous period"
+      },
+      "inbox": {
+        "inbox": "Unified inbox",
+        "priority": "Priority",
+        "meetings": "Meetings",
+        "snoozed": "Snoozed",
+        "sent": "Sent",
+        "drafts": "Drafts",
+        "search": "Search…",
+        "channels": "CHANNELS",
+        "website": "Website leads",
+        "heading": "Inbox",
+        "subtitle": "All customer conversations in one place",
+        "all": "All",
+        "unread": "Unread",
+        "needsReply": "Needs reply",
+        "allStatuses": "All statuses",
+        "allCampaigns": "All campaigns",
+        "lastWeek": "Last 7 days",
+        "replied": "Replied",
+        "danielSubject": "Re: Improving customer onboarding at Acme",
+        "danielSnippet": "This sounds promising. Could you share more about the timeline?",
+        "juliaSubject": "Re: A proposal for our next project",
+        "juliaSnippet": "I’ve reviewed the details. What would the next steps look like?",
+        "alexSubject": "Re: Next week’s kickoff meeting",
+        "alexSnippet": "Tuesday at 10 works for us. Looking forward to meeting you."
+      },
+      "dashboard": {
+        "workspace": "Operations",
+        "heading": "Customer pipeline",
+        "live": "All systems live",
+        "overview": "Overview",
+        "metrics": "Metrics",
+        "lastDay": "Last 24 hours",
+        "lastWeek": "Last 7 days",
+        "lastMonth": "Last 30 days",
+        "records": "Processed records",
+        "latency": "Avg. sync latency",
+        "synced": "Sync success",
+        "tasks": "Automated tasks",
+        "comparison": "vs previous period",
+        "flow": "Data flow & health",
+        "details": "View details",
+        "updated": "Last updated",
+        "gateway": "Integration gateway",
+        "customers": "Customer records",
+        "orders": "Orders & payments",
+        "processed": "Processed",
+        "healthy": "All connections healthy",
+        "activity": "Recent activity",
+        "time": "Time",
+        "event": "Event",
+        "status": "Status",
+        "customerUpdated": "Customer record updated",
+        "orderSynced": "Order synchronized",
+        "reportSent": "Weekly report delivered",
+        "complete": "Complete",
+        "rules": "Active workflow rules",
+        "sources": "CONNECTED SOURCES",
+        "website": "Website",
+        "store": "Online store",
+        "support": "Customer support",
+        "routing": "AUTOMATIC ROUTING",
+        "rule": "Rule",
+        "priority": "High",
+        "assigned": "Assigned team",
+        "sales": "Sales operations"
       }
     }
   }

@@ -22,7 +22,6 @@ export default function Home() {
       <div
         ref={heroRef}
         data-hero-pending={!revealed}
-        inert={!revealed}
         className="group/hero relative flow-root"
       >
         {/* Keep the fixed navbar outside the hero's sticky stacking context. */}

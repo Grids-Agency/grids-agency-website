@@ -96,7 +96,7 @@ export default function AutomationWorkflowPreview() {
   }, []);
 
   return (
-    <div ref={root} data-workflow-preview role="img" aria-label={t("previewLabel")} tabIndex={0} className="pointer-events-auto flex h-full items-center justify-center px-3 text-foreground outline-none focus-visible:outline-1 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground/25">
+    <div ref={root} data-workflow-preview role="img" aria-label={t("previewLabel")} tabIndex={0} className="pointer-events-auto flex h-full items-center justify-center text-foreground outline-none focus-visible:outline-1 focus-visible:outline-offset-[-4px] focus-visible:outline-foreground/25">
       <svg aria-hidden="true" viewBox="0 0 360 264" className="h-full max-h-[280px] w-full max-w-[440px] overflow-visible">
         <defs>
           {branches.map(({ path }, index) => (

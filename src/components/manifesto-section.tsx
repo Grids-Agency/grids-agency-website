@@ -1,10 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowRight } from "reicon-react/icons/ArrowRight";
-import BookingAppPreview from "@/components/booking-app-preview";
+import ApplicationSystemPreview from "@/components/application-system-preview";
 import CommercePreview from "@/components/commerce-preview";
 import AiChatPreview from "@/components/ai-chat-preview";
 import AutomationWorkflowPreview from "@/components/automation-workflow-preview";
@@ -12,11 +10,11 @@ import CrmDashboardPreview from "@/components/crm-dashboard-preview";
 import { cn } from "@/lib/utils";
 
 const ideas = [
-  { key: "commerce", layout: "lg:col-span-6", visual: "h-80 sm:h-96" },
-  { key: "applications", layout: "lg:col-span-6", visual: "h-80 sm:h-96" },
-  { key: "crm", layout: "lg:col-span-4", visual: "h-80" },
-  { key: "automation", layout: "lg:col-span-4", visual: "h-80" },
-  { key: "assistant", layout: "md:col-span-2 lg:col-span-4", visual: "h-80" },
+  { key: "commerce", layout: "lg:col-span-6", visual: "aspect-[30/17] lg:aspect-auto lg:h-100" },
+  { key: "applications", layout: "lg:col-span-6", visual: "h-68 sm:h-84" },
+  { key: "crm", layout: "lg:col-span-4", visual: "min-h-96 flex-1" },
+  { key: "automation", layout: "lg:col-span-4", visual: "h-72" },
+  { key: "assistant", layout: "md:col-span-2 lg:col-span-4", visual: "h-72" },
 ] as const;
 
 type Idea = (typeof ideas)[number]["key"];
@@ -25,13 +23,12 @@ function Preview({ kind }: { kind: Idea }) {
   if (kind === "commerce") return <CommercePreview />;
   if (kind === "assistant") return <AiChatPreview />;
   if (kind === "automation") return <AutomationWorkflowPreview />;
-  if (kind === "applications") return <BookingAppPreview />;
+  if (kind === "applications") return <ApplicationSystemPreview />;
   return <CrmDashboardPreview />;
 }
 
 export default function ManifestoSection() {
   const t = useTranslations("Possibilities");
-  const locale = useLocale();
   const reducedMotion = useReducedMotion();
 
   return (
@@ -82,23 +79,27 @@ export default function ManifestoSection() {
               </div>
               <article className="relative z-0 isolate h-full overflow-hidden text-foreground">
                 <motion.div
-                  className={key === "crm" ? "flex h-full flex-col" : undefined}
+                  className={cn(
+                    "flex h-full flex-col gap-7 p-7 md:gap-10 md:p-10",
+                    key === "crm" && "gap-6 md:gap-7",
+                  )}
                   initial={reducedMotion ? false : { opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div
-                    aria-hidden={key === "automation" ? undefined : true}
+                    aria-hidden={key === "automation" || key === "commerce" ? undefined : true}
                     className={cn(
-                      "pointer-events-none overflow-hidden select-none",
+                      "pointer-events-none shrink-0 overflow-hidden select-none",
                       visual,
-                      key === "crm" && "order-last mt-auto shrink-0",
+                      key === "commerce" && "-mx-7 -mt-7 md:-mx-10 md:-mt-10",
+                      key === "crm" && "order-last -mr-7 -mb-7 md:-mr-10 md:-mb-10",
                     )}
                   >
                     <Preview kind={key} />
                   </div>
-                  <div className="relative px-7 pt-8 pb-12 md:px-10 md:pt-10 md:pb-14">
+                  <div className={cn("relative", key !== "crm" && "mt-auto")}>
                     <h3 className="text-xl leading-snug font-black tracking-[-0.025em] [word-break:keep-all] sm:text-2xl">
                       {t(`${key}.title`)}
                     </h3>

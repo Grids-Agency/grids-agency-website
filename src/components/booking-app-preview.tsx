@@ -66,7 +66,7 @@ export default function BookingAppPreview() {
   }, []);
 
   return (
-    <div ref={root} aria-hidden="true" className="flex h-full items-center justify-center px-5 py-3 md:px-7">
+    <div ref={root} aria-hidden="true" className="flex h-full items-center justify-center">
       <svg viewBox="0 0 600 380" className="h-full max-h-[360px] w-full max-w-[600px] overflow-visible [font-family:var(--font-geist-sans),Arial,sans-serif]" fill="none">
         {/* Desktop booking surface: restrained navigation, clear selection states. */}
         <rect x="12" y="39" width="420" height="324" rx="12" fill="#000" opacity="0.08" />
