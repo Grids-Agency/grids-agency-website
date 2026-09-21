@@ -3,15 +3,16 @@ import { ThemeProvider } from "@/components/theme-provider";
 import ScrollToTop from "@/components/scroll-to-top";
 import Navbar from "@/components/navbar";
 import FooterSection from "@/components/footer-section";
+import ConsultationButton from "@/components/consultation-button";
 
 // ... imports
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
 
 export default async function LocaleLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -19,7 +20,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  if (!['en', 'ko'].includes(locale)) {
+  if (!["en", "ko"].includes(locale)) {
     notFound();
   }
 
@@ -39,6 +40,7 @@ export default async function LocaleLayout({
         <Navbar />
         {children}
         <FooterSection />
+        <ConsultationButton />
       </ThemeProvider>
     </NextIntlClientProvider>
   );

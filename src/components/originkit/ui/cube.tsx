@@ -147,6 +147,7 @@ class RubikCubeScene {
   private frameId = 0;
   private lastT = 0;
   private disposed = false;
+  private running = false;
 
   private tmp: Vec3 = { x: 0, y: 0, z: 0 };
 
@@ -245,12 +246,22 @@ class RubikCubeScene {
   private disposeEvents = () => {};
 
   start() {
+    if (this.disposed || this.running) return;
+    this.running = true;
     this.lastT = performance.now();
+    this.turnControls?.play();
     const loop = () => {
+      if (!this.running) return;
       this.frameId = requestAnimationFrame(loop);
       this.step();
     };
     loop();
+  }
+
+  pause() {
+    this.running = false;
+    cancelAnimationFrame(this.frameId);
+    this.turnControls?.pause();
   }
 
   setSize(width: number, height: number) {
@@ -260,6 +271,7 @@ class RubikCubeScene {
     this.dpr = Math.min(window.devicePixelRatio || 1, 2);
     this.canvas.width = Math.max(1, Math.floor(width * this.dpr));
     this.canvas.height = Math.max(1, Math.floor(height * this.dpr));
+    if (!this.running) this.render();
   }
 
   updateConfig(cfg: Config) {
@@ -274,6 +286,7 @@ class RubikCubeScene {
       this.shell = buildShell(newGrid, newDots);
       this.adoptShell();
     }
+    if (!this.running) this.render();
   }
 
   private pickMove() {
@@ -443,6 +456,7 @@ class RubikCubeScene {
 
   dispose() {
     this.disposed = true;
+    this.running = false;
     cancelAnimationFrame(this.frameId);
     this.turnControls?.stop();
     this.turnControls = null;
@@ -502,6 +516,11 @@ export default function RubikParticles({
 
     let cancelled = false;
     let scene: RubikCubeScene | null = null;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncPlayback = () => {
+      if (document.hidden || reducedMotion.matches) scene?.pause();
+      else scene?.start();
+    };
 
     const resizeObserver = new ResizeObserver((entries) => {
       const rect = entries[0]?.contentRect;
@@ -511,15 +530,19 @@ export default function RubikParticles({
         scene = new RubikCubeScene(container, cfgRef.current);
         sceneRef.current = scene;
         scene.setSize(rect.width, rect.height);
-        scene.start();
+        syncPlayback();
       } else if (scene) {
         scene.setSize(rect.width, rect.height);
       }
     });
     resizeObserver.observe(container);
+    reducedMotion.addEventListener("change", syncPlayback);
+    document.addEventListener("visibilitychange", syncPlayback);
 
     return () => {
       cancelled = true;
+      reducedMotion.removeEventListener("change", syncPlayback);
+      document.removeEventListener("visibilitychange", syncPlayback);
       resizeObserver.disconnect();
       sceneRef.current?.dispose();
       sceneRef.current = null;
@@ -532,7 +555,7 @@ export default function RubikParticles({
       ref={containerRef}
       role="img"
       aria-label="Particle Rubik's cube"
-      className="relative size-full min-h-[200px] min-w-[200px] overflow-hidden"
+      className="relative size-full min-h-0 min-w-0 overflow-hidden"
       style={style}
     />
   );

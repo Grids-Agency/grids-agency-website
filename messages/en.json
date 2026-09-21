@@ -1,4 +1,52 @@
 {
+  "FAQ": {
+    "contactPrompt": "Have more questions?",
+    "contactLink": "Let’s talk",
+    "heading": "Before we begin,\na few answers.",
+    "description": "A few things you might be wondering before turning your idea into a project.",
+    "items": {
+      "company": {
+        "question": "What kind of company is GRIDS?",
+        "answer": "GRIDS is a software development company building websites, applications, business systems, and AI solutions. We work with you to understand your goals and everyday challenges, then turn them into useful products—from planning through development."
+      },
+      "services": {
+        "question": "What can you build, and when should I get in touch?",
+        "answer": "We build websites, online stores, web and mobile apps, CRM and admin systems, workflow automation, and AI tools that use your company’s knowledge. Get in touch when you want to launch a service, connect scattered information, or reduce repetitive work."
+      },
+      "pricing": {
+        "question": "How do you determine development costs?",
+        "answer": "Costs depend on the features, design scope, integrations, and timeline. We clarify the scope during consultation before providing an estimate. If you have a set budget, we can explore a phased approach that starts with your priorities."
+      },
+      "quality": {
+        "question": "How do you ensure project quality?",
+        "answer": "We agree on the scope and review criteria upfront, then review progress and deliverables together at key stages. An 80% refund policy also applies under agreed conditions. We explain the eligibility criteria and process during consultation."
+      },
+      "starting": {
+        "question": "Can I book a consultation if I only have an idea?",
+        "answer": "Yes. You do not need a finished brief. Tell us about the problem you want to solve, who the service is for, and any examples you have in mind. We can work through the essential features and priorities together."
+      },
+      "support": {
+        "question": "What does maintenance cost after launch?",
+        "answer": "Costs depend on the size of the service, its operating environment, and the support you need. We distinguish running costs, such as hosting, from maintenance and feature development, then agree on the support that makes sense for your business."
+      }
+    }
+  },
+  "ConsultationButton": {
+    "label": "Let’s talk",
+    "accessibleLabel": "Chat with us on KakaoTalk (opens in a new tab)"
+  },
+  "StudioIntroduction": {
+    "lanyardHint": "DRAG TO EXPLORE",
+    "eyebrow": "WHO WE ARE",
+    "lineOne": "We use",
+    "lineTwo": "IT and AI",
+    "lineThree": "to grow your business.",
+    "signature": "GRIDS AGENCY — THE AI CREATIVE LAB",
+    "description": "GRIDS is a software development company built around <highlight>developers from Seoul National University’s Department of Computer Science and Engineering</highlight>. Our team brings hands-on experience building and growing products—from founding startups to working at major enterprises and global tech companies.",
+    "trustedBy": "<highlight>Publicly listed companies, major enterprises, and political organizations</highlight> have partnered with GRIDS.",
+    "invitation": "GRIDS is here to help your business grow.",
+    "discover": "Get to know GRIDS"
+  },
   "Brand": {
     "name": "GRIDS AGENCY"
   },
@@ -20,19 +68,52 @@
     "cta": "Get in touch!"
   },
   "About": {
-    "title" : "The premier <highlight>AI agency</highlight> <newline></newline> for elite-tier production.",
+    "layout": {
+      "eyebrow": "Featured work",
+      "heading": "Ideas, brought to life.",
+      "description": "From websites to brand films. Explore selected projects by GRIDS.",
+      "feature": "Every brand has a different story. See how we give each one its own expression.",
+      "tcl": {
+        "title": "The Clear Labs",
+        "description": "An all-in-one online store that captures the brand’s atmosphere and showcases every product detail."
+      },
+      "aether": {
+        "title": "AETHER",
+        "description": "A fragrance brand experience that translates scent into film and the web."
+      },
+      "jiam": {
+        "title": "JIAM",
+        "description": "An e-learning platform that turns Jeisys Medical’s expertise into a structured learning experience."
+      },
+      "carouselLabel": "Featured projects by GRIDS",
+      "showProject": "Expand {title} project",
+      "learnMore": "Explore more work"
+    },
+    "title": "The premier <highlight>AI agency</highlight> <newline></newline> for elite-tier production.",
     "description": "Scale beyond your competitors, leveraging cutting-edge AI to deliver unmatched production quality and a decisive market advantage.",
     "location": "Based in Seoul"
   },
   "Hero": {
-    "headline_lead": "Ideas into reality.",
+    "heatmap": {
+      "clients": "Clients we’ve partnered with",
+      "meaning": "One square. One partnership.",
+      "caption": "More possibilities, together.",
+      "filled": "Our clients",
+      "empty": "What’s next",
+      "accessible": "Client heatmap showing {count} clients. Each filled square represents one client."
+    },
+    "headline_lead": "IT & AI development",
     "start_project": "Start a project",
-    "studio_description": "At the intersection of design and technology, we turn your ideas into distinctive digital experiences.",
+    "studio_description": "From digital transformation to AI adoption, we work with you every step of the way—from planning and design to development and rollout.",
     "approach_description": "From websites and AI visuals to intelligent automation. We build what comes next for your business.",
     "explore_vision": "Explore our vision",
     "discover": "Discover more",
-    "capabilities": {"web": "Web & systems", "visual": "AI visuals", "automation": "Automation"},
-    "headline_prefix": "Witness Tomorrow.",
+    "capabilities": {
+      "web": "Web & systems",
+      "visual": "AI visuals",
+      "automation": "Automation"
+    },
+    "headline_prefix": "for everyone.",
     "subtext": "A design-driven production studio focused on telling your story through motion, interaction, and clean typography."
   },
   "Services": {
@@ -47,19 +128,26 @@
       "item2": {
         "title": "AI Video Creation",
         "desc": "High-quality video production using the latest AI technology. Music video, intro video, advertisement video, anything you can think of."
-        
       },
       "item3": {
-      "title": "Automation",
-      "desc": "Automating your business logic to save time and money."
+        "title": "Automation",
+        "desc": "Automating your business logic to save time and money."
       }
     }
   },
   "Footer": {
+    "eyebrow": "Let’s build what’s next",
+    "headline": "You don’t need to know tech",
+    "headlineEnd": "to explore what’s possible.",
+    "description": "An early idea is enough to start. Tell us what you have in mind, and we’ll figure out what to build together.",
+    "closing": "Let’s discover what’s possible, together.",
+    "navigationLabel": "Explore",
+    "home": "Home",
+    "backToTop": "Back to top",
     "quote": "It's like having a super team of devs, designers, and film makers for a fraction of a cost.",
     "copyright": "© 2026 GRIDS AGENCY. All rights reserved.",
     "locationLabel": "Location",
-    "location": "435 Olympic-ro, Songpa-gu, Seoul, Republic of Korea",
+    "location": "12F, Gangdong Empire Building, 90 Jinhwangdo-ro, Gangdong-gu, Seoul, Republic of Korea",
     "contactLabel": "Contact",
     "email": "kyle@gridsagency.com",
     "phone": "telegram @kyle_lee10",
@@ -147,7 +235,7 @@
     "description": "We appreciate you reaching out to connect. At Grids, every interaction is a coordinate for future growth. Please share your details below, and let’s start engineering.",
     "Cards": {
       "address": "Address",
-      "addressValue": "435 Olympic-ro, Songpa-gu, Seoul, Republic of Korea",
+      "addressValue": "12F, Gangdong Empire Building, 90 Jinhwangdo-ro, Gangdong-gu, Seoul, Republic of Korea",
       "email": "You Can Email Here",
       "emailValue": "kyle@gridsagency.com",
       "telegram": "Telegram",
@@ -190,22 +278,22 @@
       "textPart4": "."
     },
     "Phases": {
-    "phase1": {
-      "label": "[ PHASE 01 ]",
-      "title": "The Origin Grid",
-      "description": "Every great design begins on an empty grid. By unfolding a boundless lattice across the XZ plane, we secure an infinite territory where your vision can expand in any direction."
-    },
-    "phase2": {
-      "label": "[ PHASE 02 ]",
-      "title": "Vertical Ascension",
-      "description": "We bestow height (Y) upon ideas once bound to a flat surface. Moving beyond simple expansion, we engineer breakthrough growth that transcends local limits and defines the altitude of your business."
-    },
-    "phase3": {
-      "label": "[ PHASE 03 ]",
-      "title": "Dimensional Integrity",
-      "description": "As the Z-axis aligns, imagination finally becomes a three-dimensional reality. Within the space built by GRIDS, your business transforms into a living ecosystem, revealing its complete presence and volume."
+      "phase1": {
+        "label": "[ PHASE 01 ]",
+        "title": "The Origin Grid",
+        "description": "Every great design begins on an empty grid. By unfolding a boundless lattice across the XZ plane, we secure an infinite territory where your vision can expand in any direction."
+      },
+      "phase2": {
+        "label": "[ PHASE 02 ]",
+        "title": "Vertical Ascension",
+        "description": "We bestow height (Y) upon ideas once bound to a flat surface. Moving beyond simple expansion, we engineer breakthrough growth that transcends local limits and defines the altitude of your business."
+      },
+      "phase3": {
+        "label": "[ PHASE 03 ]",
+        "title": "Dimensional Integrity",
+        "description": "As the Z-axis aligns, imagination finally becomes a three-dimensional reality. Within the space built by GRIDS, your business transforms into a living ecosystem, revealing its complete presence and volume."
+      }
     }
-  }
   },
   "Archive": {
     "swipeHint": "SWIPE TO EXPLORE",
@@ -284,5 +372,198 @@
     "subtitle": "COORDINATE NOT FOUND",
     "description": "The page you are looking for has been lost in the digital void. Let's get you back to the system.",
     "cta": "Back to Home"
+  },
+  "Possibilities": {
+    "heading": "Whatever you need,\nwe can build it.",
+    "description": "DX brings your business into the digital world. AX adds the possibilities of AI. Here are a few ways that could look for you.",
+    "note": "Illustrative concepts, imagined for real business needs.",
+    "closing": "Your next idea might not be on this board. Let’s build it anyway.",
+    "cta": "Explore what’s possible together",
+    "commerce": {
+      "title": "Websites and stores built for your brand",
+      "description": "From company websites to online stores, we build around your business. Help customers discover your brand, make a purchase, and come back.",
+      "action": "Explore the collection",
+      "comparison": {
+        "before": "BEFORE",
+        "after": "AFTER",
+        "label": "Compare website designs",
+        "instruction": "Drag to compare"
+      }
+    },
+    "assistant": {
+      "title": "AI that knows how your company works",
+      "description": "Build a custom AI assistant connected to your documents, manuals, and team knowledge. Find what you need with a question, check the sources, and put it to work.",
+      "question": "How do we onboard a new client?",
+      "answer": "Confirm the contract, assign an owner, then schedule a kickoff. I can pull together the checklist for each step.",
+      "source": "Onboarding guide · page 3",
+      "placeholder": "Ask about your company",
+      "thinking": "Checking company documents",
+      "answerLabel": "Based on your company guide"
+    },
+    "automation": {
+      "title": "Workflow automation, around the clock",
+      "description": "Automate repetitive tasks such as data entry, reconciliation, and notifications. Reduce manual errors and labor costs so your team can focus on higher-value work.",
+      "status": "COMPLETE",
+      "trigger": "New inquiry",
+      "process": "Update CRM",
+      "done": "Notify team",
+      "flow": {
+        "hub": "Automation",
+        "crm": "CRM update",
+        "data": "Data sync",
+        "notify": "Team alert",
+        "report": "Send report",
+        "previewLabel": "Automation connections preview. Hover or focus to show the workflow."
+      }
+    },
+    "applications": {
+      "title": "Your idea, built for web and mobile",
+      "description": "Turn bookings, payments, memberships, and more into a working web or mobile app. Easy for customers to use and efficient for your team to manage.",
+      "visualTitle": "One service. Web and mobile.",
+      "booking": "Bookings",
+      "payment": "Payments",
+      "notification": "Notifications",
+      "confirmed": "Booking confirmed",
+      "demo": {
+        "webNav": "Bookings / New session",
+        "heading": "Book a consultation",
+        "subtitle": "30 minutes · Video call",
+        "month": "September 2026",
+        "available": "Available times",
+        "reserve": "Book consultation",
+        "reserved": "Reservation received",
+        "myBookings": "My bookings",
+        "phoneSubtitle": "A little time for your next idea.",
+        "empty": "No upcoming bookings",
+        "emptyHint": "Find a time that works for you.",
+        "confirmed": "Booking confirmed",
+        "service": "Project consultation",
+        "date": "Thursday, September 24",
+        "synced": "Synced to your app",
+        "weekday0": "M",
+        "weekday1": "T",
+        "weekday2": "W",
+        "weekday3": "T",
+        "weekday4": "F",
+        "weekday5": "S",
+        "weekday6": "S",
+        "upcoming": "Upcoming",
+        "shortMonth": "September 2026",
+        "dayLabel": "Thursday",
+        "meetingType": "Online video call",
+        "viewDetails": "View booking details"
+      }
+    },
+    "crm": {
+      "title": "Your whole business, connected",
+      "description": "Bring customers, sales, orders, and team workflows into one custom CRM and admin platform. See the full picture and keep departments working together.",
+      "visualTitle": "One shared view.",
+      "visualCaption": "Customers · Sales · Orders · Tasks",
+      "demo": {
+        "synced": "Up to date",
+        "heading": "Customers",
+        "period": "This month",
+        "customers": "Total customers",
+        "won": "Deals won",
+        "company": "Company",
+        "owner": "Owner",
+        "status": "Status",
+        "new": "New",
+        "proposal": "Proposal",
+        "complete": "Won",
+        "record": "CUSTOMER DETAILS",
+        "markWon": "Mark as won",
+        "saved": "Customer and dashboard updated",
+        "overview": "Analytics",
+        "calendar": "Calendar",
+        "orders": "Orders",
+        "pipeline": "Client pipeline",
+        "savedShort": "Deal status updated",
+        "salesOverview": "Revenue overview",
+        "revenue": "Total revenue",
+        "periodLabel": "Reporting period",
+        "last30": "Last 30 days",
+        "last90": "Last 90 days",
+        "teamLabel": "Sales team",
+        "allTeams": "All teams",
+        "summary": "Sales performance",
+        "summary30": "24 new customers · 12 closed deals",
+        "summary90": "68 new customers · 35 closed deals",
+        "filterApplied": "Filters applied",
+        "windowTitle": "Sales management",
+        "periodStart": "Period start",
+        "periodEnd": "Period end",
+        "overviewTitle": "Business overview",
+        "averageOrder": "Average order value",
+        "comparison": "vs previous period"
+      },
+      "inbox": {
+        "inbox": "Unified inbox",
+        "priority": "Priority",
+        "meetings": "Meetings",
+        "snoozed": "Snoozed",
+        "sent": "Sent",
+        "drafts": "Drafts",
+        "search": "Search…",
+        "channels": "CHANNELS",
+        "website": "Website leads",
+        "heading": "Inbox",
+        "subtitle": "All customer conversations in one place",
+        "all": "All",
+        "unread": "Unread",
+        "needsReply": "Needs reply",
+        "allStatuses": "All statuses",
+        "allCampaigns": "All campaigns",
+        "lastWeek": "Last 7 days",
+        "replied": "Replied",
+        "danielSubject": "Re: Improving customer onboarding at Acme",
+        "danielSnippet": "This sounds promising. Could you share more about the timeline?",
+        "juliaSubject": "Re: A proposal for our next project",
+        "juliaSnippet": "I’ve reviewed the details. What would the next steps look like?",
+        "alexSubject": "Re: Next week’s kickoff meeting",
+        "alexSnippet": "Tuesday at 10 works for us. Looking forward to meeting you."
+      },
+      "dashboard": {
+        "workspace": "Operations",
+        "heading": "Customer pipeline",
+        "live": "All systems live",
+        "overview": "Overview",
+        "metrics": "Metrics",
+        "lastDay": "Last 24 hours",
+        "lastWeek": "Last 7 days",
+        "lastMonth": "Last 30 days",
+        "records": "Processed records",
+        "latency": "Avg. sync latency",
+        "synced": "Sync success",
+        "tasks": "Automated tasks",
+        "comparison": "vs previous period",
+        "flow": "Data flow & health",
+        "details": "View details",
+        "updated": "Last updated",
+        "gateway": "Integration gateway",
+        "customers": "Customer records",
+        "orders": "Orders & payments",
+        "processed": "Processed",
+        "healthy": "All connections healthy",
+        "activity": "Recent activity",
+        "time": "Time",
+        "event": "Event",
+        "status": "Status",
+        "customerUpdated": "Customer record updated",
+        "orderSynced": "Order synchronized",
+        "reportSent": "Weekly report delivered",
+        "complete": "Complete",
+        "rules": "Active workflow rules",
+        "sources": "CONNECTED SOURCES",
+        "website": "Website",
+        "store": "Online store",
+        "support": "Customer support",
+        "routing": "AUTOMATIC ROUTING",
+        "rule": "Rule",
+        "priority": "High",
+        "assigned": "Assigned team",
+        "sales": "Sales operations"
+      }
+    }
   }
 }

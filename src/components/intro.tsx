@@ -23,6 +23,12 @@ export default function Intro({ contentRef, onReveal }: IntroProps) {
     const heroGrid = content.querySelectorAll<HTMLElement>('[data-hero-reveal="grid"]');
     const heroText = content.querySelectorAll<HTMLElement>('[data-hero-reveal="text"]');
     const unlockScroll = lockIntroScroll();
+    const wasInert = content.hasAttribute("inert");
+    content.setAttribute("inert", "");
+    const finishLoading = () => {
+      unlockScroll();
+      if (!wasInert) content.removeAttribute("inert");
+    };
     const ctx = gsap.context(() => {
       const text = textWrapperRef.current;
       const grids = gridsRef.current;
@@ -33,24 +39,24 @@ export default function Intro({ contentRef, onReveal }: IntroProps) {
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
         onComplete: () => {
+          finishLoading();
           // Remove the intro once the hero reveal has finished.
           gsap.set(containerRef.current, { visibility: "hidden" });
           // Remove the initial Tailwind state before clearing animation styles.
           content.dataset.heroPending = "false";
           gsap.set([...heroGrid, ...heroText], { clearProps: "opacity,filter,transform,willChange" });
           onReveal?.();
-          unlockScroll();
           setFinished(true);
         },
       });
 
       // Keep the intro brief and still when motion is reduced.
       if (reducedMotion) {
-        tl.to(containerRef.current, { visibility: "hidden", duration: 0.01 });
+        tl.to(containerRef.current, { visibility: "hidden", duration: 0.01, onComplete: finishLoading });
         return;
       }
 
-      // Keep the hero stationary beneath the intro; reveal the cube first as
+      // Keep the hero stationary beneath the intro; reveal the background first as
       // the overlay fades, followed by the existing grid and text animations.
       gsap.set(heroGrid, { opacity: 0 });
       gsap.set(heroText, { opacity: 0, filter: "blur(6px)", y: 6 });
@@ -92,8 +98,9 @@ export default function Intro({ contentRef, onReveal }: IntroProps) {
           autoAlpha: 0,
           duration: 0.78,
           ease: "sine.inOut",
+          onComplete: finishLoading,
         }, "exit+=0.08")
-        // The cube is visible through the fading overlay; reveal its frame next.
+        // The background is visible through the fading overlay; reveal the grid next.
         .to(heroGrid, {
           opacity: 1,
           duration: 0.65,
@@ -111,7 +118,7 @@ export default function Intro({ contentRef, onReveal }: IntroProps) {
 
     return () => {
       ctx.revert();
-      unlockScroll();
+      finishLoading();
     };
   }, [contentRef, onReveal]);
 
