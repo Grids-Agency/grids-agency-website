@@ -35,20 +35,25 @@
   },
   "About": {
     "layout": {
-      "eyebrow": "About us",
-      "heading": "A new way to bring ideas to life",
-      "description": "We connect design and technology to create better digital experiences.",
-      "feature": "Design and technology that open new possibilities for your brand. Built with GRIDS.",
-      "design": {
-        "title": "Digital experience & design",
-        "description": "Websites and digital experiences shaped around your brand’s story."
+      "eyebrow": "Featured work",
+      "heading": "Ideas, brought to life.",
+      "description": "From websites to brand films. Explore selected projects by GRIDS.",
+      "feature": "Every brand has a different story. See how we give each one its own expression.",
+      "tcl": {
+        "title": "The Clear Labs",
+        "description": "A visual project that brings the brand’s atmosphere and product details into focus."
       },
-      "ai": {
-        "title": "AI & creative exploration",
-        "description": "From AI visuals to automation, explore what your ideas can become."
+      "aether": {
+        "title": "AETHER",
+        "description": "A fragrance brand experience that translates scent into film and the web."
       },
-      "visualPlaceholder": "Visual placeholder",
-      "learnMore": "Learn more"
+      "jiam": {
+        "title": "JIAM",
+        "description": "An e-learning platform that turns Jeisys expertise into a structured learning experience."
+      },
+      "carouselLabel": "Featured projects by GRIDS",
+      "showProject": "Expand {title} project",
+      "learnMore": "Explore more work"
     },
     "title": "The premier <highlight>AI agency</highlight> <newline></newline> for elite-tier production.",
     "description": "Scale beyond your competitors, leveraging cutting-edge AI to deliver unmatched production quality and a decisive market advantage.",

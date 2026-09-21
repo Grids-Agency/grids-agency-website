@@ -32,6 +32,7 @@
     "gsap": "^3.15.0",
     "lucide-react": "^0.563.0",
     "meshline": "^3.3.1",
+    "metal-fx": "^2.0.10",
     "motion": "^12.29.2",
     "next": "16.1.6",
     "next-intl": "^4.8.1",

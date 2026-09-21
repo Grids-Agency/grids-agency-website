@@ -35,20 +35,25 @@
   },
   "About": {
     "layout": {
-      "eyebrow": "소개",
-      "heading": "아이디어를 현실로 만드는 새로운 방식",
-      "description": "디자인과 기술을 연결해, 더 나은 디지털 경험을 만듭니다.",
-      "feature": "브랜드의 가능성을 넓히는 디자인과 기술. 그리즈와 함께 시작하세요.",
-      "design": {
-        "title": "디지털 경험과 디자인",
-        "description": "브랜드의 이야기를 담은 웹사이트와 디지털 경험을 만듭니다."
+      "eyebrow": "Featured work",
+      "heading": "아이디어가 작품이 되는 순간",
+      "description": "웹사이트부터 브랜드 영상까지. 그리즈가 만든 대표 프로젝트를 소개합니다.",
+      "feature": "각기 다른 브랜드의 이야기, 그에 맞는 표현. 우리의 작업에서 그 차이를 만나보세요.",
+      "tcl": {
+        "title": "The Clear Labs",
+        "description": "브랜드의 분위기와 제품의 디테일을 담아낸 비주얼 프로젝트."
       },
-      "ai": {
-        "title": "AI와 크리에이티브",
-        "description": "AI 비주얼부터 자동화까지, 아이디어의 가능성을 넓힙니다."
+      "aether": {
+        "title": "AETHER",
+        "description": "향의 감각을 영상과 웹으로 풀어낸 프래그런스 브랜드 경험."
       },
-      "visualPlaceholder": "비주얼 영역",
-      "learnMore": "더 알아보기"
+      "jiam": {
+        "title": "JIAM",
+        "description": "Jeisys의 전문 지식을 체계적인 학습 경험으로 연결한 이러닝 플랫폼."
+      },
+      "carouselLabel": "그리즈 대표 프로젝트",
+      "showProject": "{title} 프로젝트 펼치기",
+      "learnMore": "자세히 보기"
     },
     "title": "최상의 제작 퀄리티를 지향하는 <newline></newline> <highlight>엘리트 AI 에이전시</highlight>",
     "description": "최첨단 AI 기술로 압도적인 퀄리티와 시장 우위를 확보하십시오. 경쟁사를 앞서가는 압도적인 스케일을 경험할 수 있습니다.",
