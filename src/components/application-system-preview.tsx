@@ -76,21 +76,10 @@ export default function ApplicationSystemPreview() {
             <stop offset="0.3" stopColor="white" />
             <stop offset="1" stopColor="black" />
           </radialGradient>
-          <radialGradient id={`${id}-glow`} className="text-tertiary">
-            <stop stopColor="currentColor" stopOpacity="0.16" />
-            <stop offset="0.5" stopColor="currentColor" stopOpacity="0.06" />
-            <stop offset="1" stopColor="currentColor" stopOpacity="0" />
-          </radialGradient>
-          <radialGradient id={`${id}-glow-secondary`} className="text-amber-200 dark:text-indigo-300">
-            <stop stopColor="currentColor" stopOpacity="0.2" />
-            <stop offset="1" stopColor="currentColor" stopOpacity="0" />
-          </radialGradient>
           <mask id={`${id}-field`}>
             <rect width="600" height="340" fill={`url(#${id}-fade)`} />
           </mask>
         </defs>
-        <ellipse cx="280" cy="156" rx="262" ry="162" fill={`url(#${id}-glow)`} />
-        <ellipse cx="424" cy="114" rx="156" ry="110" fill={`url(#${id}-glow-secondary)`} />
         <rect width="600" height="340" fill={`url(#${id}-dots)`} mask={`url(#${id}-field)`} />
         <g stroke="currentColor" strokeOpacity="0.1" strokeDasharray="2 5">
           <path d="m40 231 329-85M208 318 329 30" />

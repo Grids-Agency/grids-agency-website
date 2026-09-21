@@ -24,7 +24,9 @@ const subscribeToScroll = (onChange: () => void) => {
   return () => window.removeEventListener("scroll", onChange, true);
 };
 const getScrolled = () => {
-  const pageScroller = document.querySelector<HTMLElement>("[data-navbar-scroll]");
+  const pageScroller = document.querySelector<HTMLElement>(
+    "[data-navbar-scroll]",
+  );
   return Math.max(window.scrollY, pageScroller?.scrollTop ?? 0) > 80;
 };
 const getServerScrolled = () => false;
@@ -36,8 +38,15 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
   const pathname = usePathname();
 
   const reducedMotion = useReducedMotion();
-  const pillTransition = { duration: reducedMotion ? 0 : 0.42, ease: [0.22, 1, 0.36, 1] as const };
-  const scrolled = useSyncExternalStore(subscribeToScroll, getScrolled, getServerScrolled);
+  const pillTransition = {
+    duration: reducedMotion ? 0 : 0.42,
+    ease: [0.22, 1, 0.36, 1] as const,
+  };
+  const scrolled = useSyncExternalStore(
+    subscribeToScroll,
+    getScrolled,
+    getServerScrolled,
+  );
 
   const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;
 
@@ -51,18 +60,26 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
   const switchLocale = () => {
     const nextLocale = locale === "en" ? "ko" : "en";
     const newPath = pathname.replace(/^\/(en|ko)(?=\/|$)/, `/${nextLocale}`);
-    router.push(`${newPath}${window.location.search}${window.location.hash}`, { scroll: false });
+    router.push(`${newPath}${window.location.search}${window.location.hash}`, {
+      scroll: false,
+    });
   };
 
   // The homepage navbar belongs to the hero's animated surface. Render its
   // markup immediately so the intro timeline can find all reveal targets.
   if (isHome && !inHero) return null;
 
-  const themeLabel = locale === "ko"
-    ? (resolvedTheme === "dark" ? "라이트 모드로 전환" : "다크 모드로 전환")
-    : (resolvedTheme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  const themeLabel =
+    locale === "ko"
+      ? resolvedTheme === "dark"
+        ? "라이트 모드로 전환"
+        : "다크 모드로 전환"
+      : resolvedTheme === "dark"
+        ? "Switch to light mode"
+        : "Switch to dark mode";
   const languageLabel = locale === "ko" ? "Switch to English" : "한국어로 전환";
-  const iconButtonClass = "flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-sm text-inherit transition-colors hover:text-tertiary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tertiary disabled:cursor-default disabled:opacity-50";
+  const iconButtonClass =
+    "flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-sm text-inherit transition-colors hover:text-tertiary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tertiary disabled:cursor-default disabled:opacity-50";
   const controls = (
     <div className="flex items-center gap-1">
       <button
@@ -90,7 +107,7 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
   );
 
   return (
-      <motion.div layoutRoot className="pointer-events-none fixed inset-0 z-40">
+    <motion.div layoutRoot className="pointer-events-none fixed inset-0 z-40">
       <motion.nav
         layout
         layoutDependency={scrolled}
@@ -114,11 +131,16 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
           <span className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0.06)_35%,transparent_55%,rgba(255,255,255,0.16)_100%)] dark:opacity-50" />
           <span className="absolute inset-x-[12%] top-0 h-px bg-linear-to-r from-transparent via-white/90 to-transparent dark:via-white/60" />
         </span>
-        {isHome && <span
-          data-hero-reveal="grid"
-          aria-hidden="true"
-          className={cn("pointer-events-none absolute bottom-0 -inset-x-[clamp(20px,4.2vw,72px)] border-b border-foreground/15 transition-opacity duration-300 motion-reduce:transition-none group-data-[hero-pending=true]/hero:opacity-0", scrolled && "opacity-0")}
-        />}
+        {isHome && (
+          <span
+            data-hero-reveal="grid"
+            aria-hidden="true"
+            className={cn(
+              "pointer-events-none absolute bottom-0 -inset-x-[clamp(20px,4.2vw,72px)] border-b border-foreground/15 transition-opacity duration-300 motion-reduce:transition-none group-data-[hero-pending=true]/hero:opacity-0",
+              scrolled && "opacity-0",
+            )}
+          />
+        )}
         <div className="relative flex h-full flex-wrap items-center justify-between gap-x-3 py-3 md:flex-nowrap md:py-0">
           <MotionLink
             layout="position"
@@ -134,14 +156,24 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
               data-locale={locale}
               aria-hidden="true"
             >
-              <span className="invisible col-start-1 row-start-1 whitespace-nowrap">GRIDS AGENCY</span>
-              <span className="invisible col-start-1 row-start-1 whitespace-nowrap">그리즈 에이전시</span>
-              <span className={cn("absolute top-0 left-0 animate-brand-roll motion-reduce:animate-none", locale === "ko" && "motion-reduce:-translate-y-1/3")}>
+              <span className="invisible col-start-1 row-start-1 whitespace-nowrap">
+                GRIDS AGENCY
+              </span>
+              <span className="invisible col-start-1 row-start-1 whitespace-nowrap">
+                그리즈 에이전시
+              </span>
+              <span
+                className={cn(
+                  "absolute top-0 left-0 animate-brand-roll motion-reduce:animate-none",
+                  locale === "ko" && "motion-reduce:-translate-y-1/3",
+                )}
+              >
                 <span lang="en" className="block h-6 whitespace-nowrap">
                   GRIDS<span className="font-normal opacity-50"> AGENCY</span>
                 </span>
                 <span lang="ko" className="block h-6 whitespace-nowrap">
-                  그리즈<span className="font-normal opacity-50"> 에이전시</span>
+                  그리즈
+                  <span className="font-normal opacity-50"> 에이전시</span>
                 </span>
                 <span lang="en" className="block h-6 whitespace-nowrap">
                   GRIDS<span className="font-normal opacity-50"> AGENCY</span>
@@ -149,7 +181,12 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
               </span>
             </span>
           </MotionLink>
-          <motion.div layout="position" transition={{ layout: pillTransition }} data-hero-reveal="text" className="order-3 flex w-full items-center justify-between gap-3 text-xs group-data-[hero-pending=true]/hero:opacity-0 group-data-[hero-pending=true]/hero:blur-[10px] md:order-none md:ml-auto md:w-auto md:gap-7 md:text-[13px]">
+          <motion.div
+            layout="position"
+            transition={{ layout: pillTransition }}
+            data-hero-reveal="text"
+            className="order-3 flex w-full items-center justify-between gap-3 text-xs group-data-[hero-pending=true]/hero:opacity-0 group-data-[hero-pending=true]/hero:blur-[10px] md:order-none md:ml-auto md:w-auto md:gap-7 md:text-[13px]"
+          >
             <Link
               href={`/${locale}/archive`}
               className="transition-colors hover:text-tertiary"
@@ -171,17 +208,27 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
             {controls}
           </motion.div>
         </div>
-        {isHome && <span
-          data-hero-reveal="grid"
-          aria-hidden="true"
-          className={cn("pointer-events-none absolute -bottom-[3px] -left-[2px] size-[5px] rounded-full bg-tertiary transition-opacity duration-300 motion-reduce:transition-none group-data-[hero-pending=true]/hero:opacity-0", scrolled && "opacity-0")}
-        />}
-        {isHome && <span
-          data-hero-reveal="grid"
-          aria-hidden="true"
-          className={cn("pointer-events-none absolute -bottom-[3px] -right-[2px] size-[5px] rounded-full bg-tertiary transition-opacity duration-300 motion-reduce:transition-none group-data-[hero-pending=true]/hero:opacity-0", scrolled && "opacity-0")}
-        />}
+        {isHome && (
+          <span
+            data-hero-reveal="grid"
+            aria-hidden="true"
+            className={cn(
+              "pointer-events-none absolute -bottom-[3px] -left-[2px] size-[5px] rounded-full bg-tertiary transition-opacity duration-300 motion-reduce:transition-none group-data-[hero-pending=true]/hero:opacity-0",
+              scrolled && "opacity-0",
+            )}
+          />
+        )}
+        {isHome && (
+          <span
+            data-hero-reveal="grid"
+            aria-hidden="true"
+            className={cn(
+              "pointer-events-none absolute -bottom-[3px] -right-[2px] size-[5px] rounded-full bg-tertiary transition-opacity duration-300 motion-reduce:transition-none group-data-[hero-pending=true]/hero:opacity-0",
+              scrolled && "opacity-0",
+            )}
+          />
+        )}
       </motion.nav>
-      </motion.div>
-    );
+    </motion.div>
+  );
 }

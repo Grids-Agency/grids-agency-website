@@ -19,6 +19,31 @@ const ideas = [
 
 type Idea = (typeof ideas)[number]["key"];
 
+const glowPositions = {
+  commerce: ["-right-1/4 bottom-0", "-left-1/4 bottom-0"],
+  applications: ["-left-1/4 -top-1/4", "-right-1/4 top-0"],
+  crm: ["-left-1/4 -top-1/4", "-right-1/4 top-0"],
+  automation: ["-left-1/4 -top-1/4", "-right-1/4 top-0"],
+  assistant: ["-right-1/4 -top-1/4", "-left-1/4 top-0"],
+} as const;
+
+function BentoGlow({ kind }: { kind: Idea }) {
+  const [accent, highlight] = glowPositions[kind];
+
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      <span className={cn(
+        "absolute h-3/4 w-full bg-radial from-tertiary/18 via-tertiary/6 to-transparent blur-2xl dark:from-tertiary/14 dark:via-tertiary/5",
+        accent,
+      )} />
+      <span className={cn(
+        "absolute h-2/3 w-3/4 bg-radial from-amber-200/25 via-amber-100/8 to-transparent blur-2xl dark:from-indigo-300/12 dark:via-indigo-300/4",
+        highlight,
+      )} />
+    </div>
+  );
+}
+
 function Preview({ kind }: { kind: Idea }) {
   if (kind === "commerce") return <CommercePreview />;
   if (kind === "assistant") return <AiChatPreview />;
@@ -78,6 +103,7 @@ export default function ManifestoSection() {
                 <span className="absolute right-0 bottom-0 size-3.5 border-r border-b border-current" />
               </div>
               <article className="relative z-0 isolate h-full overflow-hidden text-foreground">
+                <BentoGlow kind={key} />
                 <motion.div
                   className={cn(
                     "flex h-full flex-col gap-7 p-7 md:gap-10 md:p-10",
