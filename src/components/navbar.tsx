@@ -152,7 +152,7 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
           >
             <BrandLogo className="size-[22px]" />
             <span
-              className="relative inline-grid h-6 overflow-hidden text-[17px] font-medium tracking-[-0.025em] leading-6"
+              className="relative inline-grid h-6 overflow-hidden text-[17px] font-bold tracking-[-0.025em] leading-6"
               data-locale={locale}
               aria-hidden="true"
             >
@@ -169,14 +169,14 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
                 )}
               >
                 <span lang="en" className="block h-6 whitespace-nowrap">
-                  GRIDS<span className="font-normal opacity-50"> AGENCY</span>
+                  GRIDS<span className="opacity-50"> AGENCY</span>
                 </span>
                 <span lang="ko" className="block h-6 whitespace-nowrap">
                   그리즈
-                  <span className="font-normal opacity-50"> 에이전시</span>
+                  <span className="opacity-50"> 에이전시</span>
                 </span>
                 <span lang="en" className="block h-6 whitespace-nowrap">
-                  GRIDS<span className="font-normal opacity-50"> AGENCY</span>
+                  GRIDS<span className="opacity-50"> AGENCY</span>
                 </span>
               </span>
             </span>
@@ -208,26 +208,6 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
             {controls}
           </motion.div>
         </div>
-        {isHome && (
-          <span
-            data-hero-reveal="grid"
-            aria-hidden="true"
-            className={cn(
-              "pointer-events-none absolute -bottom-[3px] -left-[2px] size-[5px] rounded-full bg-tertiary transition-opacity duration-300 motion-reduce:transition-none group-data-[hero-pending=true]/hero:opacity-0",
-              scrolled && "opacity-0",
-            )}
-          />
-        )}
-        {isHome && (
-          <span
-            data-hero-reveal="grid"
-            aria-hidden="true"
-            className={cn(
-              "pointer-events-none absolute -bottom-[3px] -right-[2px] size-[5px] rounded-full bg-tertiary transition-opacity duration-300 motion-reduce:transition-none group-data-[hero-pending=true]/hero:opacity-0",
-              scrolled && "opacity-0",
-            )}
-          />
-        )}
       </motion.nav>
     </motion.div>
   );

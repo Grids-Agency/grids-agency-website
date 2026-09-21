@@ -1,13 +1,22 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import type { ReactNode } from "react";
 import StudioLanyard from "@/components/studio-lanyard";
 import { HighlightedText } from "@/components/highlighted-text";
 import { WordsStagger } from "@/components/words-stagger";
 import { Signature } from "@/components/signature";
+import { SquigglyUnderline } from "@/components/squiggly-underline";
 
 export default function StudioIntroduction() {
   const t = useTranslations("StudioIntroduction");
+  const richText = {
+    highlight: (chunks: ReactNode) => (
+      <HighlightedText inView from="left" delay={0.25} className="align-middle font-medium">
+        {chunks}
+      </HighlightedText>
+    ),
+  };
 
   return (
     <section
@@ -70,18 +79,13 @@ export default function StudioIntroduction() {
               </span>
             </div>
             <p className="max-w-xl text-base leading-[1.9] text-muted-foreground [word-break:keep-all] md:text-lg">
-              {t.rich("description", {
-                highlight: (chunks) => (
-                  <HighlightedText
-                    inView
-                    from="left"
-                    delay={0.25}
-                    className="align-middle font-medium"
-                  >
-                    {chunks}
-                  </HighlightedText>
-                ),
-              })}
+              {t.rich("description", richText)}
+            </p>
+            <p className="max-w-xl text-base leading-[1.9] text-muted-foreground [word-break:keep-all] md:text-lg">
+              {t.rich("trustedBy", richText)}
+            </p>
+            <p className="max-w-xl text-base leading-[1.9] text-foreground [word-break:keep-all] md:text-lg">
+              <strong className="font-bold"><SquigglyUnderline text={t("invitation")} /></strong>
             </p>
           </div>
         </div>

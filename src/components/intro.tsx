@@ -56,7 +56,7 @@ export default function Intro({ contentRef, onReveal }: IntroProps) {
         return;
       }
 
-      // Keep the hero stationary beneath the intro; reveal the cube first as
+      // Keep the hero stationary beneath the intro; reveal the background first as
       // the overlay fades, followed by the existing grid and text animations.
       gsap.set(heroGrid, { opacity: 0 });
       gsap.set(heroText, { opacity: 0, filter: "blur(6px)", y: 6 });
@@ -100,7 +100,7 @@ export default function Intro({ contentRef, onReveal }: IntroProps) {
           ease: "sine.inOut",
           onComplete: finishLoading,
         }, "exit+=0.08")
-        // The cube is visible through the fading overlay; reveal its frame next.
+        // The background is visible through the fading overlay; reveal the grid next.
         .to(heroGrid, {
           opacity: 1,
           duration: 0.65,

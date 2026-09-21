@@ -67,7 +67,7 @@ export default function ApplicationSystemPreview() {
 
   return (
     <div ref={root} aria-hidden="true" className="flex h-full items-center justify-center text-foreground">
-      <svg viewBox="0 0 600 340" className="h-full w-full max-w-[640px]" fill="none">
+      <svg viewBox="0 0 600 340" className="h-full w-[110%] max-w-none shrink-0 md:w-full md:max-w-[640px]" fill="none">
         <defs>
           <pattern id={`${id}-dots`} width="16" height="16" patternUnits="userSpaceOnUse">
             <circle cx="1" cy="1" r="0.7" fill="currentColor" opacity="0.14" />

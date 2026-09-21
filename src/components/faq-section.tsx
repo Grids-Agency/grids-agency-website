@@ -15,11 +15,11 @@ const AnimatedGradient = dynamic(
 );
 
 const questions = [
+  "company",
+  "services",
+  "pricing",
+  "quality",
   "starting",
-  "scope",
-  "process",
-  "integration",
-  "ai",
   "support",
 ] as const;
 

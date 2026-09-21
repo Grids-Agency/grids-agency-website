@@ -119,6 +119,8 @@
   /* Shared outer padding for homepage content sections and the footer CTA. */
   --spacing-section: clamp(4rem, 6vw, 6rem);
   --animate-brand-roll: brand-roll 8s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+  --animate-laptop-drift: laptop-drift 17s ease-in-out infinite;
+  --animate-laptop-letter: laptop-letter 8s ease-in-out infinite both;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -179,6 +181,15 @@
     0%, 40% { transform: translateY(0); }
     50%, 90% { transform: translateY(-33.333333%); }
     100% { transform: translateY(-66.666667%); }
+  }
+  @keyframes laptop-drift {
+    0%, 100% { transform: translate3d(-4%, -3%, 0) rotate(-8deg) scale(1); }
+    50% { transform: translate3d(8%, 5%, 0) rotate(16deg) scale(1.12); }
+  }
+  @keyframes laptop-letter {
+    0%, 5%, 100% { opacity: 0; transform: translateY(0.45em); filter: blur(4px); }
+    18%, 80% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    93% { opacity: 0; transform: translateY(-0.25em); filter: blur(4px); }
   }
   @keyframes accordion-up {
     from { height: var(--radix-accordion-content-height); }

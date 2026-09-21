@@ -135,6 +135,7 @@ export default function ManifestoSection() {
                       "pointer-events-none shrink-0 overflow-hidden select-none",
                       visual,
                       key === "commerce" && "-mx-7 -mt-7 md:-mx-10 md:-mt-10",
+                      key === "applications" && "-mx-7 md:mx-0",
                       key === "crm" &&
                         "order-last -mr-7 -mb-7 md:-mr-10 md:-mb-10",
                       key === "assistant" && "order-last mt-auto",

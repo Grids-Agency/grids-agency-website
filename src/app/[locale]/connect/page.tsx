@@ -49,7 +49,7 @@ export default function ConnectPage() {
                 {/* 2. Info Cards Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {[
-                        { label: t("Cards.address"), value: t("Cards.addressValue"), href: "https://www.google.com/maps/search/?api=1&query=435+Olympic-ro,+Songpa-gu,+Seoul,+Republic+of+Korea" },
+                        { label: t("Cards.address"), value: t("Cards.addressValue"), href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t("Cards.addressValue"))}` },
                         { label: t("Cards.email"), value: t("Cards.emailValue"), href: `mailto:${t("Cards.emailValue")}` },    
                         { label: t("Cards.telegram"), value: t("Cards.telegramValue"), href: `https://t.me/${t("Cards.telegramValue").replace('@', '')}` },
                         { label: t("Cards.workingHours"), value: t("Cards.workingHoursValue"), href: "https://www.google.com/search?q=10am+kst+to+local+time" },

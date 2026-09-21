@@ -1,33 +1,33 @@
 {
   "FAQ": {
-    "contactPrompt": "Still have a question?",
+    "contactPrompt": "Have more questions?",
     "contactLink": "Let’s talk",
     "heading": "Before we begin,\na few answers.",
     "description": "A few things you might be wondering before turning your idea into a project.",
     "items": {
+      "company": {
+        "question": "What kind of company is GRIDS?",
+        "answer": "GRIDS is a software development company building websites, applications, business systems, and AI solutions. We work with you to understand your goals and everyday challenges, then turn them into useful products—from planning through development."
+      },
+      "services": {
+        "question": "What can you build, and when should I get in touch?",
+        "answer": "We build websites, online stores, web and mobile apps, CRM and admin systems, workflow automation, and AI tools that use your company’s knowledge. Get in touch when you want to launch a service, connect scattered information, or reduce repetitive work."
+      },
+      "pricing": {
+        "question": "How do you determine development costs?",
+        "answer": "Costs depend on the features, design scope, integrations, and timeline. We clarify the scope during consultation before providing an estimate. If you have a set budget, we can explore a phased approach that starts with your priorities."
+      },
+      "quality": {
+        "question": "How do you ensure project quality?",
+        "answer": "We agree on the scope and review criteria upfront, then review progress and deliverables together at key stages. An 80% refund policy also applies under agreed conditions. We explain the eligibility criteria and process during consultation."
+      },
       "starting": {
-        "question": "Can we talk if I only have an idea?",
-        "answer": "Yes. You do not need a finished brief. Tell us what problem you want to solve, who will use the service, and any examples you have in mind. We can work through the essential features and priorities together."
-      },
-      "scope": {
-        "question": "How are pricing and timelines determined?",
-        "answer": "They depend on the features, design requirements, and connections to existing systems. Once we understand your needs, we outline the scope, estimated schedule, and cost. If you have a set budget, we can explore starting with the essentials."
-      },
-      "process": {
-        "question": "What does the project process look like?",
-        "answer": "We start with goals and requirements, then move through planning, design, and development. We review progress together at key stages and test before launch. The specific workflow is agreed to suit your project."
-      },
-      "integration": {
-        "question": "Can you connect the tools we already use?",
-        "answer": "We first check what integrations are possible. We review the APIs, data structures, and access permissions of your website, CRM, payment service, or other tools to define the scope. Where it makes sense, we build on what already works for you."
-      },
-      "ai": {
-        "question": "What if we are not sure where AI would help?",
-        "answer": "Start with the tasks that take too much time or the questions your team answers repeatedly. We can explore practical uses such as searching internal documents, handling customer enquiries, or organizing information, then identify a small area in which to test the value."
+        "question": "Can I book a consultation if I only have an idea?",
+        "answer": "Yes. You do not need a finished brief. Tell us about the problem you want to solve, who the service is for, and any examples you have in mind. We can work through the essential features and priorities together."
       },
       "support": {
-        "question": "Can we discuss support after launch?",
-        "answer": "Yes. We can discuss ongoing support, maintenance, and improvements alongside the initial build. Handover materials, administration, support scope, and costs are agreed as part of planning the project."
+        "question": "What does maintenance cost after launch?",
+        "answer": "Costs depend on the size of the service, its operating environment, and the support you need. We distinguish running costs, such as hosting, from maintenance and feature development, then agree on the support that makes sense for your business."
       }
     }
   },
@@ -38,11 +38,13 @@
   "StudioIntroduction": {
     "lanyardHint": "DRAG TO EXPLORE",
     "eyebrow": "WHO WE ARE",
-    "lineOne": "We turn ideas into",
-    "lineTwo": "experiences that work.",
-    "lineThree": "And make people feel.",
+    "lineOne": "We use",
+    "lineTwo": "IT and AI",
+    "lineThree": "to grow your business.",
     "signature": "GRIDS AGENCY — THE AI CREATIVE LAB",
-    "description": "We are a creative team working across <highlight>design, development, and AI</highlight>. From understanding your brand to building websites and exploring new visuals, we make work that looks good, feels right, and serves a real purpose.",
+    "description": "GRIDS is a software development company built around <highlight>developers from Seoul National University’s Department of Computer Science and Engineering</highlight>. Our team brings hands-on experience building and growing products—from founding startups to working at major enterprises and global tech companies.",
+    "trustedBy": "<highlight>Publicly listed companies, major enterprises, and political organizations</highlight> have partnered with GRIDS.",
+    "invitation": "GRIDS is here to help your business grow.",
     "discover": "Get to know GRIDS"
   },
   "Brand": {
@@ -73,7 +75,7 @@
       "feature": "Every brand has a different story. See how we give each one its own expression.",
       "tcl": {
         "title": "The Clear Labs",
-        "description": "A visual project that brings the brand’s atmosphere and product details into focus."
+        "description": "An all-in-one online store that captures the brand’s atmosphere and showcases every product detail."
       },
       "aether": {
         "title": "AETHER",
@@ -81,7 +83,7 @@
       },
       "jiam": {
         "title": "JIAM",
-        "description": "An e-learning platform that turns Jeisys expertise into a structured learning experience."
+        "description": "An e-learning platform that turns Jeisys Medical’s expertise into a structured learning experience."
       },
       "carouselLabel": "Featured projects by GRIDS",
       "showProject": "Expand {title} project",
@@ -92,9 +94,17 @@
     "location": "Based in Seoul"
   },
   "Hero": {
-    "headline_lead": "Ideas into reality.",
+    "heatmap": {
+      "clients": "Clients we’ve partnered with",
+      "meaning": "One square. One partnership.",
+      "caption": "More possibilities, together.",
+      "filled": "Our clients",
+      "empty": "What’s next",
+      "accessible": "Client heatmap showing {count} clients. Each filled square represents one client."
+    },
+    "headline_lead": "IT & AI development",
     "start_project": "Start a project",
-    "studio_description": "At the intersection of design and technology, we turn your ideas into distinctive digital experiences.",
+    "studio_description": "From digital transformation to AI adoption, we work with you every step of the way—from planning and design to development and rollout.",
     "approach_description": "From websites and AI visuals to intelligent automation. We build what comes next for your business.",
     "explore_vision": "Explore our vision",
     "discover": "Discover more",
@@ -103,7 +113,7 @@
       "visual": "AI visuals",
       "automation": "Automation"
     },
-    "headline_prefix": "Witness Tomorrow.",
+    "headline_prefix": "for everyone.",
     "subtext": "A design-driven production studio focused on telling your story through motion, interaction, and clean typography."
   },
   "Services": {
@@ -127,17 +137,17 @@
   },
   "Footer": {
     "eyebrow": "Let’s build what’s next",
-    "headline": "Your next chapter.",
-    "headlineEnd": "Built together.",
+    "headline": "You don’t need to know tech",
+    "headlineEnd": "to explore what’s possible.",
     "description": "An early idea is enough to start. Tell us what you have in mind, and we’ll figure out what to build together.",
-    "closing": "Good work starts with a good conversation.",
+    "closing": "Let’s discover what’s possible, together.",
     "navigationLabel": "Explore",
     "home": "Home",
     "backToTop": "Back to top",
     "quote": "It's like having a super team of devs, designers, and film makers for a fraction of a cost.",
     "copyright": "© 2026 GRIDS AGENCY. All rights reserved.",
     "locationLabel": "Location",
-    "location": "435 Olympic-ro, Songpa-gu, Seoul, Republic of Korea",
+    "location": "12F, Gangdong Empire Building, 90 Jinhwangdo-ro, Gangdong-gu, Seoul, Republic of Korea",
     "contactLabel": "Contact",
     "email": "kyle@gridsagency.com",
     "phone": "telegram @kyle_lee10",
@@ -225,7 +235,7 @@
     "description": "We appreciate you reaching out to connect. At Grids, every interaction is a coordinate for future growth. Please share your details below, and let’s start engineering.",
     "Cards": {
       "address": "Address",
-      "addressValue": "435 Olympic-ro, Songpa-gu, Seoul, Republic of Korea",
+      "addressValue": "12F, Gangdong Empire Building, 90 Jinhwangdo-ro, Gangdong-gu, Seoul, Republic of Korea",
       "email": "You Can Email Here",
       "emailValue": "kyle@gridsagency.com",
       "telegram": "Telegram",
@@ -364,7 +374,7 @@
     "cta": "Back to Home"
   },
   "Possibilities": {
-    "heading": "New possibilities.\nFor your business.",
+    "heading": "Whatever you need,\nwe can build it.",
     "description": "DX brings your business into the digital world. AX adds the possibilities of AI. Here are a few ways that could look for you.",
     "note": "Illustrative concepts, imagined for real business needs.",
     "closing": "Your next idea might not be on this board. Let’s build it anyway.",
