@@ -91,14 +91,14 @@ export function FeaturedWork() {
                     loop
                     autoPlay
                   />
-                ) : (
+                ) : project.image ? (
                   <Image
-                    src={project?.image!}
+                    src={project.image}
                     alt={project.title}
                     fill
                     className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
                   />
-                )}
+                ) : null}
               </div>
 
               {/* Content Info */}

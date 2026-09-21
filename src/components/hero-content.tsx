@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { Marquee } from "@/components/marquee";
 import HeroBackground from "@/components/hero-background";
+import { MetalButton } from "@/components/spectrumui/metal-button";
 import { cn } from "@/lib/utils";
 
 const gridRevealClassName = "group-data-[hero-pending=true]/hero:opacity-0";
@@ -77,17 +78,22 @@ const HeroContent = () => {
           >
             {navT("work")} <Infinite size={16} aria-hidden="true" />
           </Link>
-          <Link
+          <div
             data-hero-reveal="text"
-            href={`/${locale}/connect`}
-            className={cn(
-              textRevealClassName,
-              actionClassName,
-              "bg-foreground text-background hover:border-tertiary hover:bg-tertiary hover:text-white",
-            )}
+            className={cn(textRevealClassName, "inline-flex")}
           >
-            {t("start_project")} <ArrowRight size={16} aria-hidden="true" />
-          </Link>
+            <MetalButton
+              asChild
+              preset="silver"
+              inverted
+              className="h-10 gap-6 rounded-none px-5 text-xs"
+              wrapperClassName="rounded-none"
+            >
+              <Link href={`/${locale}/connect`}>
+                {t("start_project")} <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </MetalButton>
+          </div>
         </div>
       </div>
 

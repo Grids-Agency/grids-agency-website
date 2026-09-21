@@ -1,4 +1,36 @@
 {
+  "FAQ": {
+    "contactPrompt": "Still have a question?",
+    "contactLink": "Let’s talk",
+    "heading": "Before we begin,\na few answers.",
+    "description": "A few things you might be wondering before turning your idea into a project.",
+    "items": {
+      "starting": {
+        "question": "Can we talk if I only have an idea?",
+        "answer": "Yes. You do not need a finished brief. Tell us what problem you want to solve, who will use the service, and any examples you have in mind. We can work through the essential features and priorities together."
+      },
+      "scope": {
+        "question": "How are pricing and timelines determined?",
+        "answer": "They depend on the features, design requirements, and connections to existing systems. Once we understand your needs, we outline the scope, estimated schedule, and cost. If you have a set budget, we can explore starting with the essentials."
+      },
+      "process": {
+        "question": "What does the project process look like?",
+        "answer": "We start with goals and requirements, then move through planning, design, and development. We review progress together at key stages and test before launch. The specific workflow is agreed to suit your project."
+      },
+      "integration": {
+        "question": "Can you connect the tools we already use?",
+        "answer": "We first check what integrations are possible. We review the APIs, data structures, and access permissions of your website, CRM, payment service, or other tools to define the scope. Where it makes sense, we build on what already works for you."
+      },
+      "ai": {
+        "question": "What if we are not sure where AI would help?",
+        "answer": "Start with the tasks that take too much time or the questions your team answers repeatedly. We can explore practical uses such as searching internal documents, handling customer enquiries, or organizing information, then identify a small area in which to test the value."
+      },
+      "support": {
+        "question": "Can we discuss support after launch?",
+        "answer": "Yes. We can discuss ongoing support, maintenance, and improvements alongside the initial build. Handover materials, administration, support scope, and costs are agreed as part of planning the project."
+      }
+    }
+  },
   "ConsultationButton": {
     "label": "Let’s talk",
     "accessibleLabel": "Chat with us on KakaoTalk (opens in a new tab)"
@@ -94,6 +126,14 @@
     }
   },
   "Footer": {
+    "eyebrow": "Let’s build what’s next",
+    "headline": "Your next chapter.",
+    "headlineEnd": "Built together.",
+    "description": "An early idea is enough to start. Tell us what you have in mind, and we’ll figure out what to build together.",
+    "closing": "Good work starts with a good conversation.",
+    "navigationLabel": "Explore",
+    "home": "Home",
+    "backToTop": "Back to top",
     "quote": "It's like having a super team of devs, designers, and film makers for a fraction of a cost.",
     "copyright": "© 2026 GRIDS AGENCY. All rights reserved.",
     "locationLabel": "Location",

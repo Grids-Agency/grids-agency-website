@@ -10,7 +10,11 @@ import CrmDashboardPreview from "@/components/crm-dashboard-preview";
 import { cn } from "@/lib/utils";
 
 const ideas = [
-  { key: "commerce", layout: "lg:col-span-6", visual: "aspect-[30/17] lg:aspect-auto lg:h-100" },
+  {
+    key: "commerce",
+    layout: "lg:col-span-6",
+    visual: "aspect-[30/17] lg:aspect-auto lg:h-100",
+  },
   { key: "applications", layout: "lg:col-span-6", visual: "h-68 sm:h-84" },
   { key: "crm", layout: "lg:col-span-4", visual: "min-h-96 flex-1" },
   { key: "automation", layout: "lg:col-span-4", visual: "h-72" },
@@ -31,15 +35,22 @@ function BentoGlow({ kind }: { kind: Idea }) {
   const [accent, highlight] = glowPositions[kind];
 
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-      <span className={cn(
-        "absolute h-3/4 w-full bg-radial from-tertiary/18 via-tertiary/6 to-transparent blur-2xl dark:from-tertiary/14 dark:via-tertiary/5",
-        accent,
-      )} />
-      <span className={cn(
-        "absolute h-2/3 w-3/4 bg-radial from-amber-200/25 via-amber-100/8 to-transparent blur-2xl dark:from-indigo-300/12 dark:via-indigo-300/4",
-        highlight,
-      )} />
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+    >
+      <span
+        className={cn(
+          "absolute h-3/4 w-full bg-radial from-tertiary/18 via-tertiary/6 to-transparent blur-2xl dark:from-tertiary/14 dark:via-tertiary/5",
+          accent,
+        )}
+      />
+      <span
+        className={cn(
+          "absolute h-2/3 w-3/4 bg-radial from-amber-200/25 via-amber-100/8 to-transparent blur-2xl dark:from-indigo-300/12 dark:via-indigo-300/4",
+          highlight,
+        )}
+      />
     </div>
   );
 }
@@ -59,14 +70,14 @@ export default function ManifestoSection() {
   return (
     <section
       aria-labelledby="possibilities-heading"
-      className="relative overflow-hidden bg-background px-[clamp(20px,4.2vw,72px)] py-24 text-foreground md:py-36"
+      className="relative overflow-hidden bg-background px-[clamp(20px,4.2vw,72px)] py-section text-foreground"
     >
       <div className="w-full">
         <header className="mb-12 flex flex-col justify-between gap-8 lg:mb-16 lg:flex-row lg:items-end">
           <div>
             <h2
               id="possibilities-heading"
-              className="mt-5 max-w-3xl whitespace-pre-line text-[clamp(32px,3.2vw,48px)] leading-[1.15] font-medium tracking-[-0.055em] [word-break:keep-all]"
+              className="max-w-3xl whitespace-pre-line text-[clamp(32px,3.2vw,48px)] leading-[1.15] font-medium tracking-[-0.055em] [word-break:keep-all]"
             >
               {t("heading")}
             </h2>
@@ -115,17 +126,23 @@ export default function ManifestoSection() {
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div
-                    aria-hidden={key === "automation" || key === "commerce" ? undefined : true}
+                    aria-hidden={
+                      key === "automation" || key === "commerce"
+                        ? undefined
+                        : true
+                    }
                     className={cn(
                       "pointer-events-none shrink-0 overflow-hidden select-none",
                       visual,
                       key === "commerce" && "-mx-7 -mt-7 md:-mx-10 md:-mt-10",
-                      key === "crm" && "order-last -mr-7 -mb-7 md:-mr-10 md:-mb-10",
+                      key === "crm" &&
+                        "order-last -mr-7 -mb-7 md:-mr-10 md:-mb-10",
+                      key === "assistant" && "order-last mt-auto",
                     )}
                   >
                     <Preview kind={key} />
                   </div>
-                  <div className={cn("relative", key !== "crm" && "mt-auto")}>
+                  <div className={cn("relative", key !== "crm" && key !== "assistant" && "mt-auto")}>
                     <h3 className="text-xl leading-snug font-black tracking-[-0.025em] [word-break:keep-all] sm:text-2xl">
                       {t(`${key}.title`)}
                     </h3>

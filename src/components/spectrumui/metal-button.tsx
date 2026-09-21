@@ -18,6 +18,8 @@ export interface MetalButtonProps extends Omit<
   preset?: MetalFxPreset;
   /** "auto" follows a `.dark`/`.light` class on <html>, then the OS. Default "auto" */
   theme?: SurfaceTheme;
+  /** Use a light surface on dark pages and a dark surface on light pages. */
+  inverted?: boolean;
   /** Ring intensity 0–1. Default 1 */
   strength?: number;
   /** Pill height and type size. Default "md" */
@@ -44,6 +46,7 @@ export function MetalButton({
   asChild = false,
   preset = 'chromatic',
   theme = 'auto',
+  inverted = false,
   strength = 1,
   size = 'md',
   paused = false,
@@ -54,17 +57,23 @@ export function MetalButton({
   ...props
 }: MetalButtonProps) {
   const resolved = useSurfaceTheme(theme);
+  const effectTheme = inverted ? (resolved === 'dark' ? 'light' : 'dark') : resolved;
   const reducedMotion = useReducedMotion();
   const hydrated = React.useSyncExternalStore(subscribeToHydration, clientSnapshot, serverSnapshot);
   const Component = asChild ? Slot : 'button';
-  const wrapperClasses = cn('inline-flex rounded-full has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-4 has-[:focus-visible]:outline-tertiary', wrapperClassName);
+  const wrapperClasses = cn(
+    'inline-flex rounded-full has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-4 has-[:focus-visible]:outline-tertiary',
+    inverted && 'bg-black! dark:bg-white!',
+    wrapperClassName,
+  );
   const button = (
       <Component
         type={asChild ? undefined : type}
         className={cn(
           'inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-[-0.01em] transition-[transform,background-color] duration-200 ease-out motion-reduce:transition-none motion-reduce:transform-none',
           // metal-fx keeps the host fill transparent so the ring frames the page surface; only the label carries the theme
-          'text-neutral-900 hover:opacity-80 active:scale-[0.97] dark:text-white',
+          'hover:opacity-80 active:scale-[0.97]',
+          inverted ? 'text-white dark:text-black' : 'text-neutral-900 dark:text-white',
           'focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-60',
           SIZE[size],
           className,
@@ -83,7 +92,7 @@ export function MetalButton({
     <MetalFx
       variant="button"
       preset={preset}
-      theme={resolved}
+      theme={effectTheme}
       strength={strength}
       paused={paused || Boolean(reducedMotion)}
       className={wrapperClasses}

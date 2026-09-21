@@ -1,106 +1,153 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-
-import WarpShader from "@/components/ui/wrap-shader";
-import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import BrandLogo from "@/components/brand-logo";
 import Link from "next/link";
+import { ArrowRight } from "reicon-react/icons/ArrowRight";
+import BrandLogo from "@/components/brand-logo";
+import { FooterBeams } from "@/components/footer-graphics";
+import { MetalButton } from "@/components/spectrumui/metal-button";
+import { cn } from "@/lib/utils";
 
 interface FooterSectionProps {
   className?: string;
 }
 
-export default function FooterSection({ className }: FooterSectionProps) {
-  const t = useTranslations('Footer');
+const footerLink =
+  "transition-colors hover:text-tertiary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tertiary";
+
+function FooterContent({ className }: FooterSectionProps) {
+  const t = useTranslations("Footer");
+  const nav = useTranslations("Navbar");
   const locale = useLocale();
 
-  const pathname = usePathname();
-
-
-  if (pathname?.includes('/connect') || pathname?.includes('/archive')) return null;
-
   return (
-    <footer 
+    <footer
       className={cn(
-        "relative w-full min-h-screen bg-muted flex flex-col justify-between p-8 md:p-12 lg:p-20 z-10 overflow-hidden", 
-        className
+        "relative isolate z-10 mt-section overflow-hidden bg-background text-foreground",
+        className,
       )}
+      aria-labelledby="footer-heading"
     >
-      {/* Warp Shader Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none invert dark:invert-0">
-        <WarpShader />
-      </div>
-      
-      {/* Top Section: Logo (Left Only) */}
-      <div className="relative z-10 w-full flex justify-start items-center gap-4">
-        <div className="relative w-8 h-8 md:w-10 md:h-10">
-             <BrandLogo className="size-full" />
-        </div>
-        <span className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-          GRIDS AGENCY
-        </span>
-      </div>
-
-      {/* Middle Section: Quote & CTA */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center items-start my-12 md:my-0 gap-8">
-        <div className="w-full max-w-5xl">
-          <h2 className="text-3xl md:text-5xl lg:text-7xl font-medium leading-[1.1] tracking-tight text-foreground/90">
-            &quot;{t('quote')}&quot;
+      <FooterBeams />
+      <div className="relative px-[clamp(20px,4.2vw,72px)]">
+        <div className="flex flex-col items-center py-section text-center">
+          <h2
+            id="footer-heading"
+            className="max-w-4xl text-[clamp(38px,6.2vw,92px)] leading-[1.15] font-bold tracking-[-0.055em] [word-break:keep-all]"
+          >
+            <span className="block">{t("headline")}</span>
+            <span className="block">{t("headlineEnd")}</span>
           </h2>
-        </div>
-
-        {/* CTA Button moved here */}
-        <Link 
-          href={`/${locale}/connect`}
-          className="group flex items-center gap-3 px-6 py-3 rounded-full bg-tertiary text-foreground font-bold hover:scale-105 transition-transform duration-300 w-max"
-        >
-          <span>{t('cta')}</span>
-          <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" size={20} />
-        </Link>
-      </div>
-
-      {/* Bottom Section: Info Grid */}
-      <div className="relative z-10 w-full flex flex-col-reverse md:flex-row justify-between items-end gap-12 md:gap-0">
-        
-        {/* Left: Copyright */}
-        <div className="w-full md:w-auto">
-          <p className="text-xs md:text-sm text-muted-foreground/60 font-mono uppercase tracking-wider">
-            {t('copyright')}
+          <p className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground [text-wrap:balance] [word-break:keep-all]">
+            {t("closing")}
           </p>
+          <MetalButton
+            asChild
+            inverted
+            preset="silver"
+            size="md"
+            className="gap-6 rounded-none text-sm"
+            wrapperClassName="mt-8 rounded-none"
+          >
+            <Link href={`/${locale}/connect`}>
+              {t("cta")}
+              <ArrowRight size={16} aria-hidden="true" className="-rotate-45" />
+            </Link>
+          </MetalButton>
         </div>
 
-        {/* Right: Info Columns */}
-        <div className="w-full md:w-auto flex flex-col md:flex-row gap-12 md:gap-24">
-            {/* Location */}
-            <div className="flex flex-col gap-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">
-                {t('locationLabel')}
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-t border-foreground/10 py-10 md:py-12 lg:grid-cols-[1.6fr_0.8fr_1fr] lg:gap-x-16">
+          <div className="col-span-2 lg:col-span-1">
+            <Link
+              href={`/${locale}`}
+              aria-label={t("home")}
+              className={cn("inline-flex items-center gap-3", footerLink)}
+            >
+              <BrandLogo className="size-6" />
+              <span className="text-sm font-semibold tracking-[0.04em]">
+                GRIDS AGENCY
               </span>
-              <p className="text-sm md:text-base font-medium leading-relaxed max-w-[200px]">
-                {t('location')}
-              </p>
-            </div>
+            </Link>
+            <p className="mt-4 max-w-72 text-xs leading-6 text-muted-foreground [word-break:keep-all]">
+              {t("location")}
+            </p>
+          </div>
 
-            {/* Contact */}
-            <div className="flex flex-col gap-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">
-                {t('contactLabel')}
-              </span>
-              <div className="flex flex-col gap-2">
-                <a href={`mailto:${t('email')}`} className="text-sm md:text-base font-medium hover:text-tertiary transition-colors w-max underline decoration-muted-foreground/30 underline-offset-4 hover:decoration-tertiary">
-                  {t('email')}
+          <nav aria-label={t("navigationLabel")}>
+            <h3 className="mb-6 text-xs font-medium">{t("navigationLabel")}</h3>
+            <ul className="space-y-4 text-sm text-muted-foreground">
+              {[
+                { href: `/${locale}`, label: t("home") },
+                { href: `/${locale}/archive`, label: nav("work") },
+                { href: `/${locale}/connect`, label: nav("contact") },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className={footerLink}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div>
+            <h3 className="mb-6 text-xs font-medium">{t("contactLabel")}</h3>
+            <ul className="space-y-4 text-sm text-muted-foreground">
+              <li>
+                <a
+                  href={`mailto:${t("email")}`}
+                  className={cn("break-words", footerLink)}
+                >
+                  {t("email")}
                 </a>
-                <p className="text-sm md:text-base text-muted-foreground font-mono">
-                  {t('phone')}
-                </p>
-              </div>
-            </div>
+              </li>
+              <li>
+                <a
+                  href="https://t.me/kyle_lee10"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={footerLink}
+                >
+                  Telegram ↗
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
+        <div className="flex flex-wrap items-center justify-between gap-5 border-t border-foreground/10 pt-5 pb-24 md:pb-8">
+          <p className="text-[10px] leading-5 text-muted-foreground">
+            {t("copyright")}
+          </p>
+          <button
+            type="button"
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+                  .matches
+                  ? "instant"
+                  : "smooth",
+              })
+            }
+            className={cn(
+              "flex cursor-pointer items-center gap-3 text-xs text-muted-foreground",
+              footerLink,
+            )}
+          >
+            {t("backToTop")}
+            <ArrowRight size={14} className="-rotate-90" aria-hidden="true" />
+          </button>
+        </div>
       </div>
     </footer>
   );
+}
+
+export default function FooterSection(props: FooterSectionProps) {
+  const pathname = usePathname();
+  if (pathname?.includes("/connect") || pathname?.includes("/archive"))
+    return null;
+  return <FooterContent {...props} />;
 }

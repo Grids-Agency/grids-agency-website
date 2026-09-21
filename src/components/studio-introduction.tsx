@@ -12,7 +12,7 @@ export default function StudioIntroduction() {
   return (
     <section
       aria-labelledby="studio-introduction-heading"
-      className="relative flex min-h-svh flex-col justify-between gap-8 bg-background px-[clamp(20px,4.2vw,72px)] pt-28 pb-10 text-foreground md:gap-10 md:pt-32 md:pb-12"
+      className="relative flex min-h-svh flex-col justify-between gap-8 bg-background px-[clamp(20px,4.2vw,72px)] py-section text-foreground md:gap-10"
     >
       <div className="relative grid flex-1 lg:min-h-[720px] lg:grid-cols-[1fr_1.1fr]">
         <div

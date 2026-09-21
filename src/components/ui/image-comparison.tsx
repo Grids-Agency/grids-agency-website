@@ -212,6 +212,7 @@ type ImageLayerProps = {
   loading?: "lazy" | "eager";
   priority?: boolean;
   label?: string;
+  softenBottomEdge?: boolean;
 };
 
 const ImageLayer = ({
@@ -222,6 +223,7 @@ const ImageLayer = ({
   loading = "eager",
   priority = false,
   label,
+  softenBottomEdge = false,
 }: ImageLayerProps) => {
   const { motionPosition, orientation } = useContext(SliderContext)!;
 
@@ -251,8 +253,15 @@ const ImageLayer = ({
         loading={loading}
         draggable={false}
         fetchPriority={priority ? "high" : "auto"}
-        className={cn("absolute inset-0 h-full w-full object-contain", className)}
+        className={cn(
+          "absolute inset-0 h-full w-full object-contain",
+          softenBottomEdge && "[mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)]",
+          className,
+        )}
       />
+      {softenBottomEdge && (
+        <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/4 backdrop-blur-[6px] [mask-image:linear-gradient(to_bottom,transparent,black_45%,transparent)]" />
+      )}
       {label && (
         <span aria-hidden="true" className={cn(
           "absolute bottom-4 border px-3.5 py-2 text-xs font-semibold tracking-[0.04em] shadow-[0_3px_12px_#0003] sm:bottom-5 sm:text-[13px]",
@@ -267,6 +276,7 @@ const ImageLayer = ({
 
 type DividerProps = {
   className?: string;
+  lineClassName?: string;
   children?: React.ReactNode;
   width?: number;
   showHandle?: boolean;
@@ -278,6 +288,7 @@ type DividerProps = {
 
 const Divider = ({
   className,
+  lineClassName,
   children,
   width = 2,
   showHandle = true,
@@ -304,12 +315,15 @@ const Divider = ({
         top: orientation === "vertical" ? dividerPosition : 0,
         width: orientation === "horizontal" ? `${width}px` : "100%",
         height: orientation === "vertical" ? `${width}px` : "100%",
-        backgroundColor: "var(--divider-color)",
         willChange: "transform, left, top",
         pointerEvents: "all",
         zIndex: 5,
       }}
     >
+      <span
+        aria-hidden="true"
+        className={cn("pointer-events-none absolute inset-0 bg-(--divider-color)", lineClassName)}
+      />
       <div
         className="absolute bg-transparent"
         style={{

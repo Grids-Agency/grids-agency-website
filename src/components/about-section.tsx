@@ -44,7 +44,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
       id="about-details"
       aria-labelledby="about-heading"
       className={cn(
-        "@container relative w-full scroll-mt-24 bg-background px-[clamp(20px,4.2vw,72px)] py-8 text-foreground md:py-16",
+        "@container relative w-full scroll-mt-24 bg-background px-[clamp(20px,4.2vw,72px)] py-section text-foreground",
         className,
       )}
     >
@@ -54,7 +54,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
         aria-label="FEATURED WORK"
         onMouseEnter={() => animateBrand(true)}
         onMouseLeave={() => animateBrand(false)}
-        className="cursor-default py-8 text-center text-[11cqw] leading-[0.8] font-black tracking-tighter whitespace-nowrap text-foreground/80 select-none md:mb-8"
+        className="mb-8 cursor-default text-center text-[11cqw] leading-[0.8] font-black tracking-tighter whitespace-nowrap text-foreground/80 select-none md:mb-16"
       >
         <span aria-hidden="true">
           {"FEATURED WORK".split("").map((letter, index) => (
