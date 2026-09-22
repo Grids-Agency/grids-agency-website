@@ -264,11 +264,13 @@ const ImageLayer = ({
       )}
       {label && (
         <span aria-hidden="true" className={cn(
-          "absolute bottom-4 border px-3.5 py-2 text-xs font-semibold tracking-[0.04em] shadow-[0_3px_12px_#0003] sm:bottom-5 sm:text-[13px]",
+          "absolute bottom-4 whitespace-nowrap border border-black/25 px-2.5 py-1.5 text-[10px] font-medium text-foreground dark:border-white/25 sm:bottom-5 sm:text-xs",
           layer === "second"
-            ? "left-4 border-white/20 bg-[#252525] text-white sm:left-5"
-            : "right-4 border-black/10 bg-tertiary text-[#171717] sm:right-5",
-        )}>{label}</span>
+            ? "left-4 sm:left-5"
+            : "right-4 sm:right-5",
+        )}>
+          {label}
+        </span>
       )}
     </motion.div>
   );

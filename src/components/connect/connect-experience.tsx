@@ -161,7 +161,7 @@ export default function ConnectExperience() {
           </motion.div>
         </motion.div>
 
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence mode="wait">
           {projectOpen ? (
             <motion.div
               key="questionnaire"

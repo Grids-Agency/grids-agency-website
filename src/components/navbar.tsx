@@ -155,7 +155,7 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
           <span className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0.06)_35%,transparent_55%,rgba(255,255,255,0.16)_100%)] dark:opacity-50" />
           <span className="absolute inset-x-[12%] top-0 h-px bg-linear-to-r from-transparent via-white/90 to-transparent dark:via-white/60" />
         </span>
-        {isHome && (
+        {(isHome || pathname.replace(/\/$/, "") === `/${locale}/connect`) && (
           <span
             data-hero-reveal="grid"
             aria-hidden="true"

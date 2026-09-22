@@ -99,9 +99,9 @@ export default function VisionPageClient() {
           <span data-scroll-reveal="line-x" aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 border-t border-foreground/15" />
           <span data-scroll-reveal="line-x" aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 border-b border-foreground/15" />
           <div data-scroll-reveal="line-y" aria-hidden="true" className="pointer-events-none absolute inset-y-0 inset-x-[calc(var(--vision-gutter)-1px)] border-x border-foreground/12" />
-          <div data-scroll-reveal="fade" data-reveal-delay="120" className="absolute inset-x-0 top-[28%] bottom-[calc(10rem+env(safe-area-inset-bottom))] md:top-[7%] md:bottom-[max(10rem,16%)] md:left-[32%]">
+          <div className="absolute inset-x-0 top-[28%] bottom-[calc(10rem+env(safe-area-inset-bottom))] md:top-[7%] md:bottom-[max(10rem,16%)] md:left-[32%]">
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_58%_42%,#e9c9a526,transparent_65%)] dark:bg-[radial-gradient(ellipse_at_58%_42%,#7896a01c,transparent_65%)]" />
-            <div className={cn("pointer-events-none absolute inset-0 transition-opacity duration-700 motion-reduce:transition-none", status === "ready" ? "opacity-0" : "opacity-100")}>
+            <div className={cn("pointer-events-none absolute inset-0 transition-opacity duration-700 motion-reduce:transition-none", status === "unavailable" ? "opacity-100" : "opacity-0")}>
               <GridFallback />
             </div>
             <div
@@ -109,7 +109,7 @@ export default function VisionPageClient() {
               role="group"
               aria-label={t("interaction")}
               aria-describedby="vision-interaction-hint"
-              className={cn("relative size-full outline-none transition-opacity duration-700 focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-tertiary/50 motion-reduce:transition-none", status === "ready" ? "opacity-100" : "pointer-events-none opacity-0")}
+              className={cn("relative size-full outline-none transition-opacity duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-tertiary/50 motion-reduce:transition-none", status === "ready" ? "opacity-100" : "pointer-events-none opacity-0")}
               onKeyDown={(event) => {
                 if (event.key === "ArrowLeft") input.current.yaw -= 0.15;
                 else if (event.key === "ArrowRight") input.current.yaw += 0.15;
@@ -125,7 +125,7 @@ export default function VisionPageClient() {
               </SceneBoundary>
             </div>
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,var(--background)_85%)]" />
-            <div data-scroll-reveal="text" data-reveal-delay="450" className="absolute -bottom-9 inset-x-6 flex justify-center md:-bottom-8">
+            <div data-scroll-reveal="fade" data-reveal-delay="450" className="absolute -bottom-9 inset-x-6 flex justify-center md:-bottom-8">
               <div className="flex max-w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 border border-foreground/10 bg-background/90 px-3 py-2 text-center text-[11px] leading-relaxed text-foreground/80 backdrop-blur-sm md:px-4 md:text-xs">
                 <p id="vision-interaction-hint" className="flex items-center gap-2">
                   <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.25" aria-hidden="true" className="size-4 shrink-0"><path d="M4 7a7 4 0 1 1 0 6M4 3v4h4" /></svg>
@@ -136,11 +136,11 @@ export default function VisionPageClient() {
             </div>
           </div>
 
-          <div data-scroll-reveal="text" data-reveal-delay="260" className="pointer-events-none absolute top-10 inset-x-[calc(var(--vision-gutter)+var(--vision-content-inset))] z-10 md:top-[22%] md:right-auto md:w-[43%]">
+          <div data-scroll-reveal="text" data-reveal-delay="180" className="pointer-events-none absolute top-10 inset-x-[calc(var(--vision-gutter)+var(--vision-content-inset))] z-10 grid md:top-[22%] md:right-auto md:w-[43%]">
             {chapters.map((chapter, index) => {
               const Heading = index === 0 ? "h1" : "h2";
               return (
-                <section key={chapter} id={`vision-${chapter}`} aria-hidden={active !== index} inert={active !== index} className={cn("absolute inset-x-0 top-0 transition-[opacity,transform,visibility] duration-500 ease-out motion-reduce:transition-none", active === index ? "pointer-events-auto visible translate-y-0 opacity-100" : "pointer-events-none invisible translate-y-3 opacity-0")}>
+                <section key={chapter} id={`vision-${chapter}`} aria-hidden={active !== index} inert={active !== index} className={cn("col-start-1 row-start-1 min-w-0 transition-[opacity,visibility] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none", active === index ? "pointer-events-auto visible opacity-100" : "pointer-events-none invisible opacity-0")}>
                   <Heading className="text-[clamp(28px,4vw,64px)] leading-[1.17] font-medium tracking-[-0.065em] [word-break:keep-all]">
                     <span className="block">{t(`chapters.${chapter}.line1`)}</span>
                     <span className="block text-foreground/55">{t(`chapters.${chapter}.line2`)}</span>

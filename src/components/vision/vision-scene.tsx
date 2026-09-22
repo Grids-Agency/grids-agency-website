@@ -114,6 +114,7 @@ export default function VisionScene({ input, onStatus, label }: {
       let pulseId = input.current.pulse;
       let time = 0, last = 0, frame = 0;
       let visible = true, lost = false, disposed = false;
+      let announcedReady = false;
       let lastSignature = "", theme: boolean | null = null;
       let drag: { x: number; y: number; yaw: number; pitch: number; moved: boolean; id: number } | null = null;
 
@@ -164,6 +165,10 @@ export default function VisionScene({ input, onStatus, label }: {
           camera.position.set(0, 5.3 - expansion * 2.5, distance + expansion * 3);
           camera.lookAt(0, -0.25 - expansion * 0.8, 0);
           renderer.render(scene, camera);
+          if (!announcedReady) {
+            announcedReady = true;
+            onStatus("ready");
+          }
         }
         frame = requestAnimationFrame(draw);
       };
@@ -210,7 +215,7 @@ export default function VisionScene({ input, onStatus, label }: {
       const restored = () => {
         try {
           refreshEnvironment();
-          lost = false; lastSignature = ""; onStatus("ready"); wake();
+          lost = false; announcedReady = false; lastSignature = ""; wake();
         } catch { onStatus("unavailable"); }
       };
       canvas.addEventListener("pointerdown", down);
@@ -221,7 +226,7 @@ export default function VisionScene({ input, onStatus, label }: {
       canvas.addEventListener("webglcontextlost", contextLost);
       canvas.addEventListener("webglcontextrestored", restored);
       document.addEventListener("visibilitychange", visibility);
-      size(); wake(); onStatus("ready");
+      size(); wake();
       return () => {
         disposed = true; cancelAnimationFrame(frame);
         sight.disconnect(); resize.disconnect();

@@ -10,14 +10,27 @@ import CrmDashboardPreview from "@/components/crm-dashboard-preview";
 import { MetalButton } from "@/components/spectrumui/metal-button";
 import type { ArchiveProject } from "./archive-project-data";
 
-export function ArchiveProjectPanel({ active, project, index }: { active: boolean; project: ArchiveProject; index: number }) {
+export function ArchiveProjectPanel({
+  active,
+  project,
+  index,
+}: {
+  active: boolean;
+  project: ArchiveProject;
+  index: number;
+}) {
   const t = useTranslations(`Archive.${project.namespace}`);
   const locale = useLocale();
   const gallery = project.gallery;
   const href = project.external ? project.href : `/${locale}${project.href}`;
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [selected, setSelected] = useState<number | null>(null);
-  const drag = useRef<{ pointerId: number; x: number; left: number; moved: boolean } | null>(null);
+  const drag = useRef<{
+    pointerId: number;
+    x: number;
+    left: number;
+    moved: boolean;
+  } | null>(null);
   const suppressClick = useRef(false);
 
   return (
@@ -29,10 +42,16 @@ export function ArchiveProjectPanel({ active, project, index }: { active: boolea
           poster={project.poster}
           aria-hidden="true"
           className="pointer-events-none block aspect-video w-full shrink-0 bg-[#080908] object-contain md:absolute md:inset-0 md:-z-20 md:aspect-auto md:h-full md:object-cover"
-          muted loop playsInline preload="none"
+          muted
+          loop
+          playsInline
+          preload="none"
         />
       ) : (
-        <div aria-hidden="true" className="pointer-events-none relative aspect-video w-full shrink-0 overflow-hidden bg-[#080908] md:absolute md:inset-0 md:-z-20 md:aspect-auto">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none relative aspect-video w-full shrink-0 overflow-hidden bg-[#080908] md:absolute md:inset-0 md:-z-20 md:aspect-auto"
+        >
           <div className="dark absolute inset-x-[5%] top-[10%] h-[65%] min-h-80 origin-top-left scale-110 opacity-80">
             {active && <CrmDashboardPreview />}
           </div>
@@ -70,7 +89,9 @@ export function ArchiveProjectPanel({ active, project, index }: { active: boolea
           </h3>
           <div className="mt-5 flex flex-wrap gap-2 text-[10px] text-white/80">
             {project.tags.map((tag) => (
-              <span key={tag} className="border border-white/25 px-2.5 py-1.5">{t(`tags.${tag}`)}</span>
+              <span key={tag} className="border border-white/25 px-2.5 py-1.5">
+                {t(`tags.${tag}`)}
+              </span>
             ))}
           </div>
           <dl className="mt-7 grid grid-cols-[auto_1fr] gap-x-5 gap-y-3 text-xs leading-[1.6]">
@@ -79,7 +100,11 @@ export function ArchiveProjectPanel({ active, project, index }: { active: boolea
             <dt className="text-white/50">{t("scopeLabel")}</dt>
             <dd>{t("scope")}</dd>
           </dl>
-          <MetalButton asChild className="group/link gap-6 rounded-none text-xs" wrapperClassName="mt-7 w-fit rounded-none">
+          <MetalButton
+            asChild
+            className="group/link gap-6 rounded-none text-xs"
+            wrapperClassName="mt-7 w-fit rounded-none"
+          >
             <a
               href={href}
               target={project.external ? "_blank" : undefined}
