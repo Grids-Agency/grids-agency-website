@@ -118,6 +118,7 @@ export default function FeaturedWorkCarousel() {
           const desktopOpen = selection.open.includes(index);
           return (
             <article
+              data-scroll-reveal="fade"
               key={key}
               className={cn(
                 "relative grid min-h-16 min-w-0 overflow-hidden transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none md:block md:min-h-0",
@@ -141,13 +142,13 @@ export default function FeaturedWorkCarousel() {
                       : "md:pointer-events-none md:invisible md:opacity-0 md:delay-0",
                   )}
                 >
-                  <h3 className="text-xl font-medium tracking-[-0.035em] md:text-2xl">
+                  <h3 data-scroll-reveal="text" className="text-xl font-medium tracking-[-0.035em] md:text-2xl">
                     {t(`${key}.title`)}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground [word-break:keep-all] md:min-h-12 md:text-base">
+                  <p data-scroll-reveal="text" className="mt-2 text-sm leading-relaxed text-muted-foreground [word-break:keep-all] md:min-h-12 md:text-base">
                     {t(`${key}.description`)}
                   </p>
-                  <div className="relative mt-5 aspect-[1.6/1] shrink-0 overflow-hidden border border-foreground/10 bg-foreground/[0.015]">
+                  <div data-scroll-reveal="surface" className="relative mt-5 aspect-[1.6/1] shrink-0 overflow-hidden border border-foreground/10 bg-foreground/[0.015]">
                     <video
                       src={video}
                       aria-label={t(`${key}.title`)}
@@ -158,7 +159,7 @@ export default function FeaturedWorkCarousel() {
                       preload="metadata"
                     />
                   </div>
-                  <div className="mt-auto pt-6">
+                  <div data-scroll-reveal="text" className="mt-auto pt-6">
                     <MetalButton asChild className="gap-3 rounded-none text-sm" wrapperClassName="rounded-none">
                       <Link href={`/${locale}/archive`}>
                         {t("learnMore")}

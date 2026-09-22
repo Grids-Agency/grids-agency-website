@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+import { useScrollReveals } from "@/hooks/use-scroll-reveals";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
@@ -20,9 +22,13 @@ function FooterContent({ className }: FooterSectionProps) {
   const t = useTranslations("Footer");
   const nav = useTranslations("Navbar");
   const locale = useLocale();
+  const pathname = usePathname();
+  const root = useRef<HTMLElement>(null);
+  useScrollReveals(root, pathname === `/${locale}` || pathname === `/${locale}/`);
 
   return (
     <footer
+      ref={root}
       className={cn(
         "relative isolate z-10 mt-section overflow-hidden bg-background text-foreground",
         className,
@@ -33,32 +39,33 @@ function FooterContent({ className }: FooterSectionProps) {
       <div className="relative px-[clamp(20px,4.2vw,72px)]">
         <div className="flex flex-col items-center py-section text-center">
           <h2
+            data-scroll-reveal="text"
             id="footer-heading"
             className="max-w-4xl text-[clamp(38px,6.2vw,92px)] leading-[1.15] font-bold tracking-[-0.055em] [word-break:keep-all]"
           >
             <span className="block">{t("headline")}</span>
             <span className="block">{t("headlineEnd")}</span>
           </h2>
-          <p className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground [text-wrap:balance] [word-break:keep-all]">
+          <p data-scroll-reveal="text" className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground [text-wrap:balance] [word-break:keep-all]">
             {t("closing")}
           </p>
+          <div data-scroll-reveal="text">
           <MetalButton
             asChild
-            inverted
-            preset="silver"
             size="md"
             className="gap-6 rounded-none text-sm"
             wrapperClassName="mt-8 rounded-none"
           >
             <Link href={`/${locale}/connect`}>
               {t("cta")}
-              <ArrowRight size={16} aria-hidden="true" className="-rotate-45" />
+              <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </MetalButton>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 border-t border-foreground/10 py-10 md:py-12 lg:grid-cols-[1.6fr_0.8fr_1fr] lg:gap-x-16">
-          <div className="col-span-2 lg:col-span-1">
+        <div data-scroll-reveal="fade" className="grid grid-cols-2 gap-x-8 gap-y-10 border-t border-foreground/10 py-10 md:py-12 lg:grid-cols-[1.6fr_0.8fr_1fr] lg:gap-x-16">
+          <div data-scroll-reveal="text" className="col-span-2 lg:col-span-1">
             <Link
               href={`/${locale}`}
               aria-label={t("home")}
@@ -69,12 +76,12 @@ function FooterContent({ className }: FooterSectionProps) {
                 GRIDS AGENCY
               </span>
             </Link>
-            <p className="mt-4 max-w-72 text-xs leading-6 text-muted-foreground [word-break:keep-all]">
+            <p data-scroll-reveal="text" className="mt-4 max-w-72 text-xs leading-6 text-muted-foreground [word-break:keep-all]">
               {t("location")}
             </p>
           </div>
 
-          <nav aria-label={t("navigationLabel")}>
+          <nav data-scroll-reveal="text" aria-label={t("navigationLabel")}>
             <h3 className="mb-6 text-xs font-medium">{t("navigationLabel")}</h3>
             <ul className="space-y-4 text-sm text-muted-foreground">
               {[
@@ -91,7 +98,7 @@ function FooterContent({ className }: FooterSectionProps) {
             </ul>
           </nav>
 
-          <div>
+          <div data-scroll-reveal="text">
             <h3 className="mb-6 text-xs font-medium">{t("contactLabel")}</h3>
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li>
@@ -116,11 +123,12 @@ function FooterContent({ className }: FooterSectionProps) {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-5 border-t border-foreground/10 pt-5 pb-24 md:pb-8">
-          <p className="text-[10px] leading-5 text-muted-foreground">
+        <div data-scroll-reveal="fade" className="flex flex-wrap items-center justify-between gap-5 border-t border-foreground/10 pt-5 pb-24 md:pb-8">
+          <p data-scroll-reveal="text" className="text-[10px] leading-5 text-muted-foreground">
             {t("copyright")}
           </p>
           <button
+            data-scroll-reveal="text"
             type="button"
             onClick={() =>
               window.scrollTo({

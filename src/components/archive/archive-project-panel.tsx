@@ -7,6 +7,7 @@ import { Dialog } from "radix-ui";
 import { ArrowUpRight } from "reicon-react/icons/ArrowUpRight";
 
 import CrmDashboardPreview from "@/components/crm-dashboard-preview";
+import { MetalButton } from "@/components/spectrumui/metal-button";
 import type { ArchiveProject } from "./archive-project-data";
 
 export function ArchiveProjectPanel({ active, project, index }: { active: boolean; project: ArchiveProject; index: number }) {
@@ -78,20 +79,20 @@ export function ArchiveProjectPanel({ active, project, index }: { active: boolea
             <dt className="text-white/50">{t("scopeLabel")}</dt>
             <dd>{t("scope")}</dd>
           </dl>
-          <a
-            href={href}
-            target={project.external ? "_blank" : undefined}
-            rel={project.external ? "noopener noreferrer" : undefined}
-            className="group/link mt-7 inline-flex min-h-11 w-fit items-center gap-6 border border-white/20 bg-white/[0.035] px-4 py-3 text-xs font-medium tracking-[0.01em] text-white/85 transition-colors duration-300 hover:border-white/40 hover:bg-white/[0.08] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none"
-          >
-            <span>{t("visit")}</span>
-            <span aria-hidden="true" className="border-l border-white/15 pl-3">
+          <MetalButton asChild className="group/link gap-6 rounded-none text-xs" wrapperClassName="mt-7 w-fit rounded-none">
+            <a
+              href={href}
+              target={project.external ? "_blank" : undefined}
+              rel={project.external ? "noopener noreferrer" : undefined}
+            >
+              {t("visit")}
               <ArrowUpRight
                 size={15}
+                aria-hidden="true"
                 className="transition-transform duration-300 ease-out group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 motion-reduce:transform-none"
               />
-            </span>
-          </a>
+            </a>
+          </MetalButton>
         </div>
 
         <div className="min-w-0">

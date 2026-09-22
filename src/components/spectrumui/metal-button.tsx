@@ -62,7 +62,12 @@ export function MetalButton({
   const hydrated = React.useSyncExternalStore(subscribeToHydration, clientSnapshot, serverSnapshot);
   const Component = asChild ? Slot : 'button';
   const wrapperClasses = cn(
-    'inline-flex rounded-full has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-4 has-[:focus-visible]:outline-tertiary',
+    // MetalFx hides its entire host until the first GPU copy. Keep the actual
+    // control visible even if that frame is delayed, paused, or never arrives.
+    'visible! inline-flex rounded-full opacity-100! has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-4 has-[:focus-visible]:outline-tertiary',
+    !inverted && (effectTheme === 'light'
+      ? 'bg-[#dedfe1]! bg-[linear-gradient(180deg,#eceeef_0%,#dedfe1_55%,#d2d4d7_100%)]! shadow-[inset_0_0_0_1px_#22222226,inset_0_1px_0_#ffffffcc,0_2px_5px_#0000000c]'
+      : 'bg-[#272727]!'),
     inverted && 'bg-black! dark:bg-white!',
     wrapperClassName,
   );

@@ -1,36 +1,39 @@
 "use client";
 
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import Cube from "@/components/originkit/ui/cube";
-import { useSurfaceTheme } from "@/components/spectrumui/use-surface-theme";
-
-const rotation = { x: 1, y: 2, z: 0.3 };
-const transition = { type: "spring" as const, stiffness: 80, damping: 18, mass: 1 };
+import { MetalButton } from "@/components/spectrumui/metal-button";
 
 export default function ConsultationButton() {
   const t = useTranslations("ConsultationButton");
-  const theme = useSurfaceTheme();
+  const reduced = useReducedMotion();
 
   return (
-    <a
-      href="http://pf.kakao.com/_FGQrX/chat"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={t("accessibleLabel")}
-      className="group fixed right-[max(1.25rem,env(safe-area-inset-right))] bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-40 inline-flex min-h-14 items-center gap-2 border border-white/20 bg-[#1b1b1b] py-1 pr-6 pl-1.5 text-white shadow-[0_8px_30px_#0003] transition-[background-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:bg-[#262626] hover:shadow-[0_12px_36px_#0005] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tertiary motion-reduce:transform-none motion-reduce:transition-none md:right-8 md:bottom-8"
-    >
-      <span aria-hidden="true" className="pointer-events-none size-11 shrink-0">
-        <Cube
-          color={theme === "dark" ? "#38bdf8" : "#e9620e"}
-          cubeGrid={6}
-          dotsPerFace={1}
-          dotSize={1}
-          sizePercent={97}
-          rotation={rotation}
-          transition={transition}
-        />
-      </span>
-      <span className="text-sm font-bold tracking-tight">{t("label")}</span>
-    </a>
+    <div className="fixed right-[max(1.25rem,env(safe-area-inset-right))] bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-40 md:right-8 md:bottom-8">
+      <MetalButton
+        asChild
+        className="group min-h-14 gap-3 rounded-none px-5 text-sm font-bold tracking-tight"
+        wrapperClassName="rounded-none"
+      >
+        <a
+          href="http://pf.kakao.com/_FGQrX"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t("accessibleLabel")}
+        >
+          <span aria-hidden="true" className="pointer-events-none flex size-8 shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-110 group-focus-visible:scale-110 motion-reduce:transform-none">
+            <motion.span
+              className="block size-7 origin-bottom"
+              animate={reduced ? { y: 0, rotate: 0 } : { y: [0, -3, -1, 0], rotate: [0, -7, 5, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, repeatDelay: 5, ease: "easeInOut" }}
+            >
+              <Image src="/icons/integrations/kakao-bubble.png" alt="" width={28} height={27} className="h-auto w-7 dark:invert" />
+            </motion.span>
+          </span>
+          <span>{t("label")}</span>
+        </a>
+      </MetalButton>
+    </div>
   );
 }

@@ -230,6 +230,83 @@
     }
   },
   "Connect": {
+    "Questionnaire": {
+      "otherLabel": "Tell us what you have in mind.",
+      "otherPlaceholder": "Describe the service or features you’d like to build.",
+      "otherRequired": "Please describe your other project type.",
+      "nameRequired": "Please enter your name.",
+      "emailRequired": "Please enter your email address.",
+      "emailInvalid": "Please enter a valid email address (e.g. hello@company.com).",
+      "consentRequired": "Please agree to the terms and privacy policy before sending.",
+      "name": {
+        "title": "Who is the mind behind it?",
+        "placeholder": "Your name"
+      },
+      "company": {
+        "title": "Tell us about your team.",
+        "placeholder": "Company or team name (optional)"
+      },
+      "build": {
+        "title": "What would you like to build?"
+      },
+      "budget": {
+        "title": "Do you have a budget in mind?"
+      },
+      "email": {
+        "title": "Where can we reach you?",
+        "placeholder": "Your email address"
+      },
+      "notes": {
+        "label": "PROJECT NOTE",
+        "optional": "Optional",
+        "hint": "Timeline · References · Features",
+        "count": "{count} of 5,000 characters",
+        "title": "Anything else you’d like us to know?",
+        "placeholder": "Ideas, timelines, references. We’re all ears. (Optional)"
+      },
+      "services": {
+        "website": "Website · E-commerce",
+        "app": "Web · Mobile app",
+        "admin": "CRM · Admin tools",
+        "automation": "Workflow automation",
+        "ai": "AI solutions",
+        "unsure": "Still exploring",
+        "other": "Other"
+      },
+      "budgets": {
+        "small": "Under ₩5 million",
+        "medium": "Under ₩10 million",
+        "large": "Under ₩30 million",
+        "enterprise": "Under ₩50 million",
+        "scale": "Under ₩100 million",
+        "discuss": "Let’s discuss it together"
+      },
+      "multiple": "Select everything you have in mind.",
+      "required": "Please enter an answer or select an option.",
+      "back": "Back",
+      "next": "Next",
+      "send": "Send inquiry",
+      "sending": "Sending",
+      "done": "Back to start",
+      "navigation": "Project inquiry steps",
+      "unavailable": "Online delivery is currently unavailable. You can email your completed answers instead.",
+      "sendError": "Your inquiry could not be sent. Please try again or email your answers.",
+      "emailFallback": "Email these answers",
+      "emailSubject": "GRIDS project inquiry",
+      "successTitle": "The start of something new. Thank you.",
+      "successDescription": "Your inquiry has been delivered. We’ll read through your ideas and get back to you by email."
+    },
+    "Experience": {
+      "title": "What brings you here today?",
+      "description": "A clear plan or the spark of an idea. Let’s start there.",
+      "project": "Start a project",
+      "chat": "Drop a quick word",
+      "copy": "Copy our email",
+      "copied": "Email copied",
+      "projectTitle": "Tell us what you have in mind.",
+      "projectDescription": "Share a little about your project. We’ll review the details and get in touch personally.",
+      "copyFallback": "Contact us by email:"
+    },
     "titlePrefix": "We Would Love to Hear",
     "titleHighlight": "from You",
     "description": "We appreciate you reaching out to connect. At Grids, every interaction is a coordinate for future growth. Please share your details below, and let’s start engineering.",
@@ -293,6 +370,39 @@
         "title": "Dimensional Integrity",
         "description": "As the Z-axis aligns, imagination finally becomes a three-dimensional reality. Within the space built by GRIDS, your business transforms into a living ecosystem, revealing its complete presence and volume."
       }
+    },
+    "Experience": {
+      "label": "Our vision",
+      "navigation": "Explore our vision",
+      "interaction": "Interactive 3D grid. Use arrow keys to rotate and Enter to send a ripple.",
+      "hint": "Drag to rotate · Tap to send a ripple",
+      "scroll": "Scroll to explore",
+      "cta": "Draw what comes next with us",
+      "chapters": {
+        "possibility": {
+          "label": "Draw possibilities",
+          "line1": "One grid.",
+          "line2": "Any possibility.",
+          "description": "A grid has no predetermined answer. The lines we draw give it form. At GRIDS, we take the shape your idea needs—and build what comes next, together.",
+          "scene": "A three-dimensional grid of coordinates forming a flowing surface"
+        },
+        "connection": {
+          "label": "Connect meaning",
+          "line1": "Connect the dots.",
+          "line2": "Reveal the picture.",
+          "description": "Individual points find meaning together. We connect your vision with our technology, people with people, and ideas with action—to create a picture none of us could draw alone.",
+          "scene": "The grid curls into a continuous Möbius strip with a single half-twist"
+        },
+        "infinity": {
+          "label": "Go beyond",
+          "line1": "A next chapter.",
+          "line2": "Without an edge.",
+          "description": "A grid extends without an end. We believe growth should, too. From one project to the next challenge, we expand our coordinates—and the possibilities for our clients.",
+          "scene": "A connected structure unfolds into an open coordinate field extending toward the horizon"
+        }
+      },
+      "fallback": "The same grid. A different perspective.",
+      "retry": "Retry 3D"
     }
   },
   "Archive": {

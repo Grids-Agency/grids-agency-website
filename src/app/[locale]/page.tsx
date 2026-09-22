@@ -9,10 +9,12 @@ import HeroGridBackground from "@/components/hero-grid-background";
 import Navbar from "@/components/navbar";
 import ManifestoSection from "@/components/manifesto-section";
 import FaqSection from "@/components/faq-section";
+import { useScrollReveals } from "@/hooks/use-scroll-reveals";
 
 export default function Home() {
   const [revealed, setRevealed] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
+  useScrollReveals(heroRef);
   const revealContent = useCallback(() => setRevealed(true), []);
 
   return (
