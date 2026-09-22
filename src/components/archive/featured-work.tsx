@@ -33,7 +33,7 @@ export function FeaturedWork() {
       title: t("Featured.Projects.web-dev.title"),
       description: t("Featured.Projects.web-dev.description"),
       video: "/videos/aether-velum.mp4",
-      link: "https://aetherfragrances.vercel.app/",
+      link: "https://aetherparfums.com/",
       year: "2025",
     },
     {

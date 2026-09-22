@@ -1,66 +1,36 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import dynamic from "next/dynamic";
-
-import HaloScene from "@/components/archive/halo-scene";
-// const HaloScene = dynamic(() => import("@/components/archive/halo-scene"), { ssr: false });
-
-interface ArchiveEntryProps {
-  onEnter: () => void;
-}
-
 import { useTranslations } from "next-intl";
+import { ArrowRight } from "reicon-react/icons/ArrowRight";
 
-export function ArchiveEntry({ onEnter }: ArchiveEntryProps) {
-    const t = useTranslations("Archive");
-    return (
-        <div className="w-full h-screen sticky top-0 overflow-hidden bg-background">
-            {/* Background - 3D Halo */}
-            <div className="absolute inset-0 z-1 pointer-events-none">
-                <HaloScene />
-            </div>
+export function ArchiveEntry({ onExplore }: { onExplore: () => void }) {
+  const t = useTranslations("Archive.Entry");
 
-            {/* Content Overlay */}
-            <div className="relative z-20 w-full h-full flex flex-col justify-center p-8 md:p-24 pointer-events-none">
-                <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000 pointer-events-auto">
-                    <h1 className="text-5xl md:text-8xl font-regular tracking-tighter text-foreground leading-[0.9]">
-                        {t.rich("Entry.title", {
-                            newline: () => <br />,
-                        })}
-                    </h1>
-                    
-
-                    <p className="text-base md:text-lg text-muted-foreground font-light max-w-md leading-relaxed">
-                        {t("Entry.subtitle")}
-                    </p>
-
-                    <div className="pt-8 relative">
-                        {/* Decorative Line for button grouping */}
-                       
-
-                        <button 
-                            onClick={onEnter} 
-                            className="group relative flex items-center gap-2 text-sm tracking-widest uppercase hover:text-foreground/80 transition-colors"
-                        >
-                            <span className="relative z-10 border-b border-transparent group-hover:border-foreground transition-all duration-300">
-                                {t("Entry.explore")}
-                            </span>
-                            <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-                        </button>
-                    </div>
-                </div>
-                
-                 <div className="absolute bottom-12 right-8 md:right-24 text-[10px] tracking-widest text-muted-foreground opacity-50 flex items-center gap-2 pointer-events-auto">
-                    {t("Entry.checkFeatured")} <ArrowRight className="w-3 h-3 rotate-90" />
-                </div>
-            </div>
-
-            {/* Interactive/Decorative Circle - Bottom Right */}
-            <div className="absolute bottom-8 right-8 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center animate-spin-slow opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
-                <div className="w-1 h-1 bg-white rounded-full" />
-            </div>
-        </div>
-    );
+  return (
+    <div className="flex min-w-0 flex-1 flex-col justify-center py-6 sm:py-10">
+      <div className="max-w-3xl">
+        <p className="mb-6 font-mono text-[9px] tracking-[0.14em] sm:text-xs">GRIDS / ARCHIVE</p>
+        <h1 data-grid-avoid className="text-[clamp(26px,9cqw,84px)] leading-[1.12] font-[450] tracking-[-0.065em] [word-break:keep-all]">
+          {t.rich("title", { newline: () => <br /> })}
+        </h1>
+        <p data-grid-avoid className="mt-6 max-w-md text-xs leading-[1.85] [word-break:keep-all] sm:mt-8 sm:text-base">
+          {t("subtitle")}
+        </p>
+        <button
+          type="button"
+          onClick={onExplore}
+          className="group relative mt-8 inline-flex min-h-11 cursor-pointer items-center gap-3 px-3 py-3 text-left text-[11px] leading-5 font-medium transition-colors hover:text-tertiary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tertiary motion-reduce:transition-none sm:gap-7 sm:px-5 sm:text-xs"
+        >
+          <span aria-hidden="true" className="pointer-events-none absolute inset-0">
+            <span className="absolute top-0 left-0 size-3 border-t border-l border-current" />
+            <span className="absolute top-0 right-0 size-3 border-t border-r border-current" />
+            <span className="absolute bottom-0 left-0 size-3 border-b border-l border-current" />
+            <span className="absolute right-0 bottom-0 size-3 border-r border-b border-current" />
+          </span>
+          {t("explore")}
+          <ArrowRight size={16} className="shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none" aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+  );
 }

@@ -115,7 +115,9 @@ export default function AutomationWorkflowPreview() {
           </g>
         ))}
         <rect x="144" y="96" width="72" height="72" className="fill-background stroke-foreground/15" strokeWidth="1" />
-        <image href="/logo/grids-black.png" x="164" y="116" width="32" height="32" className="dark:invert" />
+        {/* Explicit assets avoid SVG image-filter rendering differences in Safari. */}
+        <image href="/logo/grids-black.png" x="164" y="116" width="32" height="32" className="dark:hidden" />
+        <image href="/logo/grids-white.png" x="164" y="116" width="32" height="32" className="hidden dark:block" />
       </svg>
     </div>
   );

@@ -296,6 +296,95 @@
     }
   },
   "Archive": {
+    "Websites": {
+      "title": "웹사이트",
+      "tags": {
+        "website": "브랜드 웹사이트",
+        "film": "AI 비주얼"
+      },
+      "industryLabel": "분야",
+      "industry": "프래그런스 · 라이프스타일",
+      "scopeLabel": "제작 범위",
+      "scope": "웹 개발 · AI 영상 제작",
+      "visit": "사이트 방문",
+      "galleryLabel": "프로젝트 이미지",
+      "galleryNote": "브랜드 필름에서 발췌한 장면",
+      "enlarge": "{image} 크게 보기",
+      "close": "닫기",
+      "images": {
+        "bottle": "AETHER 향수병의 제품 비주얼",
+        "coffee": "커피 원두로 표현한 향의 이미지",
+        "rum": "럼의 질감을 표현한 브랜드 필름 장면"
+      },
+      "heading": "보이지 않는 향을, 보이는 경험으로.",
+      "description": "AETHER의 향과 분위기를 웹과 영상으로 풀어냈습니다. 제품의 디테일과 향의 이미지를 담은 AI 비주얼을 웹 경험에 연결해, 브랜드의 세계를 자연스럽게 탐색할 수 있도록 구성했습니다.",
+      "projectTitle": "AETHER",
+      "projectLabel": "AETHER FRAGRANCES"
+    },
+    "Gallery": {
+      "label": "그리즈 작업 아카이브",
+      "navigation": "작업 분야 탐색",
+      "index": "About",
+      "heading": "공개할 수 있는\n작업을 모았습니다.",
+      "description": "이곳에는 공개 가능한 프로젝트만 담았습니다. 모든 결과를 보여드릴 수는 없지만, 그 뒤에는 고객과 함께 쌓아온 경험이 있습니다.",
+      "explore": "작업 살펴보기",
+      "visit": "사이트 방문",
+      "open": "{title} 펼치기",
+      "categoriesLabel": "CATEGORIES",
+      "categories": {
+        "websites": {
+          "title": "웹사이트",
+          "eyebrow": "WEBSITES",
+          "example": "AETHER · 브랜드 웹사이트",
+          "description": "브랜드의 개성을 담은 웹사이트부터 구매로 이어지는 쇼핑몰까지. 첫 방문부터 마지막 클릭까지 자연스러운 경험을 설계합니다."
+        },
+        "webApps": {
+          "title": "웹 앱",
+          "eyebrow": "WEB APPLICATIONS",
+          "example": "JIAM · 이러닝 플랫폼",
+          "description": "아이디어를 실제로 작동하는 서비스로 만듭니다. 학습, 예약, 결제 등 비즈니스에 필요한 기능을 하나의 웹 애플리케이션으로 연결합니다."
+        },
+        "aiFilm": {
+          "title": "AI 영상",
+          "eyebrow": "AI FILM",
+          "example": "The Clear Labs · 브랜드 영상",
+          "description": "브랜드의 분위기와 제품의 디테일을 새로운 장면으로 표현합니다. AI 기술과 크리에이티브를 결합해 시선을 끄는 영상을 만듭니다."
+        },
+        "admin": {
+          "title": "어드민 툴",
+          "eyebrow": "ADMIN TOOLS",
+          "example": "운영 대시보드 · UI 컨셉",
+          "description": "고객, 매출, 업무 데이터를 한곳에서 관리하도록. 팀의 업무 방식에 맞춘 관리 도구로 복잡한 운영을 단순하게 만듭니다."
+        }
+      },
+      "disclosure": {
+        "client": {
+          "title": "고객의 선택을 존중합니다.",
+          "description": "클라이언트의 요청에 따라 일부 프로젝트는 포트폴리오에 포함하지 않거나, 공개 가능한 범위로만 소개합니다."
+        },
+        "internal": {
+          "title": "내부의 일은, 내부에 남깁니다.",
+          "description": "사내 시스템과 어드민 툴은 내부 데이터와 업무 프로세스를 포함하므로, 실제 운영 화면과 세부 기능을 공개하지 않습니다."
+        },
+        "nda": {
+          "title": "공개보다 약속이 먼저입니다.",
+          "description": "정치 기관·조직과의 협업을 포함해 NDA가 적용되는 프로젝트는 계약에 따라 고객명과 작업 내용을 공개하지 않습니다."
+        },
+        "closing": "작업을 소개하는 것보다 고객의 정보와 신뢰를 지키는 일을 우선합니다."
+      },
+      "headline": {
+        "first": "작업을 보여드리고,",
+        "emphasis": "신뢰를 지킵니다."
+      },
+      "note": {
+        "label": "포트폴리오 공개 안내",
+        "intro": "이 아카이브에는 고객과 함께 만든 결과 중 공개 가능한 작업만 담았습니다.",
+        "client": "<strong>고객의 요청</strong>에 따라 일부 프로젝트는 소개하지 않거나, 공개가 허용된 범위로만 보여드립니다.",
+        "internal": "<strong>사내 시스템과 어드민 툴</strong>은 내부 데이터와 업무 프로세스를 다루므로, 실제 운영 화면과 세부 기능을 공개하지 않습니다.",
+        "nda": "<strong>정치 기관·조직과의 협업을 포함한 NDA 적용 프로젝트</strong>는 계약에 따라 고객명과 작업 내용을 비공개로 유지합니다.",
+        "closing": "보여드리는 결과만큼, 지켜드리는 신뢰도 중요합니다."
+      }
+    },
     "swipeHint": "SWIPE TO EXPLORE",
     "clientRequest": "Client Request / Case Study",
     "viewLive": "결과물 보기",
@@ -340,8 +429,8 @@
     "Entry": {
       "title": "우리의 작업, <newline></newline> 우리의 역사",
       "subtitle": "미래를 만드는 유산. 확장 가능한 웹 아키텍처와 최첨단 AI 영상 제작 포트폴리오를 확인하세요.",
-      "explore": "그리드로 탐색하기",
-      "checkFeatured": "또는 주요 작업 확인하기"
+      "explore": "기업별 작업 살펴보기",
+      "checkFeatured": "스크롤하여 작업 살펴보기"
     },
     "Featured": {
       "label": "주요 작업",
@@ -365,6 +454,95 @@
           "description": "생성형 AI 비디오의 한계를 뛰어넘다."
         }
       }
+    },
+    "Browser": {
+      "home": "홈",
+      "navigationLabel": "아카이브 탐색",
+      "openFinder": "클릭하여 아카이브 열기",
+      "heading": "함께 만든 기록",
+      "title": "작업 아카이브",
+      "sidebarLabel": "함께한 기업",
+      "count": "{count}개 기업",
+      "panelLabel": "PROJECT ARCHIVE",
+      "selected": "{company} 선택됨",
+      "companies": {
+        "jeisys": "제이시스메디칼",
+        "tcl": "The Clear Labs",
+        "aether": "AETHER",
+        "haneul": "하늘마스크"
+      }
+    },
+    "WebApps": {
+      "industryLabel": "분야",
+      "scopeLabel": "제작 범위",
+      "galleryLabel": "프로젝트 이미지",
+      "enlarge": "{image} 크게 보기",
+      "close": "닫기",
+      "title": "웹 앱",
+      "projectLabel": "JEISYS · LEARNING PLATFORM",
+      "projectTitle": "JIAM",
+      "tags": {
+        "platform": "웹 애플리케이션",
+        "learning": "이러닝 플랫폼"
+      },
+      "industry": "의료 · 교육",
+      "scope": "웹 앱 개발 · 학습 경험 설계",
+      "visit": "플랫폼 방문",
+      "images": {
+        "first": "JIAM 브랜드 인트로",
+        "second": "JIAM 로고 모션",
+        "third": "제이시스 브랜드 로고"
+      },
+      "heading": "전문 지식을, 더 가까운 배움으로.",
+      "description": "제이시스메디칼의 이러닝 플랫폼 JIAM. 전문 교육 콘텐츠를 웹에서 만나고 탐색할 수 있도록, 브랜드와 학습 경험을 하나의 서비스로 연결했습니다."
+    },
+    "AiFilm": {
+      "industryLabel": "분야",
+      "scopeLabel": "제작 범위",
+      "galleryLabel": "프로젝트 이미지",
+      "enlarge": "{image} 크게 보기",
+      "close": "닫기",
+      "title": "AI 영상",
+      "projectLabel": "THE CLEAR LABS · BRAND FILM",
+      "projectTitle": "The Clear Labs",
+      "tags": {
+        "brand": "브랜드 필름",
+        "ai": "AI 영상 제작"
+      },
+      "industry": "뷰티 · 라이프스타일",
+      "scope": "AI 비주얼 · 브랜드 영상",
+      "visit": "영상 보기",
+      "images": {
+        "first": "The Clear Labs 브랜드 필름 첫 번째 장면",
+        "second": "The Clear Labs 브랜드 필름 두 번째 장면",
+        "third": "The Clear Labs 브랜드 필름 세 번째 장면"
+      },
+      "heading": "브랜드의 감각을, 새로운 장면으로.",
+      "description": "제품의 디테일과 브랜드의 분위기를 AI 비주얼로 풀어낸 The Clear Labs의 브랜드 필름입니다. 빛과 질감, 움직임을 통해 브랜드가 전하고 싶은 이미지를 하나의 영상으로 담았습니다."
+    },
+    "AdminTools": {
+      "industryLabel": "분야",
+      "scopeLabel": "제작 범위",
+      "galleryLabel": "프로젝트 이미지",
+      "enlarge": "{image} 크게 보기",
+      "close": "닫기",
+      "title": "어드민 툴",
+      "projectLabel": "OPERATIONS · UI CONCEPT",
+      "projectTitle": "Operations",
+      "tags": {
+        "admin": "운영 대시보드",
+        "concept": "UI 컨셉"
+      },
+      "industry": "사내 운영 · 데이터 관리",
+      "scope": "관리 도구 · 업무 흐름 설계",
+      "visit": "프로젝트 상담",
+      "images": {
+        "overview": "운영 현황 대시보드 UI 컨셉",
+        "records": "데이터 관리 화면 UI 컨셉",
+        "workflow": "업무 흐름 관리 화면 UI 컨셉"
+      },
+      "heading": "복잡한 운영을, 한눈에.",
+      "description": "흩어진 데이터와 업무 흐름을 한곳에서 파악하는 관리 도구를 설계합니다. 고객의 내부 정보 보호를 위해 실제 운영 화면 대신, 대시보드와 데이터 관리, 업무 흐름의 UI 컨셉을 소개합니다."
     }
   },
   "NotFound": {

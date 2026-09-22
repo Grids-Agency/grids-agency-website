@@ -296,6 +296,95 @@
     }
   },
   "Archive": {
+    "Websites": {
+      "title": "Websites",
+      "tags": {
+        "website": "Brand website",
+        "film": "AI visuals"
+      },
+      "industryLabel": "Industry",
+      "industry": "Fragrance · Lifestyle",
+      "scopeLabel": "Scope",
+      "scope": "Web development · AI film",
+      "visit": "Visit website",
+      "galleryLabel": "Project images",
+      "galleryNote": "STILLS FROM THE BRAND FILM",
+      "enlarge": "Enlarge {image}",
+      "close": "Close",
+      "images": {
+        "bottle": "AETHER fragrance bottle product visual",
+        "coffee": "Coffee beans evoking the fragrance notes",
+        "rum": "A brand film still capturing the texture of rum"
+      },
+      "heading": "An invisible scent. A visible experience.",
+      "description": "AETHER’s fragrance and atmosphere, expressed through the web and film. AI visuals capture the product’s details and scent imagery, forming a connected web experience that invites visitors into the brand’s world.",
+      "projectTitle": "AETHER",
+      "projectLabel": "AETHER FRAGRANCES"
+    },
+    "Gallery": {
+      "label": "GRIDS work archive",
+      "navigation": "Explore work categories",
+      "index": "About",
+      "heading": "The work\nwe can share.",
+      "description": "This archive features the projects we can share publicly. Behind the work you see is a wider body of experience built alongside our clients.",
+      "explore": "Explore the work",
+      "visit": "Visit website",
+      "open": "Open {title}",
+      "categoriesLabel": "CATEGORIES",
+      "categories": {
+        "websites": {
+          "title": "Websites",
+          "eyebrow": "WEBSITES",
+          "example": "AETHER · Brand website",
+          "description": "From distinctive brand websites to online stores built for conversion. A considered experience from the first visit to the final click."
+        },
+        "webApps": {
+          "title": "Web apps",
+          "eyebrow": "WEB APPLICATIONS",
+          "example": "JIAM · E-learning platform",
+          "description": "Ideas turned into working services. We connect learning, booking, payments, and the features your business needs in a single web application."
+        },
+        "aiFilm": {
+          "title": "AI films",
+          "eyebrow": "AI FILM",
+          "example": "The Clear Labs · Brand film",
+          "description": "Brand atmosphere and product detail, expressed through new perspectives. AI technology and creative direction come together in films that capture attention."
+        },
+        "admin": {
+          "title": "Admin tools",
+          "eyebrow": "ADMIN TOOLS",
+          "example": "Operations dashboard · UI concept",
+          "description": "Customers, revenue, and workflows in one place. Custom management tools that fit the way your team works and make complex operations simpler."
+        }
+      },
+      "disclosure": {
+        "client": {
+          "title": "Our clients decide what we share.",
+          "description": "At a client’s request, some projects are excluded from our portfolio or presented only within the scope they permit."
+        },
+        "internal": {
+          "title": "Internal work stays internal.",
+          "description": "Internal systems and admin tools contain private data and business processes. We do not publish their live screens or detailed functionality."
+        },
+        "nda": {
+          "title": "Our commitments come first.",
+          "description": "For projects covered by NDAs, including work with political institutions and organizations, client identities and project details remain confidential under the agreement."
+        },
+        "closing": "Protecting our clients’ information and trust takes priority over showcasing our work."
+      },
+      "headline": {
+        "first": "We share our work.",
+        "emphasis": "We protect your trust."
+      },
+      "note": {
+        "label": "A NOTE ON OUR PORTFOLIO",
+        "intro": "This archive features the work we can share publicly, created alongside our clients.",
+        "client": "<strong>At our clients’ request</strong>, some projects are not shown, while others are presented only within the scope they permit.",
+        "internal": "<strong>Internal systems and admin tools</strong> contain private data and business processes. We do not publish their live screens or detailed functionality.",
+        "nda": "<strong>Projects covered by NDAs, including work with political institutions and organizations,</strong> remain confidential. Client identities and project details are withheld in accordance with those agreements.",
+        "closing": "The trust we protect matters as much as the work we share."
+      }
+    },
     "swipeHint": "SWIPE TO EXPLORE",
     "clientRequest": "Client Request / Case Study",
     "viewLive": "View Live",
@@ -340,8 +429,8 @@
     "Entry": {
       "title": "Our Works, <newline></newline> Our History",
       "subtitle": "A legacy of building what’s next. Our portfolio of scalable web architectures and cutting-edge AI video productions.",
-      "explore": "Explore as Grid",
-      "checkFeatured": "OR check out featured"
+      "explore": "Explore by company",
+      "checkFeatured": "Scroll to explore"
     },
     "Featured": {
       "label": "Featured Work",
@@ -365,6 +454,95 @@
           "description": "Pushing the boundaries of generative AI video."
         }
       }
+    },
+    "Browser": {
+      "home": "Home",
+      "navigationLabel": "Archive navigation",
+      "openFinder": "Click to open archive",
+      "heading": "Work we’ve built together",
+      "title": "Work archive",
+      "sidebarLabel": "Companies",
+      "count": "{count} companies",
+      "panelLabel": "PROJECT ARCHIVE",
+      "selected": "{company} selected",
+      "companies": {
+        "jeisys": "Jeisys Medical",
+        "tcl": "The Clear Labs",
+        "aether": "AETHER",
+        "haneul": "Haneul Mask"
+      }
+    },
+    "WebApps": {
+      "industryLabel": "Industry",
+      "scopeLabel": "Scope",
+      "galleryLabel": "Project images",
+      "enlarge": "Enlarge {image}",
+      "close": "Close",
+      "title": "Web apps",
+      "projectLabel": "JEISYS · LEARNING PLATFORM",
+      "projectTitle": "JIAM",
+      "tags": {
+        "platform": "Web application",
+        "learning": "Learning platform"
+      },
+      "industry": "Medical · Education",
+      "scope": "Web app development · Learning experience",
+      "visit": "Visit platform",
+      "images": {
+        "first": "JIAM brand introduction",
+        "second": "JIAM logo motion",
+        "third": "Jeisys brand logo"
+      },
+      "heading": "Expert knowledge, within reach.",
+      "description": "JIAM is an e-learning platform built for Jeisys Medical. We brought professional education content to the web, connecting the brand and the learning experience in a single service."
+    },
+    "AiFilm": {
+      "industryLabel": "Industry",
+      "scopeLabel": "Scope",
+      "galleryLabel": "Project images",
+      "enlarge": "Enlarge {image}",
+      "close": "Close",
+      "title": "AI films",
+      "projectLabel": "THE CLEAR LABS · BRAND FILM",
+      "projectTitle": "The Clear Labs",
+      "tags": {
+        "brand": "Brand film",
+        "ai": "AI film production"
+      },
+      "industry": "Beauty · Lifestyle",
+      "scope": "AI visuals · Brand film",
+      "visit": "View film",
+      "images": {
+        "first": "The Clear Labs brand film, scene one",
+        "second": "The Clear Labs brand film, scene two",
+        "third": "The Clear Labs brand film, scene three"
+      },
+      "heading": "A new expression of the brand.",
+      "description": "An AI-powered brand film for The Clear Labs, exploring product details and the atmosphere of the brand. Light, texture, and movement come together to express its visual identity."
+    },
+    "AdminTools": {
+      "industryLabel": "Industry",
+      "scopeLabel": "Scope",
+      "galleryLabel": "Project images",
+      "enlarge": "Enlarge {image}",
+      "close": "Close",
+      "title": "Admin tools",
+      "projectLabel": "OPERATIONS · UI CONCEPT",
+      "projectTitle": "Operations",
+      "tags": {
+        "admin": "Operations dashboard",
+        "concept": "UI concept"
+      },
+      "industry": "Internal operations · Data management",
+      "scope": "Admin tools · Workflow design",
+      "visit": "Discuss a project",
+      "images": {
+        "overview": "Operations dashboard UI concept",
+        "records": "Data management UI concept",
+        "workflow": "Workflow management UI concept"
+      },
+      "heading": "Complex operations, at a glance.",
+      "description": "We design tools that bring data and workflows into one clear view. To protect our clients’ internal information, these previews show UI concepts for dashboards, records, and workflows rather than live client systems."
     }
   },
   "NotFound": {

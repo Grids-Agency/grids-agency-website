@@ -280,7 +280,7 @@ function Band({
 
   useFrame((state, delta) => {
     portraitFrame.current?.(state.clock.elapsedTime);
-    if (!notifiedReady.current && card.current && band.current) {
+    if (!notifiedReady.current && card.current && band.current && (!portraitImage || portraitFrame.current)) {
       notifiedReady.current = true;
       onReady();
     }

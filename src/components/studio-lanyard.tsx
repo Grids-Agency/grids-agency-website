@@ -11,6 +11,10 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useInView, useReducedMotion } from "motion/react";
 
+// Share artwork between the loading/error preview and the live card.
+const cardImage = "/models/lanyard/grids-card.svg";
+const portraitImage = "/models/lanyard/portrait-new2.png";
+
 function StaticPass() {
   return (
     <div
@@ -20,13 +24,22 @@ function StaticPass() {
       <div className="relative aspect-[2/3] w-[min(75%,375px)] -rotate-6 rounded-2xl border border-black/10 bg-[#eeeeea] text-black shadow-xl">
         <span className="absolute -top-32 left-1/2 h-32 w-5 -translate-x-1/2 bg-neutral-400" />
         <Image
-          src="/models/lanyard/grids-card-portrait.png"
+          src={cardImage}
           alt=""
           width={600}
           height={900}
           unoptimized
           className="relative size-full rounded-2xl"
         />
+        <div className="absolute top-[18.8889%] left-[8.6667%] h-[48.8889%] w-[82.6667%] bg-[#eeeee9]">
+          <Image
+            src={portraitImage}
+            alt=""
+            fill
+            unoptimized
+            className="object-cover"
+          />
+        </div>
       </div>
     </div>
   );
@@ -34,7 +47,7 @@ function StaticPass() {
 
 const Lanyard = dynamic(() => import("@/components/Lanyard"), {
   ssr: false,
-  loading: StaticPass,
+  loading: () => null,
 });
 
 class LanyardBoundary extends Component<
@@ -79,12 +92,12 @@ export default function StudioLanyard() {
               active={visible}
               onReady={handleReady}
               onUnavailable={handleUnavailable}
-              portraitImage="/models/lanyard/portrait-new2.png"
+              portraitImage={portraitImage}
               cardScale={1.25}
               position={[0, 0, 20]}
               horizontalOffset={5 / 21}
-              frontImage="/models/lanyard/grids-card.svg"
-              backImage="/models/lanyard/grids-card.svg"
+              frontImage={cardImage}
+              backImage={cardImage}
               lanyardImage="/models/lanyard/plain-strap.svg"
             />
           </LanyardBoundary>
