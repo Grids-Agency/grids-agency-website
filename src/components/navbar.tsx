@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import BrandLogo from "@/components/brand-logo";
 import Link from "next/link";
@@ -21,9 +21,22 @@ const subscribeToHydration = () => () => {};
 const subscribeToScroll = (onChange: () => void) => {
   // Capture also receives scroll events from page-owned containers (Archive).
   window.addEventListener("scroll", onChange, { passive: true, capture: true });
-  return () => window.removeEventListener("scroll", onChange, true);
+  window.addEventListener("resize", onChange);
+  return () => {
+    window.removeEventListener("scroll", onChange, true);
+    window.removeEventListener("resize", onChange);
+  };
 };
 const getScrolled = () => {
+  const pinnedStage = document.querySelector<HTMLElement>(
+    "[data-navbar-pinned-stage]",
+  );
+  if (pinnedStage) {
+    // Scroll used to animate a pinned scene is not visible page movement.
+    // Compact only after the scene itself starts leaving its sticky position.
+    const stickyTop = parseFloat(getComputedStyle(pinnedStage).top) || 0;
+    return stickyTop - pinnedStage.getBoundingClientRect().top > 80;
+  }
   const pageScroller = document.querySelector<HTMLElement>(
     "[data-navbar-scroll]",
   );
@@ -36,6 +49,17 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const subscribeToPageScroll = useCallback((onChange: () => void) => {
+    const unsubscribe = subscribeToScroll(onChange);
+    // Re-read after the destination page and its scroll position are committed.
+    const frame = requestAnimationFrame(() => {
+      if (window.location.pathname === pathname) onChange();
+    });
+    return () => {
+      cancelAnimationFrame(frame);
+      unsubscribe();
+    };
+  }, [pathname]);
 
   const reducedMotion = useReducedMotion();
   const pillTransition = {
@@ -43,7 +67,7 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
     ease: [0.22, 1, 0.36, 1] as const,
   };
   const scrolled = useSyncExternalStore(
-    subscribeToScroll,
+    subscribeToPageScroll,
     getScrolled,
     getServerScrolled,
   );
@@ -107,7 +131,7 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
   );
 
   return (
-    <motion.div layoutRoot className="pointer-events-none fixed inset-0 z-40">
+    <motion.div key={pathname} layoutRoot className="pointer-events-none fixed inset-0 z-40">
       <motion.nav
         layout
         layoutDependency={scrolled}
@@ -131,7 +155,7 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
           <span className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0.06)_35%,transparent_55%,rgba(255,255,255,0.16)_100%)] dark:opacity-50" />
           <span className="absolute inset-x-[12%] top-0 h-px bg-linear-to-r from-transparent via-white/90 to-transparent dark:via-white/60" />
         </span>
-        {isHome && (
+        {(isHome || pathname.replace(/\/$/, "") === `/${locale}/connect`) && (
           <span
             data-hero-reveal="grid"
             aria-hidden="true"
@@ -144,6 +168,7 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
         <div className="relative flex h-full flex-wrap items-center justify-between gap-x-3 py-3 md:flex-nowrap md:py-0">
           <MotionLink
             layout="position"
+            layoutDependency={scrolled}
             transition={{ layout: pillTransition }}
             data-hero-reveal="text"
             href={`/${locale}`}
@@ -183,6 +208,7 @@ export default function Navbar({ className, inHero = false }: NavbarProps) {
           </MotionLink>
           <motion.div
             layout="position"
+            layoutDependency={scrolled}
             transition={{ layout: pillTransition }}
             data-hero-reveal="text"
             className="order-3 flex w-full items-center justify-between gap-3 text-xs group-data-[hero-pending=true]/hero:opacity-0 group-data-[hero-pending=true]/hero:blur-[10px] md:order-none md:ml-auto md:w-auto md:gap-7 md:text-[13px]"

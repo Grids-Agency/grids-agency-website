@@ -63,7 +63,7 @@ export default function HeroContent() {
               {navT("work")} <Infinite size={16} aria-hidden="true" />
             </Link>
             <div data-hero-reveal="text" className={cn(textRevealClassName, "inline-flex")}>
-              <MetalButton asChild preset="silver" inverted className="h-10 gap-6 rounded-none px-5 text-xs" wrapperClassName="rounded-none">
+              <MetalButton asChild className="h-10 gap-6 rounded-none px-5 text-xs" wrapperClassName="rounded-none">
                 <Link href={`/${locale}/connect`}>
                   {t("start_project")} <ArrowRight size={16} aria-hidden="true" />
                 </Link>

@@ -49,6 +49,7 @@ export default function AboutSection({ className }: AboutSectionProps) {
       )}
     >
       <h2
+        data-scroll-reveal="text"
         ref={brandRef}
         id="about-heading"
         aria-label="FEATURED WORK"

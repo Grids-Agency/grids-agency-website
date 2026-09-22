@@ -41,7 +41,7 @@ export default async function RootLayout({
   const locale = await getLocale();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} className="[scrollbar-gutter:stable]" suppressHydrationWarning>
       <head>
         {/* Reset before next-themes initializes so refreshes start in dark mode. */}
         <script

@@ -28,10 +28,10 @@ export default function StudioIntroduction() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-10"
         >
-          <span className="absolute top-0 left-0 size-5 border-t-2 border-l-2 border-foreground/25" />
-          <span className="absolute top-0 right-0 size-5 border-t-2 border-r-2 border-foreground/25" />
-          <span className="absolute bottom-0 left-0 size-5 border-b-2 border-l-2 border-foreground/25" />
-          <span className="absolute bottom-0 right-0 size-5 border-b-2 border-r-2 border-foreground/25" />
+          <span data-scroll-reveal="fade" className="absolute top-0 left-0 size-5 border-t-2 border-l-2 border-foreground/25" />
+          <span data-scroll-reveal="fade" className="absolute top-0 right-0 size-5 border-t-2 border-r-2 border-foreground/25" />
+          <span data-scroll-reveal="fade" className="absolute bottom-0 left-0 size-5 border-b-2 border-l-2 border-foreground/25" />
+          <span data-scroll-reveal="fade" className="absolute bottom-0 right-0 size-5 border-b-2 border-r-2 border-foreground/25" />
         </div>
         <div className="flex min-w-0 flex-col justify-center px-6 py-12 md:px-10 lg:py-16">
           <h2
@@ -74,26 +74,26 @@ export default function StudioIntroduction() {
                   className="h-20 w-auto max-w-full text-foreground"
                 />
               </div>
-              <span className="border-l border-foreground/15 pl-5 font-mono text-[10px] tracking-[0.16em] text-muted-foreground">
+              <span data-scroll-reveal="text" className="border-l border-foreground/15 pl-5 font-mono text-[10px] tracking-[0.16em] text-muted-foreground">
                 CEO / GRIDS AGENCY
               </span>
             </div>
-            <p className="max-w-xl text-base leading-[1.9] text-muted-foreground [word-break:keep-all] md:text-lg">
+            <p data-scroll-reveal="text" className="max-w-xl text-base leading-[1.9] text-muted-foreground [word-break:keep-all] md:text-lg">
               {t.rich("description", richText)}
             </p>
-            <p className="max-w-xl text-base leading-[1.9] text-muted-foreground [word-break:keep-all] md:text-lg">
+            <p data-scroll-reveal="text" className="max-w-xl text-base leading-[1.9] text-muted-foreground [word-break:keep-all] md:text-lg">
               {t.rich("trustedBy", richText)}
             </p>
-            <p className="max-w-xl text-base leading-[1.9] text-foreground [word-break:keep-all] md:text-lg">
+            <p data-scroll-reveal="text" className="max-w-xl text-base leading-[1.9] text-foreground [word-break:keep-all] md:text-lg">
               <strong className="font-bold"><SquigglyUnderline text={t("invitation")} /></strong>
             </p>
           </div>
         </div>
         <div className="relative min-w-0 lg:static">
-          <div className="relative z-20 h-[520px] sm:h-[640px] lg:absolute lg:inset-0 lg:h-auto">
+          <div data-scroll-reveal="fade" className="relative z-20 h-[520px] sm:h-[640px] lg:absolute lg:inset-0 lg:h-auto">
             <StudioLanyard />
           </div>
-          <p className="pointer-events-none absolute right-0 bottom-12 left-0 z-30 text-center font-mono text-[10px] tracking-[0.12em] text-muted-foreground lg:left-[47.619%]">
+          <p data-scroll-reveal="text" className="pointer-events-none absolute right-0 bottom-12 left-0 z-30 text-center font-mono text-[10px] tracking-[0.12em] text-muted-foreground lg:left-[47.619%]">
             {t("lanyardHint")}
           </p>
         </div>

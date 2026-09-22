@@ -38,7 +38,7 @@ function FaqTitle() {
   );
 
   return (
-    <header ref={ref} className="relative min-w-0 self-stretch">
+    <header data-scroll-reveal="fade" ref={ref} className="relative min-w-0 self-stretch">
       <span
         aria-hidden="true"
         className="pointer-events-none absolute -top-1 -right-1 z-10 size-5 border-t-2 border-r-2 border-foreground/25"
@@ -72,13 +72,13 @@ function FaqTitle() {
               <div className="absolute inset-0 bg-linear-to-b from-background/90 via-background/10 to-transparent" />
             </div>
           </div>
-          <h2
+          <h2 data-scroll-reveal="text"
             id="faq-heading"
             className="whitespace-pre-line text-[clamp(36px,3.8vw,56px)] leading-[1.15] font-medium tracking-[-0.055em] [word-break:keep-all]"
           >
             {t("heading")}
           </h2>
-          <div className="mt-auto self-end pt-12 text-right">
+          <div data-scroll-reveal="text" className="mt-auto self-end pt-12 text-right">
             <p className="text-xs leading-6 text-muted-foreground md:text-sm">{t("contactPrompt")}</p>
             <Link
               href={`/${locale}/connect`}
@@ -107,6 +107,7 @@ export default function FaqSection() {
         <FaqTitle />
 
         <Accordion.Root
+          data-scroll-reveal="fade"
           type="single"
           collapsible
           className="min-w-0 border-t border-foreground/15"
@@ -114,6 +115,7 @@ export default function FaqSection() {
           {questions.map((key) => (
             <Accordion.Item
               key={key}
+              data-scroll-reveal="surface"
               value={key}
               className="border-b border-foreground/15"
             >

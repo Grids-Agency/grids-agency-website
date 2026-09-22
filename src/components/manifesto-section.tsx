@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, useReducedMotion } from "motion/react";
 import ApplicationSystemPreview from "@/components/application-system-preview";
 import CommercePreview from "@/components/commerce-preview";
 import AiChatPreview from "@/components/ai-chat-preview";
@@ -36,6 +35,7 @@ function BentoGlow({ kind }: { kind: Idea }) {
 
   return (
     <div
+      data-scroll-reveal="fade"
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
@@ -65,7 +65,6 @@ function Preview({ kind }: { kind: Idea }) {
 
 export default function ManifestoSection() {
   const t = useTranslations("Possibilities");
-  const reducedMotion = useReducedMotion();
 
   return (
     <section
@@ -76,6 +75,7 @@ export default function ManifestoSection() {
         <header className="mb-12 flex flex-col justify-between gap-8 lg:mb-16 lg:flex-row lg:items-end">
           <div>
             <h2
+              data-scroll-reveal="text"
               id="possibilities-heading"
               className="max-w-3xl whitespace-pre-line text-[clamp(32px,3.2vw,48px)] leading-[1.15] font-medium tracking-[-0.055em] [word-break:keep-all]"
             >
@@ -84,8 +84,10 @@ export default function ManifestoSection() {
           </div>
         </header>
 
-        <div className="relative grid items-stretch border-x border-foreground/17 md:grid-cols-2 lg:grid-cols-12">
+        <div className="relative grid items-stretch md:grid-cols-2 lg:grid-cols-12">
+          <span data-scroll-reveal="line-y" aria-hidden="true" className="pointer-events-none absolute inset-y-0 inset-x-0 border-x border-foreground/17" />
           <span
+            data-scroll-reveal="line-x"
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 bottom-0 z-20 border-b border-foreground/17"
           />
@@ -93,6 +95,7 @@ export default function ManifestoSection() {
             <div key={key} className={cn("relative min-w-0", layout)}>
               {/* Overlay dividers so borders do not inset the junction marks. */}
               <span
+                data-scroll-reveal="line-y"
                 aria-hidden="true"
                 className={cn(
                   "pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-px bg-foreground/17",
@@ -101,6 +104,7 @@ export default function ManifestoSection() {
                 )}
               />
               <span
+                data-scroll-reveal="line-x"
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-x-0 top-0 z-10 border-t border-foreground/17"
               />
@@ -108,24 +112,21 @@ export default function ManifestoSection() {
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 z-10 text-foreground/40"
               >
-                <span className="absolute top-0 left-0 size-3.5 border-t border-l border-current" />
-                <span className="absolute top-0 right-0 size-3.5 border-t border-r border-current" />
-                <span className="absolute bottom-0 left-0 size-3.5 border-b border-l border-current" />
-                <span className="absolute right-0 bottom-0 size-3.5 border-r border-b border-current" />
+                <span data-scroll-reveal="fade" className="absolute top-0 left-0 size-3.5 border-t border-l border-current" />
+                <span data-scroll-reveal="fade" className="absolute top-0 right-0 size-3.5 border-t border-r border-current" />
+                <span data-scroll-reveal="fade" className="absolute bottom-0 left-0 size-3.5 border-b border-l border-current" />
+                <span data-scroll-reveal="fade" className="absolute right-0 bottom-0 size-3.5 border-r border-b border-current" />
               </div>
               <article className="relative z-0 isolate h-full overflow-hidden text-foreground">
                 <BentoGlow kind={key} />
-                <motion.div
+                <div
                   className={cn(
                     "flex h-full flex-col gap-7 p-7 md:gap-10 md:p-10",
                     key === "crm" && "gap-6 md:gap-7",
                   )}
-                  initial={reducedMotion ? false : { opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div
+                    data-scroll-reveal="fade"
                     aria-hidden={
                       key === "automation" || key === "commerce"
                         ? undefined
@@ -144,14 +145,14 @@ export default function ManifestoSection() {
                     <Preview kind={key} />
                   </div>
                   <div className={cn("relative", key !== "crm" && key !== "assistant" && "mt-auto")}>
-                    <h3 className="text-xl leading-snug font-black tracking-[-0.025em] [word-break:keep-all] sm:text-2xl">
+                    <h3 data-scroll-reveal="text" className="text-xl leading-snug font-black tracking-[-0.025em] [word-break:keep-all] sm:text-2xl">
                       {t(`${key}.title`)}
                     </h3>
-                    <p className="mt-5 max-w-lg text-sm leading-7 text-muted-foreground [word-break:keep-all]">
+                    <p data-scroll-reveal="text" className="mt-5 max-w-lg text-sm leading-7 text-muted-foreground [word-break:keep-all]">
                       {t(`${key}.description`)}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               </article>
             </div>
           ))}

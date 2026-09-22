@@ -33,7 +33,7 @@ function useFooterScene() {
 export function FooterBeams() {
   const { ref, nearby, active, dark } = useFooterScene();
   return (
-    <div ref={ref} aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div data-scroll-reveal="fade" ref={ref} aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_35%,var(--tertiary),transparent_65%)] opacity-[0.08]" />
       <div className="absolute -inset-1 opacity-50 blur-[0.5px] dark:opacity-70">
         {nearby && (
