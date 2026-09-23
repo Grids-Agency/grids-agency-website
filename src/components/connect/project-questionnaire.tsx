@@ -205,7 +205,7 @@ export default function ProjectQuestionnaire({ onClose, onSuccess }: { onClose: 
                 transition={{ duration: reduced ? 0 : 0.35, ease: "easeInOut" }}
               >
                 <p>{feedback}</p>
-                {final && error && !validation && <a className="mt-2 inline-block underline underline-offset-4" href={`mailto:${contact("Cards.emailValue")}?subject=${encodeURIComponent(t("emailSubject"))}&body=${encodeURIComponent(summary())}`}>{t("emailFallback")}</a>}
+                {final && error && !validation && <a className="mt-2 inline-block underline underline-offset-4" href={`mailto:${contact("Cards.emailValue")}?subject=${encodeURIComponent(t("emailSubject"))}&body=${encodeURIComponent(summary())}`} onClick={() => trackEvent("cta_click", { cta_location: "contact_form", cta_text: t("emailFallback") })}>{t("emailFallback")}</a>}
               </motion.div>
             )}
           </AnimatePresence>

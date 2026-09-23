@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { MetalButton } from "@/components/spectrumui/metal-button";
+import { trackEvent } from "@/lib/analytics";
 
 export default function ConsultationButton() {
   const t = useTranslations("ConsultationButton");
@@ -21,6 +22,12 @@ export default function ConsultationButton() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t("accessibleLabel")}
+          onClick={() =>
+            trackEvent("cta_click", {
+              cta_location: "floating_consultation",
+              cta_text: t("label"),
+            })
+          }
         >
           <span aria-hidden="true" className="pointer-events-none flex size-8 shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-110 group-focus-visible:scale-110 motion-reduce:transform-none">
             <motion.span

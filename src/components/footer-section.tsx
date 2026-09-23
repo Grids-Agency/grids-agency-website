@@ -10,6 +10,7 @@ import BrandLogo from "@/components/brand-logo";
 import { FooterBeams } from "@/components/footer-graphics";
 import { MetalButton } from "@/components/spectrumui/metal-button";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 
 interface FooterSectionProps {
   className?: string;
@@ -24,7 +25,10 @@ function FooterContent({ className }: FooterSectionProps) {
   const locale = useLocale();
   const pathname = usePathname();
   const root = useRef<HTMLElement>(null);
-  useScrollReveals(root, pathname === `/${locale}` || pathname === `/${locale}/`);
+  useScrollReveals(
+    root,
+    pathname === `/${locale}` || pathname === `/${locale}/`,
+  );
 
   return (
     <footer
@@ -46,25 +50,39 @@ function FooterContent({ className }: FooterSectionProps) {
             <span className="block">{t("headline")}</span>
             <span className="block">{t("headlineEnd")}</span>
           </h2>
-          <p data-scroll-reveal="text" className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground [text-wrap:balance] [word-break:keep-all]">
+          <p
+            data-scroll-reveal="text"
+            className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground [text-wrap:balance] [word-break:keep-all]"
+          >
             {t("closing")}
           </p>
           <div data-scroll-reveal="text">
-          <MetalButton
-            asChild
-            size="md"
-            className="gap-6 rounded-none text-sm"
-            wrapperClassName="mt-8 rounded-none"
-          >
-            <Link href={`/${locale}/connect`}>
-              {t("cta")}
-              <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-          </MetalButton>
+            <MetalButton
+              asChild
+              size="md"
+              className="gap-6 rounded-none text-sm"
+              wrapperClassName="mt-8 rounded-none"
+            >
+              <Link
+                href={`/${locale}/connect`}
+                onClick={() =>
+                  trackEvent("cta_click", {
+                    cta_location: "footer",
+                    cta_text: t("cta"),
+                  })
+                }
+              >
+                {t("cta")}
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </MetalButton>
           </div>
         </div>
 
-        <div data-scroll-reveal="fade" className="grid grid-cols-2 gap-x-8 gap-y-10 border-t border-foreground/10 py-10 md:py-12 lg:grid-cols-[1.6fr_0.8fr_1fr] lg:gap-x-16">
+        <div
+          data-scroll-reveal="fade"
+          className="grid grid-cols-2 gap-x-8 gap-y-10 border-t border-foreground/10 py-10 md:py-12 lg:grid-cols-[1.6fr_0.8fr_1fr] lg:gap-x-16"
+        >
           <div data-scroll-reveal="text" className="col-span-2 lg:col-span-1">
             <Link
               href={`/${locale}`}
@@ -76,7 +94,10 @@ function FooterContent({ className }: FooterSectionProps) {
                 GRIDS AGENCY
               </span>
             </Link>
-            <p data-scroll-reveal="text" className="mt-4 max-w-72 text-xs leading-6 text-muted-foreground [word-break:keep-all]">
+            <p
+              data-scroll-reveal="text"
+              className="mt-4 max-w-72 text-xs leading-6 text-muted-foreground [word-break:keep-all]"
+            >
               {t("location")}
             </p>
           </div>
@@ -104,6 +125,12 @@ function FooterContent({ className }: FooterSectionProps) {
               <li>
                 <a
                   href={`mailto:${t("email")}`}
+                  onClick={() =>
+                    trackEvent("cta_click", {
+                      cta_location: "footer",
+                      cta_text: t("email"),
+                    })
+                  }
                   className={cn("break-words", footerLink)}
                 >
                   {t("email")}
@@ -114,6 +141,12 @@ function FooterContent({ className }: FooterSectionProps) {
                   href="https://t.me/kyle_lee10"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent("cta_click", {
+                      cta_location: "footer",
+                      cta_text: "Telegram ↗",
+                    })
+                  }
                   className={footerLink}
                 >
                   Telegram ↗
@@ -123,8 +156,14 @@ function FooterContent({ className }: FooterSectionProps) {
           </div>
         </div>
 
-        <div data-scroll-reveal="fade" className="flex flex-wrap items-center justify-between gap-5 border-t border-foreground/10 pt-5 pb-24 md:pb-8">
-          <p data-scroll-reveal="text" className="text-[10px] leading-5 text-muted-foreground">
+        <div
+          data-scroll-reveal="fade"
+          className="flex flex-wrap items-center justify-between gap-5 border-t border-foreground/10 pt-5 pb-24 md:pb-8"
+        >
+          <p
+            data-scroll-reveal="text"
+            className="text-[10px] leading-5 text-muted-foreground"
+          >
             {t("copyright")}
           </p>
           <button

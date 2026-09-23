@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import { useMemo, useRef } from "react";
 import { useInView, useReducedMotion } from "motion/react";
 import { BeamCard } from "@/components/spectrumui/beam-card";
+import { trackEvent } from "@/lib/analytics";
 
 const AnimatedGradient = dynamic(
   () => import("@/components/animated-gradient"),
@@ -38,7 +39,11 @@ function FaqTitle() {
   );
 
   return (
-    <header data-scroll-reveal="fade" ref={ref} className="relative min-w-0 self-stretch">
+    <header
+      data-scroll-reveal="fade"
+      ref={ref}
+      className="relative min-w-0 self-stretch"
+    >
       <span
         aria-hidden="true"
         className="pointer-events-none absolute -top-1 -right-1 z-10 size-5 border-t-2 border-r-2 border-foreground/25"
@@ -72,16 +77,28 @@ function FaqTitle() {
               <div className="absolute inset-0 bg-linear-to-b from-background/90 via-background/10 to-transparent" />
             </div>
           </div>
-          <h2 data-scroll-reveal="text"
+          <h2
+            data-scroll-reveal="text"
             id="faq-heading"
             className="whitespace-pre-line text-[clamp(36px,3.8vw,56px)] leading-[1.15] font-medium tracking-[-0.055em] [word-break:keep-all]"
           >
             {t("heading")}
           </h2>
-          <div data-scroll-reveal="text" className="mt-auto self-end pt-12 text-right">
-            <p className="text-xs leading-6 text-muted-foreground md:text-sm">{t("contactPrompt")}</p>
+          <div
+            data-scroll-reveal="text"
+            className="mt-auto self-end pt-12 text-right"
+          >
+            <p className="text-xs leading-6 text-muted-foreground md:text-sm">
+              {t("contactPrompt")}
+            </p>
             <Link
               href={`/${locale}/connect`}
+              onClick={() =>
+                trackEvent("cta_click", {
+                  cta_location: "faq",
+                  cta_text: t("contactLink"),
+                })
+              }
               className="mt-2 inline-flex items-center gap-2 border-b border-foreground/25 pb-1 text-sm font-medium transition-colors hover:border-tertiary hover:text-tertiary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tertiary"
             >
               {t("contactLink")}
@@ -122,7 +139,10 @@ export default function FaqSection() {
               <Accordion.Header>
                 <Accordion.Trigger className="group flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left text-base leading-relaxed font-medium tracking-[-0.025em] transition-colors hover:text-tertiary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tertiary md:py-7 md:text-lg [word-break:keep-all]">
                   {t(`items.${key}.question`)}
-                  <span aria-hidden="true" className="relative size-6 shrink-0 text-foreground/55 transition-colors duration-300 group-hover:text-tertiary group-data-[state=open]:text-tertiary motion-reduce:transition-none">
+                  <span
+                    aria-hidden="true"
+                    className="relative size-6 shrink-0 text-foreground/55 transition-colors duration-300 group-hover:text-tertiary group-data-[state=open]:text-tertiary motion-reduce:transition-none"
+                  >
                     <span className="absolute inset-[6px] scale-75 bg-tertiary opacity-0 transition-[opacity,scale] duration-250 ease-out group-data-[state=open]:scale-100 group-data-[state=open]:opacity-100 motion-reduce:transition-none" />
                     <span className="absolute top-[3px] left-[3px] size-1.5 border-t-[1.5px] border-l-[1.5px] border-current" />
                     <span className="absolute top-[3px] right-[3px] size-1.5 border-t-[1.5px] border-r-[1.5px] border-current" />

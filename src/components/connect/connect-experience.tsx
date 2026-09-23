@@ -16,6 +16,7 @@ import ProjectQuestionnaire from "./project-questionnaire";
 import { MetalButton } from "@/components/spectrumui/metal-button";
 import InteractiveDroplets from "@/components/originkit/ui/interactive-droplets";
 import { useScrollReveals } from "@/hooks/use-scroll-reveals";
+import { trackEvent } from "@/lib/analytics";
 
 const LightRays = dynamic(() => import("@/components/light-rays"), { ssr: false });
 const successRayColors = {
@@ -56,6 +57,10 @@ export default function ConnectExperience() {
   );
 
   const copyEmail = async () => {
+    trackEvent("cta_click", {
+      cta_location: "connect",
+      cta_text: t("Experience.copy"),
+    });
     try {
       await navigator.clipboard.writeText(t("Cards.emailValue"));
       setCopied(true);
@@ -219,7 +224,13 @@ export default function ConnectExperience() {
                     <button
                       ref={startButton}
                       type="button"
-                      onClick={() => setProjectOpen(true)}
+                      onClick={() => {
+                        trackEvent("cta_click", {
+                          cta_location: "connect",
+                          cta_text: t("Experience.project"),
+                        });
+                        setProjectOpen(true);
+                      }}
                     >
                       {t("Experience.project")}
                       <ArrowUpRight size={15} aria-hidden="true" />
@@ -232,6 +243,12 @@ export default function ConnectExperience() {
                       href="https://pf.kakao.com/_FGQrX"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() =>
+                        trackEvent("cta_click", {
+                          cta_location: "connect",
+                          cta_text: t("Experience.chat"),
+                        })
+                      }
                     >
                       {t("Experience.chat")}
                       <MessageCircle size={15} aria-hidden="true" />
@@ -270,6 +287,12 @@ export default function ConnectExperience() {
                 {copyFailed && (
                   <a
                     href={`mailto:${t("Cards.emailValue")}`}
+                    onClick={() =>
+                      trackEvent("cta_click", {
+                        cta_location: "connect",
+                        cta_text: `${t("Experience.copyFallback")} ${t("Cards.emailValue")}`,
+                      })
+                    }
                     className="underline underline-offset-4"
                   >
                     {t("Experience.copyFallback")} {t("Cards.emailValue")}

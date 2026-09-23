@@ -8,6 +8,7 @@ import HeroClientHeatmap from "@/components/hero-client-heatmap";
 import { HERO_CLIENT_COUNT } from "@/data/hero-clients";
 import { MetalButton } from "@/components/spectrumui/metal-button";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 
 const gridRevealClassName = "group-data-[hero-pending=true]/hero:opacity-0";
 const textRevealClassName =
@@ -64,7 +65,15 @@ export default function HeroContent() {
             </Link>
             <div data-hero-reveal="text" className={cn(textRevealClassName, "inline-flex")}>
               <MetalButton asChild className="h-10 gap-6 rounded-none px-5 text-xs" wrapperClassName="rounded-none">
-                <Link href={`/${locale}/connect`}>
+                <Link
+                  href={`/${locale}/connect`}
+                  onClick={() =>
+                    trackEvent("cta_click", {
+                      cta_location: "hero",
+                      cta_text: t("start_project"),
+                    })
+                  }
+                >
                   {t("start_project")} <ArrowRight size={16} aria-hidden="true" />
                 </Link>
               </MetalButton>
