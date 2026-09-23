@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 import emailjs from "@emailjs/browser";
 import { MetalButton } from "@/components/spectrumui/metal-button";
+import { trackEvent } from "@/lib/analytics";
 
 const steps = ["name", "company", "build", "budget", "email", "notes"] as const;
 const services = ["website", "app", "admin", "automation", "ai", "unsure", "other"] as const;
@@ -78,6 +79,7 @@ export default function ProjectQuestionnaire({ onClose, onSuccess }: { onClose: 
         firstName: draft.name.trim(), lastName: "", email: draft.email.trim(), phone: "",
         company: draft.company.trim(), message: summary(), terms: consent ? "on" : "",
       }, { publicKey });
+      trackEvent("generate_lead", { form_name: "project_inquiry" });
       setStatus("success");
       onSuccess();
     } catch {
