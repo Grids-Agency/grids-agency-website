@@ -29,6 +29,7 @@ export default function ProjectQuestionnaire({ onClose, onSuccess }: { onClose: 
   const [touched, setTouched] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
   const sending = useRef(false);
+  const contactStarted = useRef(false);
   const heading = useRef<HTMLHeadingElement>(null);
   const current = steps[step];
   const final = step === steps.length - 1;
@@ -54,6 +55,22 @@ export default function ProjectQuestionnaire({ onClose, onSuccess }: { onClose: 
     `${t("notes.title")}: ${draft.notes || "—"}`,
   ].join("\n\n");
 
+  const trackContactStart = () => {
+    if (contactStarted.current) return;
+    contactStarted.current = true;
+    trackEvent("contact_start", { form_name: "project_inquiry" });
+  };
+
+  const trackContactStartFromControl = (target: EventTarget) => {
+    if (!(target instanceof Element)) return;
+    const control = target.closest("input, textarea, select, button, label");
+    if (control?.closest("fieldset")) trackContactStart();
+  };
+
+  const trackLeadFailure = () => {
+    trackEvent("generate_lead_failed", { form_name: "project_inquiry" });
+  };
+
   const advance = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (sending.current) return;
@@ -66,7 +83,11 @@ export default function ProjectQuestionnaire({ onClose, onSuccess }: { onClose: 
     const service = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const template = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-    if (!service || !template || !publicKey) { setError(t("unavailable")); return; }
+    if (!service || !template || !publicKey) {
+      trackLeadFailure();
+      setError(t("unavailable"));
+      return;
+    }
     sending.current = true;
     setStatus("sending");
     try {
@@ -83,6 +104,7 @@ export default function ProjectQuestionnaire({ onClose, onSuccess }: { onClose: 
       setStatus("success");
       onSuccess();
     } catch {
+      trackLeadFailure();
       setStatus("idle");
       setError(t("sendError"));
     } finally {
@@ -91,12 +113,20 @@ export default function ProjectQuestionnaire({ onClose, onSuccess }: { onClose: 
   };
 
   return (
-    <form noValidate onSubmit={advance} onKeyDown={event => {
+    <form
+      noValidate
+      onSubmit={advance}
+      onFocusCapture={(event) => trackContactStartFromControl(event.target)}
+      onInputCapture={(event) => trackContactStartFromControl(event.target)}
+      onClickCapture={(event) => trackContactStartFromControl(event.target)}
+      onKeyDown={event => {
       if (event.key === "Enter" && event.target instanceof HTMLInputElement && ["text", "email"].includes(event.target.type)) {
         event.preventDefault();
         event.currentTarget.requestSubmit();
       }
-    }} className="relative isolate flex min-h-[calc(100svh-112px)] w-full flex-col items-center px-5 pt-12 pb-28 sm:px-8 md:min-h-[calc(100svh-72px)] md:px-10 md:pt-16 md:pb-12">
+    }}
+      className="relative isolate flex min-h-[calc(100svh-112px)] w-full flex-col items-center px-5 pt-12 pb-28 sm:px-8 md:min-h-[calc(100svh-72px)] md:px-10 md:pt-16 md:pb-12"
+    >
       <div className="flex w-full flex-1 items-center justify-center py-10 md:py-16">
         <motion.div
           layout="position"

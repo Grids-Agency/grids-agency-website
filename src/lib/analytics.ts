@@ -9,6 +9,9 @@ export type AnalyticsEventParameters = {
   generate_lead: {
     form_name: string;
   };
+  generate_lead_failed: {
+    form_name: string;
+  };
   view_project: {
     project_name: string;
   };
